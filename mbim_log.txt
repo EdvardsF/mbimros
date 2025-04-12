@@ -1,0 +1,1003 @@
+# 2025-04-11 04:32:14 by RouterOS 7.19_ab60
+# software id = I9YT-EYUA
+#
+ 2025-04-11 04:31:13 lte,packet,raw lte1 mbim: 7c000080
+ 2025-04-11 04:31:13 lte,debug lte1 mbim: >>> D #20 - connect: register state
+ 2025-04-11 04:31:13 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:13 lte,packet lte1 mbim: 00000000 01000000 01000000 00000000
+ 2025-04-11 04:31:13 lte,packet lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:13 lte,packet lte1 mbim: 00000000 00000000 00000000 02000000
+ 2025-04-11 04:31:13 lte,packet lte1 mbim: 7c000080
+ 2025-04-11 04:31:13 lte,debug lte1 mbim: register state: deregistered
+ 2025-04-11 04:31:13 lte,debug lte1 mbim: state 10=>11
+ 2025-04-11 04:31:13 lte,debug lte1 mbim: set radio: on
+ 2025-04-11 04:31:13 lte,debug lte1 mbim: <<< S #21 - connect: radio state
+ 2025-04-11 04:31:13 lte,packet,raw lte1 mbim: wdm <<< send #21
+ 2025-04-11 04:31:13 lte,packet,raw lte1 mbim: 03000000 34000000 15000000 01000000
+ 2025-04-11 04:31:13 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:13 lte,packet,raw lte1 mbim: c2aae6df 03000000 01000000 04000000
+ 2025-04-11 04:31:13 lte,packet,raw lte1 mbim: 01000000
+ 2025-04-11 04:31:13 lte,packet,raw lte1 mbim: wdm >>> recv #0
+ 2025-04-11 04:31:13 lte,packet,raw lte1 mbim: 07000080 34000000 00000000 01000000
+ 2025-04-11 04:31:13 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:13 lte,packet,raw lte1 mbim: c2aae6df 03000000 08000000 01000000
+ 2025-04-11 04:31:13 lte,packet,raw lte1 mbim: 01000000
+ 2025-04-11 04:31:13 lte,debug lte1 mbim: >>> N #0 - connect: radio state
+ 2025-04-11 04:31:13 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:13 lte,packet lte1 mbim: 01000000 01000000
+ 2025-04-11 04:31:13 lte,packet,raw lte1 mbim: wdm >>> recv #21
+ 2025-04-11 04:31:13 lte,packet,raw lte1 mbim: 03000080 38000000 15000000 01000000
+ 2025-04-11 04:31:13 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:13 lte,packet,raw lte1 mbim: c2aae6df 03000000 00000000 08000000
+ 2025-04-11 04:31:13 lte,packet,raw lte1 mbim: 01000000 01000000
+ 2025-04-11 04:31:13 lte,debug lte1 mbim: >>> D #21 - connect: radio state
+ 2025-04-11 04:31:13 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:13 lte,packet lte1 mbim: 01000000 01000000
+ 2025-04-11 04:31:13 lte,packet,raw lte1 mbim: wdm >>> recv #0
+ 2025-04-11 04:31:13 lte,packet,raw lte1 mbim: 07000080 60000000 00000000 01000000
+ 2025-04-11 04:31:13 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:13 lte,packet,raw lte1 mbim: c2aae6df 09000000 34000000 00000000
+ 2025-04-11 04:31:13 lte,packet,raw lte1 mbim: 02000000 01000000 00000000 01000000
+ 2025-04-11 04:31:13 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:13 lte,packet,raw lte1 mbim: 00000000 00000000 02000000 7c000080
+ 2025-04-11 04:31:13 lte,debug lte1 mbim: >>> N #0 - connect: register state
+ 2025-04-11 04:31:13 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:13 lte,packet lte1 mbim: 00000000 02000000 01000000 00000000
+ 2025-04-11 04:31:13 lte,packet lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:13 lte,packet lte1 mbim: 00000000 00000000 00000000 02000000
+ 2025-04-11 04:31:13 lte,packet lte1 mbim: 7c000080
+ 2025-04-11 04:31:13 lte,debug lte1 mbim: register state: searching
+ 2025-04-11 04:31:13 lte,debug lte1 mbim: state 11=>12
+ 2025-04-11 04:31:15 lte,async,raw lte1: sent AT+QENG="servingcell"
+ 2025-04-11 04:31:15 lte,packet,raw lte1 >> AT+QENG="servingcell"\r
+ 2025-04-11 04:31:15 lte,packet,raw lte1 << \r\n+QENG: "servingcell","SEARCH"\r\n\r\nOK\r\n
+ 2025-04-11 04:31:15 lte,async,raw lte1: rcvd +QENG: "servingcell","SEARCH"
+ 2025-04-11 04:31:18 lte,async,raw lte1: sent AT+QENG="servingcell"
+ 2025-04-11 04:31:18 lte,packet,raw lte1 >> AT+QENG="servingcell"\r
+ 2025-04-11 04:31:18 lte,packet,raw lte1 << \r\n+QENG: "servingcell","SEARCH"\r\n\r\nOK\r\n
+ 2025-04-11 04:31:18 lte,async,raw lte1: rcvd +QENG: "servingcell","SEARCH"
+ 2025-04-11 04:31:21 lte,async,raw lte1: sent AT+QENG="servingcell"
+ 2025-04-11 04:31:21 lte,packet,raw lte1 >> AT+QENG="servingcell"\r
+ 2025-04-11 04:31:21 lte,packet,raw lte1 << \r\n+QENG: "servingcell","SEARCH"\r\n\r\nOK\r\n
+ 2025-04-11 04:31:21 lte,async,raw lte1: rcvd +QENG: "servingcell","SEARCH"
+ 2025-04-11 04:31:24 lte,async,raw lte1: sent AT+QENG="servingcell"
+ 2025-04-11 04:31:24 lte,packet,raw lte1 >> AT+QENG="servingcell"\r
+ 2025-04-11 04:31:24 lte,packet,raw lte1 << \r\n+QENG: "servingcell","SEARCH"\r\n\r\nOK\r\n
+ 2025-04-11 04:31:24 lte,async,raw lte1: rcvd +QENG: "servingcell","SEARCH"
+ 2025-04-11 04:31:27 lte,async,raw lte1: sent AT+QENG="servingcell"
+ 2025-04-11 04:31:27 lte,packet,raw lte1 >> AT+QENG="servingcell"\r
+ 2025-04-11 04:31:27 lte,packet,raw lte1 << \r\n+QENG: "servingcell","SEARCH"\r\n\r\nOK\r\n
+ 2025-04-11 04:31:27 lte,async,raw lte1: rcvd +QENG: "servingcell","SEARCH"
+ 2025-04-11 04:31:30 lte,async,raw lte1: sent AT+QENG="servingcell"
+ 2025-04-11 04:31:30 lte,packet,raw lte1 >> AT+QENG="servingcell"\r
+ 2025-04-11 04:31:30 lte,packet,raw lte1 << \r\n+QENG: "servingcell","SEARCH"\r\n\r\nOK\r\n
+ 2025-04-11 04:31:30 lte,async,raw lte1: rcvd +QENG: "servingcell","SEARCH"
+ 2025-04-11 04:31:33 system,info,account user admin logged in from 10.55.8.59 via winbox
+ 2025-04-11 04:31:33 lte,async,raw lte1: sent AT+QENG="servingcell"
+ 2025-04-11 04:31:33 lte,packet,raw lte1 >> AT+QENG="servingcell"\r
+ 2025-04-11 04:31:33 lte,packet,raw lte1 << \r\n+QENG: "servingcell","SEARCH"\r\n\r\nOK\r\n
+ 2025-04-11 04:31:33 lte,async,raw lte1: rcvd +QENG: "servingcell","SEARCH"
+ 2025-04-11 04:31:34 system,info,account user admin logged in from 10.55.8.59 via winbox
+ 2025-04-11 04:31:34 system,info,account user admin logged in from 10.55.8.59 via winbox
+ 2025-04-11 04:31:34 system,info,account user admin logged in from 10.55.8.59 via winbox
+ 2025-04-11 04:31:34 system,info,account user admin logged in from 10.55.8.59 via winbox
+ 2025-04-11 04:31:34 system,info,account user admin logged in from 10.55.8.59 via winbox
+ 2025-04-11 04:31:36 lte,async,raw lte1: sent AT+QENG="servingcell"
+ 2025-04-11 04:31:36 lte,packet,raw lte1 >> AT+QENG="servingcell"\r
+ 2025-04-11 04:31:36 lte,packet,raw lte1 << \r\n+QENG: "servingcell","SEARCH"\r\n\r\nOK\r\n
+ 2025-04-11 04:31:36 lte,async,raw lte1: rcvd +QENG: "servingcell","SEARCH"
+ 2025-04-11 04:31:39 lte,async,raw lte1: sent AT+QENG="servingcell"
+ 2025-04-11 04:31:39 lte,packet,raw lte1 >> AT+QENG="servingcell"\r
+ 2025-04-11 04:31:39 lte,packet,raw lte1 << \r\n+QENG: "servingcell","SEARCH"\r\n\r\nOK\r\n
+ 2025-04-11 04:31:39 lte,async,raw lte1: rcvd +QENG: "servingcell","SEARCH"
+ 2025-04-11 04:31:42 lte,packet,raw lte1 << \r\n+CEREG: 1,"9CEA","02F5A12",7\r\n
+ 2025-04-11 04:31:42 lte,async,raw lte1: +CEREG: 1,"9CEA","02F5A12",7
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: wdm >>> recv #0
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 07000080 38000000 00000000 01000000
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 00000000 3d01dcc5 fef54d05 0d3abef7
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 058e9aaf 0c000000 0c000000 ffffffff
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: ea9c0000 125a2f00
+ 2025-04-11 04:31:42 lte,debug lte1 mbim: >>> N #0 - conn_ext: location info
+ 2025-04-11 04:31:42 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:42 lte,packet lte1 mbim: ffffffff ea9c0000 125a2f00
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: wdm >>> recv #0
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 07000080 48000000 00000000 01000000
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: c2aae6df 0b000000 1c000000 0c000000
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 63000000 05000000 02000000 ffffffff
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 00000000 00000000
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: wdm >>> recv #0
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 07000080 74000000 00000000 01000000
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: c2aae6df 09000000 48000000 00000000
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 03000000 01000000 20000000 01000000
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 34000000 0a000000 40000000 06000000
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 00000000 00000000 02000000 7c000080
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 32003400 37003000 31000000 4c004d00
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 54000000
+ 2025-04-11 04:31:42 lte,debug lte1 mbim: >>> N #0 - connect: register state
+ 2025-04-11 04:31:42 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:42 lte,packet lte1 mbim: 00000000 03000000 01000000 20000000
+ 2025-04-11 04:31:42 lte,packet lte1 mbim: 01000000 34000000 0a000000 40000000
+ 2025-04-11 04:31:42 lte,packet lte1 mbim: 06000000 00000000 00000000 02000000
+ 2025-04-11 04:31:42 lte,packet lte1 mbim: 7c000080 32003400 37003000 31000000
+ 2025-04-11 04:31:42 lte,packet lte1 mbim: 4c004d00 54000000
+ 2025-04-11 04:31:42 lte,debug lte1 mbim: register state: home, gsm operator: 24701, LMT, avail data classes: 0x20
+ 2025-04-11 04:31:42 lte,debug lte1 mbim: state 12=>14
+ 2025-04-11 04:31:42 lte,debug lte1 mbim: waiting for auto attach
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: wdm >>> recv #0
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 07000080 58000000 00000000 01000000
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: c2aae6df 0a000000 2c000000 00000000
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 00000000 00000000
+ 2025-04-11 04:31:42 lte,debug lte1 mbim: >>> N #0 - connect: packet service
+ 2025-04-11 04:31:42 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:42 lte,packet lte1 mbim: 00000000 01000000 00000000 00000000
+ 2025-04-11 04:31:42 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:42 lte,packet lte1 mbim: 00000000 00000000 00000000
+ 2025-04-11 04:31:42 lte,debug lte1 mbim: packet service: attaching data class: 0
+ 2025-04-11 04:31:42 lte,debug lte1 mbim: state 14=>16
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: wdm >>> recv #0
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 07000080 58000000 00000000 01000000
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: c2aae6df 0a000000 2c000000 00000000
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 02000000 20000000 008c8647 00000000
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 0020bcbe 00000000 00000000 00000000
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 00000000 00000000
+ 2025-04-11 04:31:42 lte,debug lte1 mbim: >>> N #0 - connect: packet service
+ 2025-04-11 04:31:42 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:42 lte,packet lte1 mbim: 00000000 02000000 20000000 008c8647
+ 2025-04-11 04:31:42 lte,packet lte1 mbim: 00000000 0020bcbe 00000000 00000000
+ 2025-04-11 04:31:42 lte,packet lte1 mbim: 00000000 00000000 00000000
+ 2025-04-11 04:31:42 lte,debug lte1 mbim: packet service: attached data class: LTE
+ 2025-04-11 04:31:42 lte,debug lte1 mbim: state 16=>17
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: wdm >>> recv #0
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 07000080 78000000 00000000 01000000
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 00000000 3d01dcc5 fef54d05 0d3abef7
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 058e9aaf 04000000 4c000000 01000000
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 00000000 00000000 2c000000 1e000000
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 00000000 00000000 69006e00 74006500
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 72006e00 65007400 2e006c00 6d007400
+ 2025-04-11 04:31:42 lte,packet,raw lte1 mbim: 2e006c00 76000000
+ 2025-04-11 04:31:42 lte,debug lte1 mbim: >>> N #0 - conn_ext: lte attach status
+ 2025-04-11 04:31:42 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:42 lte,packet lte1 mbim: 01000000 00000000 00000000 2c000000
+ 2025-04-11 04:31:42 lte,packet lte1 mbim: 1e000000 00000000 00000000 00000000
+ 2025-04-11 04:31:42 lte,packet lte1 mbim: 00000000 00000000 00000000 69006e00
+ 2025-04-11 04:31:42 lte,packet lte1 mbim: 74006500 72006e00 65007400 2e006c00
+ 2025-04-11 04:31:42 lte,packet lte1 mbim: 6d007400 2e006c00 76000000
+ 2025-04-11 04:31:42 lte,debug lte1 mbim: lte status: attached apn: internet.lmt.lv iptype: 0
+ 2025-04-11 04:31:43 lte,debug lte1 mbim: do connect activate #0
+ 2025-04-11 04:31:43 lte,debug lte1 mbim: apn: internet.lmt.lv iptype: 0
+ 2025-04-11 04:31:43 lte,debug lte1 mbim: <<< S #22 - connect: connect
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: wdm <<< send #22
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 03000000 90000000 16000000 01000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: c2aae6df 0c000000 01000000 60000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 00000000 01000000 00000000 00000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 00000000 7e5e2a7e 4e6f7272 736b656e
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 7e5e2a7e 00000000 0a000002 1e000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 69006e00 74006500 72006e00 65007400
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 2e006c00 6d007400 2e006c00 76000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 0a000000 00000000 0a000000 00000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: wdm >>> recv #0
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 07000080 5c000000 00000000 01000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: c2aae6df 0c000000 30000000 00000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 02000000 00000000 00000000 7e5e2a7e
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 4e6f7272 736b656e 7e5e2a7e 00000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 00000000 0a000000 00000000
+ 2025-04-11 04:31:43 lte,debug lte1 mbim: >>> N #0 - connect: connect
+ 2025-04-11 04:31:43 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:43 lte,packet lte1 mbim: 00000000 02000000 00000000 00000000
+ 2025-04-11 04:31:43 lte,packet lte1 mbim: 7e5e2a7e 4e6f7272 736b656e 7e5e2a7e
+ 2025-04-11 04:31:43 lte,packet lte1 mbim: 00000000 00000000 0a000000 00000000
+ 2025-04-11 04:31:43 lte,debug lte1 mbim: connect: #0 activating
+ 2025-04-11 04:31:43 lte,debug lte1 mbim: waiting for done
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: wdm >>> recv #0
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 07000080 3e000000 00000000 01000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 00000000 3d01dcc5 fef54d05 0d3abef7
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 058e9aaf 09000000 12000000 00000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 06000000 01000000 27048000 0000
+ 2025-04-11 04:31:43 lte,debug lte1 mbim: >>> N #0 - conn_ext: pco
+ 2025-04-11 04:31:43 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:43 lte,packet lte1 mbim: 00000000 06000000 01000000 27048000
+ 2025-04-11 04:31:43 lte,packet lte1 mbim: 0000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: wdm >>> recv #22
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 03000080 a8000000 16000000 01000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: c2aae6df 0c000000 00000000 78000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 00000000 01000000 00000000 01000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 7e5e2a7e 4e6f7272 736b656e 7e5e2a7e
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 00000000 00000000 0a000002 1e000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 69006e00 74006500 72006e00 65007400
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 2e006c00 6d007400 2e006c00 76000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 0a000002 1e000000 69006e00 74006500
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 72006e00 65007400 2e006c00 6d007400
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 2e006c00 76000000
+ 2025-04-11 04:31:43 lte,debug lte1 mbim: >>> D #22 - connect: connect
+ 2025-04-11 04:31:43 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:43 lte,packet lte1 mbim: 00000000 01000000 00000000 01000000
+ 2025-04-11 04:31:43 lte,packet lte1 mbim: 7e5e2a7e 4e6f7272 736b656e 7e5e2a7e
+ 2025-04-11 04:31:43 lte,packet lte1 mbim: 00000000 00000000 0a000002 1e000000
+ 2025-04-11 04:31:43 lte,packet lte1 mbim: 69006e00 74006500 72006e00 65007400
+ 2025-04-11 04:31:43 lte,packet lte1 mbim: 2e006c00 6d007400 2e006c00 76000000
+ 2025-04-11 04:31:43 lte,packet lte1 mbim: 0a000002 1e000000 69006e00 74006500
+ 2025-04-11 04:31:43 lte,packet lte1 mbim: 72006e00 65007400 2e006c00 6d007400
+ 2025-04-11 04:31:43 lte,packet lte1 mbim: 2e006c00 76000000
+ 2025-04-11 04:31:43 lte,debug lte1 mbim: connect: #0 activated
+ 2025-04-11 04:31:43 lte,debug lte1 mbim: get ip config #0
+ 2025-04-11 04:31:43 lte,debug lte1 mbim: <<< Q #23 - connect: ip configuration
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: wdm <<< send #23
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 03000000 6c000000 17000000 01000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: c2aae6df 0f000000 00000000 3c000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 00000000 00000000 00000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: wdm >>> recv #23
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 03000080 80000000 17000000 01000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: c2aae6df 0f000000 00000000 50000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 00000000 0f000000 00000000 01000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 3c000000 00000000 00000000 44000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 00000000 02000000 48000000 00000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 00000000 dc050000 00000000 19000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 0ab2403f 0ab24040 d403c94b d45d614b
+ 2025-04-11 04:31:43 lte,debug lte1 mbim: >>> D #23 - connect: ip configuration
+ 2025-04-11 04:31:43 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:43 lte,packet lte1 mbim: 00000000 0f000000 00000000 01000000
+ 2025-04-11 04:31:43 lte,packet lte1 mbim: 3c000000 00000000 00000000 44000000
+ 2025-04-11 04:31:43 lte,packet lte1 mbim: 00000000 02000000 48000000 00000000
+ 2025-04-11 04:31:43 lte,packet lte1 mbim: 00000000 dc050000 00000000 19000000
+ 2025-04-11 04:31:43 lte,packet lte1 mbim: 0ab2403f 0ab24040 d403c94b d45d614b
+ 2025-04-11 04:31:43 lte,debug lte1 mbim: received ip config #0 15,0
+ 2025-04-11 04:31:43 lte,debug lte1 mbim: IPv4: 10.178.64.63, DNS: 212.3.201.75,212.93.97.75, MTU: 1500
+ 2025-04-11 04:31:43 lte,info lte1 IPv4: 10.178.64.63, DNS: 212.3.201.75,212.93.97.75
+ 2025-04-11 04:31:43 lte,debug lte1 mbim: state 17=>18
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: <<< Q #24 - connect: packet statistics
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: wdm <<< send #24
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 03000000 30000000 18000000 01000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:31:43 interface,info lte1 link up
+ 2025-04-11 04:31:43 interface,info lte1 link down
+ 2025-04-11 04:31:43 interface,info lte1 link up
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: wdm >>> recv #24
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 03000080 60000000 18000000 01000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:43 lte,packet,raw lte1 mbim: >>> D #24 - connect: packet statistics
+ 2025-04-11 04:31:43 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:43 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:43 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:43 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:44 lte,packet,raw lte1 mbim: <<< Q #25 - connect: packet statistics
+ 2025-04-11 04:31:44 lte,packet,raw lte1 mbim: wdm <<< send #25
+ 2025-04-11 04:31:44 lte,packet,raw lte1 mbim: 03000000 30000000 19000000 01000000
+ 2025-04-11 04:31:44 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:44 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:31:44 lte,packet,raw lte1 mbim: wdm >>> recv #25
+ 2025-04-11 04:31:44 lte,packet,raw lte1 mbim: 03000080 60000000 19000000 01000000
+ 2025-04-11 04:31:44 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:44 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:31:44 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:44 lte,packet,raw lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:44 lte,packet,raw lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:44 lte,packet,raw lte1 mbim: >>> D #25 - connect: packet statistics
+ 2025-04-11 04:31:44 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:44 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:44 lte,packet lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:44 lte,packet lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:45 lte,async,raw lte1: sent AT+QENG="servingcell"
+ 2025-04-11 04:31:45 lte,packet,raw lte1 >> AT+QENG="servingcell"\r
+ 2025-04-11 04:31:45 lte,packet,raw lte1 << \r\n+QENG: "servingcell","NOCONN","LTE","FDD",247,01,2F5A12,480,6300,20,3,3,9CEA,-93,-11,-64,14,12,140,-\r\n\r\nOK\r\n
+ 2025-04-11 04:31:45 lte,async,raw lte1: rcvd +QENG: "servingcell","NOCONN","LTE","FDD",247,01,2F5A12,480,6300,20,3,3,9CEA,-93,-11,-64,14,12,140,-
+ 2025-04-11 04:31:45 lte,async,raw lte1: sent AT+QNWCFG="lte_csi_ext"
+ 2025-04-11 04:31:45 lte,packet,raw lte1 >> AT+QNWCFG="lte_csi_ext"\r
+ 2025-04-11 04:31:45 lte,packet,raw lte1 << \r\n+QNWCFG: "lte_csi_ext",1,3,1,12,0,13,5,2\r\n\r\nOK\r\n
+ 2025-04-11 04:31:45 lte,async,raw lte1: rcvd +QNWCFG: "lte_csi_ext",1,3,1,12,0,13,5,2
+ 2025-04-11 04:31:45 lte,async,raw lte1: sent AT+QNWCFG="data_path"
+ 2025-04-11 04:31:45 lte,packet,raw lte1 >> AT+QNWCFG="data_path"\r
+ 2025-04-11 04:31:45 lte,packet,raw lte1 << \r\n+QNWCFG: "data_path",1,"NR"\r\n\r\nOK\r\n
+ 2025-04-11 04:31:45 lte,async,raw lte1: rcvd +QNWCFG: "data_path",1,"NR"
+ 2025-04-11 04:31:45 lte,async,raw lte1: sent AT+QNWCFG="LTE_tx_pwr"
+ 2025-04-11 04:31:45 lte,packet,raw lte1 >> AT+QNWCFG="LTE_tx_pwr"\r
+ 2025-04-11 04:31:45 lte,packet,raw lte1 << \r\n+QNWCFG: "lte_tx_pwr",1,14,-1,18,15\r\n\r\nOK\r\n
+ 2025-04-11 04:31:45 lte,async,raw lte1: rcvd +QNWCFG: "lte_tx_pwr",1,14,-1,18,15
+ 2025-04-11 04:31:45 lte,async,raw lte1: sent AT+QRSRP
+ 2025-04-11 04:31:45 lte,packet,raw lte1 >> AT+QRSRP\r
+ 2025-04-11 04:31:45 lte,packet,raw lte1 << \r\n+QRSRP: -93,-136,-32768,-32768,LTE\r\n\r\nOK\r\n
+ 2025-04-11 04:31:45 lte,async,raw lte1: rcvd +QRSRP: -93,-136,-32768,-32768,LTE
+ 2025-04-11 04:31:45 lte,async,raw lte1: sent AT+QCAINFO
+ 2025-04-11 04:31:45 lte,packet,raw lte1 >> AT+QCAINFO\r
+ 2025-04-11 04:31:45 lte,packet,raw lte1 << \r\n+QCAINFO: "PCC",6300,50,"LTE BAND 20",1,480,-93,-12,-64,8\r\n\r\nOK\r\n
+ 2025-04-11 04:31:45 lte,async,raw lte1: rcvd +QCAINFO: "PCC",6300,50,"LTE BAND 20",1,480,-93,-12,-64,8
+ 2025-04-11 04:31:45 lte,packet,raw lte1 mbim: <<< Q #26 - connect: packet statistics
+ 2025-04-11 04:31:45 lte,packet,raw lte1 mbim: wdm <<< send #26
+ 2025-04-11 04:31:45 lte,packet,raw lte1 mbim: 03000000 30000000 1a000000 01000000
+ 2025-04-11 04:31:45 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:45 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:31:45 lte,packet,raw lte1 mbim: wdm >>> recv #26
+ 2025-04-11 04:31:45 lte,packet,raw lte1 mbim: 03000080 60000000 1a000000 01000000
+ 2025-04-11 04:31:45 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:45 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:31:45 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:45 lte,packet,raw lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:45 lte,packet,raw lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:45 lte,packet,raw lte1 mbim: >>> D #26 - connect: packet statistics
+ 2025-04-11 04:31:45 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:45 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:45 lte,packet lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:45 lte,packet lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:46 lte,packet,raw lte1 mbim: <<< Q #27 - connect: packet statistics
+ 2025-04-11 04:31:46 lte,packet,raw lte1 mbim: wdm <<< send #27
+ 2025-04-11 04:31:46 lte,packet,raw lte1 mbim: 03000000 30000000 1b000000 01000000
+ 2025-04-11 04:31:46 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:46 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:31:46 lte,packet,raw lte1 mbim: wdm >>> recv #27
+ 2025-04-11 04:31:46 lte,packet,raw lte1 mbim: 03000080 60000000 1b000000 01000000
+ 2025-04-11 04:31:46 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:46 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:31:46 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:46 lte,packet,raw lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:46 lte,packet,raw lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:46 lte,packet,raw lte1 mbim: >>> D #27 - connect: packet statistics
+ 2025-04-11 04:31:46 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:46 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:46 lte,packet lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:46 lte,packet lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:47 lte,packet,raw lte1 mbim: <<< Q #28 - connect: packet statistics
+ 2025-04-11 04:31:47 lte,packet,raw lte1 mbim: wdm <<< send #28
+ 2025-04-11 04:31:47 lte,packet,raw lte1 mbim: 03000000 30000000 1c000000 01000000
+ 2025-04-11 04:31:47 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:47 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:31:47 lte,packet,raw lte1 mbim: wdm >>> recv #28
+ 2025-04-11 04:31:47 lte,packet,raw lte1 mbim: 03000080 60000000 1c000000 01000000
+ 2025-04-11 04:31:47 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:47 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:31:47 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:47 lte,packet,raw lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:47 lte,packet,raw lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:47 lte,packet,raw lte1 mbim: >>> D #28 - connect: packet statistics
+ 2025-04-11 04:31:47 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:47 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:47 lte,packet lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:47 lte,packet lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:48 lte,async,raw lte1: sent AT+QENG="servingcell"
+ 2025-04-11 04:31:48 lte,packet,raw lte1 >> AT+QENG="servingcell"\r
+ 2025-04-11 04:31:48 lte,packet,raw lte1 << \r\n+QENG: "servingcell","NOCONN","LTE","FDD",247,01,2F5A12,480,6300,20,3,3,9CEA,-93,-11,-64,14,13,150,-\r\n\r\nOK\r\n
+ 2025-04-11 04:31:48 lte,async,raw lte1: rcvd +QENG: "servingcell","NOCONN","LTE","FDD",247,01,2F5A12,480,6300,20,3,3,9CEA,-93,-11,-64,14,13,150,-
+ 2025-04-11 04:31:48 lte,async,raw lte1: sent AT+QNWCFG="lte_csi_ext"
+ 2025-04-11 04:31:48 lte,packet,raw lte1 >> AT+QNWCFG="lte_csi_ext"\r
+ 2025-04-11 04:31:48 lte,packet,raw lte1 << \r\n+QNWCFG: "lte_csi_ext",1,0,1,10,0,7,3,2\r\n\r\nOK\r\n
+ 2025-04-11 04:31:48 lte,async,raw lte1: rcvd +QNWCFG: "lte_csi_ext",1,0,1,10,0,7,3,2
+ 2025-04-11 04:31:48 lte,async,raw lte1: sent AT+QNWCFG="LTE_tx_pwr"
+ 2025-04-11 04:31:48 lte,packet,raw lte1 >> AT+QNWCFG="LTE_tx_pwr"\r
+ 2025-04-11 04:31:48 lte,packet,raw lte1 << \r\n+QNWCFG: "lte_tx_pwr",1,15,-1,22,15\r\n\r\nOK\r\n
+ 2025-04-11 04:31:48 lte,async,raw lte1: rcvd +QNWCFG: "lte_tx_pwr",1,15,-1,22,15
+ 2025-04-11 04:31:48 lte,async,raw lte1: sent AT+QRSRP
+ 2025-04-11 04:31:48 lte,packet,raw lte1 >> AT+QRSRP\r
+ 2025-04-11 04:31:48 lte,packet,raw lte1 << \r\n+QRSRP: -93,-135,-32768,-32768,LTE\r\n\r\nOK\r\n
+ 2025-04-11 04:31:48 lte,async,raw lte1: rcvd +QRSRP: -93,-135,-32768,-32768,LTE
+ 2025-04-11 04:31:48 lte,async,raw lte1: sent AT+QCAINFO
+ 2025-04-11 04:31:48 lte,packet,raw lte1 >> AT+QCAINFO\r
+ 2025-04-11 04:31:48 lte,packet,raw lte1 << \r\n+QCAINFO: "PCC",6300,50,"LTE BAND 20",1,480,-93,-12,-64,9\r\n\r\nOK\r\n
+ 2025-04-11 04:31:48 lte,async,raw lte1: rcvd +QCAINFO: "PCC",6300,50,"LTE BAND 20",1,480,-93,-12,-64,9
+ 2025-04-11 04:31:48 lte,packet,raw lte1 mbim: <<< Q #29 - connect: packet statistics
+ 2025-04-11 04:31:48 lte,packet,raw lte1 mbim: wdm <<< send #29
+ 2025-04-11 04:31:48 lte,packet,raw lte1 mbim: 03000000 30000000 1d000000 01000000
+ 2025-04-11 04:31:48 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:48 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:31:48 lte,packet,raw lte1 mbim: wdm >>> recv #29
+ 2025-04-11 04:31:48 lte,packet,raw lte1 mbim: 03000080 60000000 1d000000 01000000
+ 2025-04-11 04:31:48 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:48 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:31:48 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:48 lte,packet,raw lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:48 lte,packet,raw lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:48 lte,packet,raw lte1 mbim: >>> D #29 - connect: packet statistics
+ 2025-04-11 04:31:48 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:48 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:48 lte,packet lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:48 lte,packet lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:49 lte,packet,raw lte1 mbim: <<< Q #30 - connect: packet statistics
+ 2025-04-11 04:31:49 lte,packet,raw lte1 mbim: wdm <<< send #30
+ 2025-04-11 04:31:49 lte,packet,raw lte1 mbim: 03000000 30000000 1e000000 01000000
+ 2025-04-11 04:31:49 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:49 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:31:49 lte,packet,raw lte1 mbim: wdm >>> recv #30
+ 2025-04-11 04:31:49 lte,packet,raw lte1 mbim: 03000080 60000000 1e000000 01000000
+ 2025-04-11 04:31:49 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:49 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:31:49 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:49 lte,packet,raw lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:49 lte,packet,raw lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:49 lte,packet,raw lte1 mbim: >>> D #30 - connect: packet statistics
+ 2025-04-11 04:31:49 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:49 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:49 lte,packet lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:49 lte,packet lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:50 lte,packet,raw lte1 mbim: <<< Q #31 - connect: packet statistics
+ 2025-04-11 04:31:50 lte,packet,raw lte1 mbim: wdm <<< send #31
+ 2025-04-11 04:31:50 lte,packet,raw lte1 mbim: 03000000 30000000 1f000000 01000000
+ 2025-04-11 04:31:50 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:50 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:31:50 lte,packet,raw lte1 mbim: wdm >>> recv #31
+ 2025-04-11 04:31:50 lte,packet,raw lte1 mbim: 03000080 60000000 1f000000 01000000
+ 2025-04-11 04:31:50 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:50 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:31:50 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:50 lte,packet,raw lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:50 lte,packet,raw lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:50 lte,packet,raw lte1 mbim: >>> D #31 - connect: packet statistics
+ 2025-04-11 04:31:50 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:50 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:50 lte,packet lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:50 lte,packet lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:51 lte,async,raw lte1: sent AT+QENG="servingcell"
+ 2025-04-11 04:31:51 lte,packet,raw lte1 >> AT+QENG="servingcell"\r
+ 2025-04-11 04:31:51 lte,packet,raw lte1 << \r\n+QENG: "servingcell","NOCONN","LTE","FDD",247,01,2F5A12,480,6300,20,3,3,9CEA,-93,-12,-63,14,9,-10,-\r\n\r\nOK\r\n
+ 2025-04-11 04:31:51 lte,async,raw lte1: rcvd +QENG: "servingcell","NOCONN","LTE","FDD",247,01,2F5A12,480,6300,20,3,3,9CEA,-93,-12,-63,14,9,-10,-
+ 2025-04-11 04:31:51 lte,async,raw lte1: sent AT+QNWCFG="lte_csi_ext"
+ 2025-04-11 04:31:51 lte,packet,raw lte1 >> AT+QNWCFG="lte_csi_ext"\r
+ 2025-04-11 04:31:51 lte,packet,raw lte1 << \r\n+QNWCFG: "lte_csi_ext",1,3,1,12,0,13,5,2\r\n\r\nOK\r\n
+ 2025-04-11 04:31:51 lte,async,raw lte1: rcvd +QNWCFG: "lte_csi_ext",1,3,1,12,0,13,5,2
+ 2025-04-11 04:31:51 lte,async,raw lte1: sent AT+QNWCFG="LTE_tx_pwr"
+ 2025-04-11 04:31:51 lte,packet,raw lte1 >> AT+QNWCFG="LTE_tx_pwr"\r
+ 2025-04-11 04:31:51 lte,packet,raw lte1 << \r\n+QNWCFG: "lte_tx_pwr",1,18,-1,22,15\r\n\r\nOK\r\n
+ 2025-04-11 04:31:51 lte,async,raw lte1: rcvd +QNWCFG: "lte_tx_pwr",1,18,-1,22,15
+ 2025-04-11 04:31:51 lte,async,raw lte1: sent AT+QRSRP
+ 2025-04-11 04:31:51 lte,packet,raw lte1 >> AT+QRSRP\r
+ 2025-04-11 04:31:51 lte,packet,raw lte1 << \r\n+QRSRP: -93,-132,-32768,-32768,LTE\r\n\r\nOK\r\n
+ 2025-04-11 04:31:51 lte,async,raw lte1: rcvd +QRSRP: -93,-132,-32768,-32768,LTE
+ 2025-04-11 04:31:51 lte,async,raw lte1: sent AT+QCAINFO
+ 2025-04-11 04:31:51 lte,packet,raw lte1 >> AT+QCAINFO\r
+ 2025-04-11 04:31:51 lte,packet,raw lte1 << \r\n+QCAINFO: "PCC",6300,50,"LTE BAND 20",1,480,-93,-12,-64,7\r\n\r\nOK\r\n
+ 2025-04-11 04:31:51 lte,async,raw lte1: rcvd +QCAINFO: "PCC",6300,50,"LTE BAND 20",1,480,-93,-12,-64,7
+ 2025-04-11 04:31:51 lte,packet,raw lte1 mbim: <<< Q #32 - connect: packet statistics
+ 2025-04-11 04:31:51 lte,packet,raw lte1 mbim: wdm <<< send #32
+ 2025-04-11 04:31:51 lte,packet,raw lte1 mbim: 03000000 30000000 20000000 01000000
+ 2025-04-11 04:31:51 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:51 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:31:51 lte,packet,raw lte1 mbim: wdm >>> recv #32
+ 2025-04-11 04:31:51 lte,packet,raw lte1 mbim: 03000080 60000000 20000000 01000000
+ 2025-04-11 04:31:51 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:51 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:31:51 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:51 lte,packet,raw lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:51 lte,packet,raw lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:51 lte,packet,raw lte1 mbim: >>> D #32 - connect: packet statistics
+ 2025-04-11 04:31:51 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:51 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:51 lte,packet lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:51 lte,packet lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:52 lte,packet,raw lte1 mbim: <<< Q #33 - connect: packet statistics
+ 2025-04-11 04:31:52 lte,packet,raw lte1 mbim: wdm <<< send #33
+ 2025-04-11 04:31:52 lte,packet,raw lte1 mbim: 03000000 30000000 21000000 01000000
+ 2025-04-11 04:31:52 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:52 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:31:52 lte,packet,raw lte1 mbim: wdm >>> recv #33
+ 2025-04-11 04:31:52 lte,packet,raw lte1 mbim: 03000080 60000000 21000000 01000000
+ 2025-04-11 04:31:52 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:52 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:31:52 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:52 lte,packet,raw lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:52 lte,packet,raw lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:52 lte,packet,raw lte1 mbim: >>> D #33 - connect: packet statistics
+ 2025-04-11 04:31:52 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:52 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:52 lte,packet lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:52 lte,packet lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:53 lte,packet,raw lte1 mbim: <<< Q #34 - connect: packet statistics
+ 2025-04-11 04:31:53 lte,packet,raw lte1 mbim: wdm <<< send #34
+ 2025-04-11 04:31:53 lte,packet,raw lte1 mbim: 03000000 30000000 22000000 01000000
+ 2025-04-11 04:31:53 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:53 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:31:53 lte,packet,raw lte1 mbim: wdm >>> recv #34
+ 2025-04-11 04:31:53 lte,packet,raw lte1 mbim: 03000080 60000000 22000000 01000000
+ 2025-04-11 04:31:53 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:53 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:31:53 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:53 lte,packet,raw lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:53 lte,packet,raw lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:53 lte,packet,raw lte1 mbim: >>> D #34 - connect: packet statistics
+ 2025-04-11 04:31:53 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:53 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:53 lte,packet lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:53 lte,packet lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:54 lte,async,raw lte1: sent AT+QENG="servingcell"
+ 2025-04-11 04:31:54 lte,packet,raw lte1 >> AT+QENG="servingcell"\r
+ 2025-04-11 04:31:54 lte,packet,raw lte1 << \r\n+QENG: "servingcell","NOCONN","LTE","FDD",247,01,2F5A12,480,6300,20,3,3,9CEA,-93,-12,-64,13,0,-,36\r\n\r\nOK\r\n
+ 2025-04-11 04:31:54 lte,async,raw lte1: rcvd +QENG: "servingcell","NOCONN","LTE","FDD",247,01,2F5A12,480,6300,20,3,3,9CEA,-93,-12,-64,13,0,-,36
+ 2025-04-11 04:31:54 lte,async,raw lte1: sent AT+QNWCFG="lte_csi_ext"
+ 2025-04-11 04:31:54 lte,packet,raw lte1 >> AT+QNWCFG="lte_csi_ext"\r
+ 2025-04-11 04:31:54 lte,packet,raw lte1 << \r\n+QNWCFG: "lte_csi_ext",1,4,1,8,0,26,3,2\r\n\r\nOK\r\n
+ 2025-04-11 04:31:54 lte,async,raw lte1: rcvd +QNWCFG: "lte_csi_ext",1,4,1,8,0,26,3,2
+ 2025-04-11 04:31:54 lte,async,raw lte1: sent AT+QNWCFG="LTE_tx_pwr"
+ 2025-04-11 04:31:54 lte,packet,raw lte1 >> AT+QNWCFG="LTE_tx_pwr"\r
+ 2025-04-11 04:31:54 lte,packet,raw lte1 << \r\n+QNWCFG: "lte_tx_pwr",1,-32768,-32768,-32768,-32768\r\n\r\nOK\r\n
+ 2025-04-11 04:31:54 lte,async,raw lte1: rcvd +QNWCFG: "lte_tx_pwr",1,-32768,-32768,-32768,-32768
+ 2025-04-11 04:31:54 lte,async,raw lte1: sent AT+QRSRP
+ 2025-04-11 04:31:54 lte,packet,raw lte1 >> AT+QRSRP\r
+ 2025-04-11 04:31:54 lte,packet,raw lte1 << \r\n+QRSRP: -93,-131,-32768,-32768,LTE\r\n\r\nOK\r\n
+ 2025-04-11 04:31:54 lte,async,raw lte1: rcvd +QRSRP: -93,-131,-32768,-32768,LTE
+ 2025-04-11 04:31:54 lte,async,raw lte1: sent AT+QCAINFO
+ 2025-04-11 04:31:54 lte,packet,raw lte1 >> AT+QCAINFO\r
+ 2025-04-11 04:31:54 lte,packet,raw lte1 << \r\n+QCAINFO: "PCC",6300,50,"LTE BAND 20",1,480,-93,-12,-64,6\r\n\r\nOK\r\n
+ 2025-04-11 04:31:54 lte,async,raw lte1: rcvd +QCAINFO: "PCC",6300,50,"LTE BAND 20",1,480,-93,-12,-64,6
+ 2025-04-11 04:31:54 lte,packet,raw lte1 mbim: <<< Q #35 - connect: packet statistics
+ 2025-04-11 04:31:54 lte,packet,raw lte1 mbim: wdm <<< send #35
+ 2025-04-11 04:31:54 lte,packet,raw lte1 mbim: 03000000 30000000 23000000 01000000
+ 2025-04-11 04:31:54 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:54 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:31:55 lte,packet,raw lte1 mbim: wdm >>> recv #35
+ 2025-04-11 04:31:55 lte,packet,raw lte1 mbim: 03000080 60000000 23000000 01000000
+ 2025-04-11 04:31:55 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:55 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:31:55 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:55 lte,packet,raw lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:55 lte,packet,raw lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:55 lte,packet,raw lte1 mbim: >>> D #35 - connect: packet statistics
+ 2025-04-11 04:31:55 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:55 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:55 lte,packet lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:55 lte,packet lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:55 lte,packet,raw lte1 << \r\n+CEREG: 1,"9CEA","02F5A0A",7\r\n
+ 2025-04-11 04:31:55 lte,async,raw lte1: +CEREG: 1,"9CEA","02F5A0A",7
+ 2025-04-11 04:31:56 lte,packet,raw lte1 mbim: <<< Q #36 - connect: packet statistics
+ 2025-04-11 04:31:56 lte,packet,raw lte1 mbim: wdm <<< send #36
+ 2025-04-11 04:31:56 lte,packet,raw lte1 mbim: 03000000 30000000 24000000 01000000
+ 2025-04-11 04:31:56 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:56 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:31:56 lte,packet,raw lte1 mbim: wdm >>> recv #36
+ 2025-04-11 04:31:56 lte,packet,raw lte1 mbim: 03000080 60000000 24000000 01000000
+ 2025-04-11 04:31:56 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:56 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:31:56 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:56 lte,packet,raw lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:56 lte,packet,raw lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:56 lte,packet,raw lte1 mbim: >>> D #36 - connect: packet statistics
+ 2025-04-11 04:31:56 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:56 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:56 lte,packet lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:56 lte,packet lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:57 lte,packet,raw lte1 mbim: <<< Q #37 - connect: packet statistics
+ 2025-04-11 04:31:57 lte,packet,raw lte1 mbim: wdm <<< send #37
+ 2025-04-11 04:31:57 lte,packet,raw lte1 mbim: 03000000 30000000 25000000 01000000
+ 2025-04-11 04:31:57 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:57 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:31:57 lte,packet,raw lte1 mbim: wdm >>> recv #37
+ 2025-04-11 04:31:57 lte,packet,raw lte1 mbim: 03000080 60000000 25000000 01000000
+ 2025-04-11 04:31:57 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:57 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:31:57 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:57 lte,packet,raw lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:57 lte,packet,raw lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:57 lte,packet,raw lte1 mbim: >>> D #37 - connect: packet statistics
+ 2025-04-11 04:31:57 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:57 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:57 lte,packet lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:57 lte,packet lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:58 lte,packet,raw lte1 mbim: <<< Q #38 - connect: packet statistics
+ 2025-04-11 04:31:58 lte,packet,raw lte1 mbim: wdm <<< send #38
+ 2025-04-11 04:31:58 lte,packet,raw lte1 mbim: 03000000 30000000 26000000 01000000
+ 2025-04-11 04:31:58 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:58 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:31:58 lte,packet,raw lte1 mbim: wdm >>> recv #38
+ 2025-04-11 04:31:58 lte,packet,raw lte1 mbim: 03000080 60000000 26000000 01000000
+ 2025-04-11 04:31:58 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:58 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:31:58 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:58 lte,packet,raw lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:58 lte,packet,raw lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:58 lte,packet,raw lte1 mbim: >>> D #38 - connect: packet statistics
+ 2025-04-11 04:31:58 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:58 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:58 lte,packet lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:58 lte,packet lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:58 lte,async,raw lte1: sent AT+QENG="servingcell"
+ 2025-04-11 04:31:58 lte,packet,raw lte1 >> AT+QENG="servingcell"\r
+ 2025-04-11 04:31:58 lte,packet,raw lte1 << \r\n+QENG: "servingcell","NOCONN","LTE","FDD",247,01,2F5A0A,480,1300,3,5,5,9CEA,-100,-13,-67,12,0,-,13\r\n\r\nOK\r\n
+ 2025-04-11 04:31:58 lte,async,raw lte1: rcvd +QENG: "servingcell","NOCONN","LTE","FDD",247,01,2F5A0A,480,1300,3,5,5,9CEA,-100,-13,-67,12,0,-,13
+ 2025-04-11 04:31:58 lte,async,raw lte1: sent AT+QNWCFG="lte_csi_ext"
+ 2025-04-11 04:31:58 lte,packet,raw lte1 >> AT+QNWCFG="lte_csi_ext"\r
+ 2025-04-11 04:31:58 lte,packet,raw lte1 << \r\n+QNWCFG: "lte_csi_ext",1,1,1,8,0,7,3,2\r\n\r\nOK\r\n
+ 2025-04-11 04:31:58 lte,async,raw lte1: rcvd +QNWCFG: "lte_csi_ext",1,1,1,8,0,7,3,2
+ 2025-04-11 04:31:58 lte,async,raw lte1: sent AT+QNWCFG="LTE_tx_pwr"
+ 2025-04-11 04:31:58 lte,packet,raw lte1 >> AT+QNWCFG="LTE_tx_pwr"\r
+ 2025-04-11 04:31:58 lte,packet,raw lte1 << \r\n+QNWCFG: "lte_tx_pwr",1,-32768,-32768,-32768,-32768\r\n\r\nOK\r\n
+ 2025-04-11 04:31:58 lte,async,raw lte1: rcvd +QNWCFG: "lte_tx_pwr",1,-32768,-32768,-32768,-32768
+ 2025-04-11 04:31:58 lte,async,raw lte1: sent AT+QRSRP
+ 2025-04-11 04:31:58 lte,packet,raw lte1 >> AT+QRSRP\r
+ 2025-04-11 04:31:58 lte,packet,raw lte1 << \r\n+QRSRP: -100,-131,-32768,-32768,LTE\r\n\r\nOK\r\n
+ 2025-04-11 04:31:58 lte,async,raw lte1: rcvd +QRSRP: -100,-131,-32768,-32768,LTE
+ 2025-04-11 04:31:58 lte,async,raw lte1: sent AT+QCAINFO
+ 2025-04-11 04:31:58 lte,packet,raw lte1 >> AT+QCAINFO\r
+ 2025-04-11 04:31:58 lte,packet,raw lte1 << \r\n+QCAINFO: "PCC",1300,100,"LTE BAND 3",1,480,-100,-13,-67,5\r\n\r\nOK\r\n
+ 2025-04-11 04:31:58 lte,async,raw lte1: rcvd +QCAINFO: "PCC",1300,100,"LTE BAND 3",1,480,-100,-13,-67,5
+ 2025-04-11 04:31:59 lte,packet,raw lte1 mbim: <<< Q #39 - connect: packet statistics
+ 2025-04-11 04:31:59 lte,packet,raw lte1 mbim: wdm <<< send #39
+ 2025-04-11 04:31:59 lte,packet,raw lte1 mbim: 03000000 30000000 27000000 01000000
+ 2025-04-11 04:31:59 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:59 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:31:59 lte,packet,raw lte1 mbim: wdm >>> recv #39
+ 2025-04-11 04:31:59 lte,packet,raw lte1 mbim: 03000080 60000000 27000000 01000000
+ 2025-04-11 04:31:59 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:31:59 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:31:59 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:59 lte,packet,raw lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:59 lte,packet,raw lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:31:59 lte,packet,raw lte1 mbim: >>> D #39 - connect: packet statistics
+ 2025-04-11 04:31:59 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:31:59 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:31:59 lte,packet lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:31:59 lte,packet lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:32:00 lte,packet,raw lte1 mbim: <<< Q #40 - connect: packet statistics
+ 2025-04-11 04:32:00 lte,packet,raw lte1 mbim: wdm <<< send #40
+ 2025-04-11 04:32:00 lte,packet,raw lte1 mbim: 03000000 30000000 28000000 01000000
+ 2025-04-11 04:32:00 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:00 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:32:00 lte,packet,raw lte1 mbim: wdm >>> recv #40
+ 2025-04-11 04:32:00 lte,packet,raw lte1 mbim: 03000080 60000000 28000000 01000000
+ 2025-04-11 04:32:00 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:00 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:32:00 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:00 lte,packet,raw lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:32:00 lte,packet,raw lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:32:00 lte,packet,raw lte1 mbim: >>> D #40 - connect: packet statistics
+ 2025-04-11 04:32:00 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:32:00 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:00 lte,packet lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:32:00 lte,packet lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:32:00 lte,packet,raw lte1 mbim: wdm >>> recv #0
+ 2025-04-11 04:32:00 lte,packet,raw lte1 mbim: 07000080 48000000 00000000 01000000
+ 2025-04-11 04:32:00 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:00 lte,packet,raw lte1 mbim: c2aae6df 0b000000 1c000000 09000000
+ 2025-04-11 04:32:00 lte,packet,raw lte1 mbim: 63000000 05000000 02000000 ffffffff
+ 2025-04-11 04:32:00 lte,packet,raw lte1 mbim: 00000000 00000000
+ 2025-04-11 04:32:01 lte,packet,raw lte1 mbim: <<< Q #41 - connect: packet statistics
+ 2025-04-11 04:32:01 lte,packet,raw lte1 mbim: wdm <<< send #41
+ 2025-04-11 04:32:01 lte,packet,raw lte1 mbim: 03000000 30000000 29000000 01000000
+ 2025-04-11 04:32:01 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:01 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:32:01 lte,packet,raw lte1 mbim: wdm >>> recv #41
+ 2025-04-11 04:32:01 lte,packet,raw lte1 mbim: 03000080 60000000 29000000 01000000
+ 2025-04-11 04:32:01 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:01 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:32:01 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:01 lte,packet,raw lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:32:01 lte,packet,raw lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:32:01 lte,packet,raw lte1 mbim: >>> D #41 - connect: packet statistics
+ 2025-04-11 04:32:01 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:32:01 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:01 lte,packet lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:32:01 lte,packet lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:32:01 lte,async,raw lte1: sent AT+QENG="servingcell"
+ 2025-04-11 04:32:01 lte,packet,raw lte1 >> AT+QENG="servingcell"\r
+ 2025-04-11 04:32:01 lte,packet,raw lte1 << \r\n+QENG: "servingcell","NOCONN","LTE","FDD",247,01,2F5A0A,480,1300,3,5,5,9CEA,-101,-12,-68,11,0,-,12\r\n\r\nOK\r\n
+ 2025-04-11 04:32:01 lte,async,raw lte1: rcvd +QENG: "servingcell","NOCONN","LTE","FDD",247,01,2F5A0A,480,1300,3,5,5,9CEA,-101,-12,-68,11,0,-,12
+ 2025-04-11 04:32:01 lte,async,raw lte1: sent AT+QNWCFG="lte_csi_ext"
+ 2025-04-11 04:32:01 lte,packet,raw lte1 >> AT+QNWCFG="lte_csi_ext"\r
+ 2025-04-11 04:32:01 lte,packet,raw lte1 << \r\n+QNWCFG: "lte_csi_ext",1,1,1,8,0,7,3,2\r\n\r\nOK\r\n
+ 2025-04-11 04:32:01 lte,async,raw lte1: rcvd +QNWCFG: "lte_csi_ext",1,1,1,8,0,7,3,2
+ 2025-04-11 04:32:01 lte,async,raw lte1: sent AT+QNWCFG="LTE_tx_pwr"
+ 2025-04-11 04:32:01 lte,packet,raw lte1 >> AT+QNWCFG="LTE_tx_pwr"\r
+ 2025-04-11 04:32:01 lte,packet,raw lte1 << \r\n+QNWCFG: "lte_tx_pwr",1,-32768,-32768,-32768,-32768\r\n\r\nOK\r\n
+ 2025-04-11 04:32:01 lte,async,raw lte1: rcvd +QNWCFG: "lte_tx_pwr",1,-32768,-32768,-32768,-32768
+ 2025-04-11 04:32:01 lte,async,raw lte1: sent AT+QRSRP
+ 2025-04-11 04:32:01 lte,packet,raw lte1 >> AT+QRSRP\r
+ 2025-04-11 04:32:01 lte,packet,raw lte1 << \r\n+QRSRP: -101,-133,-32768,-32768,LTE\r\n\r\nOK\r\n
+ 2025-04-11 04:32:01 lte,async,raw lte1: rcvd +QRSRP: -101,-133,-32768,-32768,LTE
+ 2025-04-11 04:32:01 lte,async,raw lte1: sent AT+QCAINFO
+ 2025-04-11 04:32:01 lte,packet,raw lte1 >> AT+QCAINFO\r
+ 2025-04-11 04:32:01 lte,packet,raw lte1 << \r\n+QCAINFO: "PCC",1300,100,"LTE BAND 3",1,480,-101,-12,-68,3\r\n\r\nOK\r\n
+ 2025-04-11 04:32:01 lte,async,raw lte1: rcvd +QCAINFO: "PCC",1300,100,"LTE BAND 3",1,480,-101,-12,-68,3
+ 2025-04-11 04:32:02 lte,packet,raw lte1 mbim: <<< Q #42 - connect: packet statistics
+ 2025-04-11 04:32:02 lte,packet,raw lte1 mbim: wdm <<< send #42
+ 2025-04-11 04:32:02 lte,packet,raw lte1 mbim: 03000000 30000000 2a000000 01000000
+ 2025-04-11 04:32:02 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:02 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:32:02 lte,packet,raw lte1 mbim: wdm >>> recv #42
+ 2025-04-11 04:32:02 lte,packet,raw lte1 mbim: 03000080 60000000 2a000000 01000000
+ 2025-04-11 04:32:02 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:02 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:32:02 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:02 lte,packet,raw lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:32:02 lte,packet,raw lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:32:02 lte,packet,raw lte1 mbim: >>> D #42 - connect: packet statistics
+ 2025-04-11 04:32:02 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:32:02 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:02 lte,packet lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:32:02 lte,packet lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:32:03 lte,packet,raw lte1 mbim: <<< Q #43 - connect: packet statistics
+ 2025-04-11 04:32:03 lte,packet,raw lte1 mbim: wdm <<< send #43
+ 2025-04-11 04:32:03 lte,packet,raw lte1 mbim: 03000000 30000000 2b000000 01000000
+ 2025-04-11 04:32:03 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:03 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:32:03 lte,packet,raw lte1 mbim: wdm >>> recv #43
+ 2025-04-11 04:32:03 lte,packet,raw lte1 mbim: 03000080 60000000 2b000000 01000000
+ 2025-04-11 04:32:03 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:03 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:32:03 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:03 lte,packet,raw lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:32:03 lte,packet,raw lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:32:03 lte,packet,raw lte1 mbim: >>> D #43 - connect: packet statistics
+ 2025-04-11 04:32:03 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:32:03 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:03 lte,packet lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:32:03 lte,packet lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:32:04 lte,packet,raw lte1 mbim: <<< Q #44 - connect: packet statistics
+ 2025-04-11 04:32:04 lte,packet,raw lte1 mbim: wdm <<< send #44
+ 2025-04-11 04:32:04 lte,packet,raw lte1 mbim: 03000000 30000000 2c000000 01000000
+ 2025-04-11 04:32:04 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:04 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:32:04 lte,packet,raw lte1 mbim: wdm >>> recv #44
+ 2025-04-11 04:32:04 lte,packet,raw lte1 mbim: 03000080 60000000 2c000000 01000000
+ 2025-04-11 04:32:04 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:04 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:32:04 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:04 lte,packet,raw lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:32:04 lte,packet,raw lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:32:04 lte,packet,raw lte1 mbim: >>> D #44 - connect: packet statistics
+ 2025-04-11 04:32:04 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:32:04 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:04 lte,packet lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:32:04 lte,packet lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:32:04 lte,async,raw lte1: sent AT+QENG="servingcell"
+ 2025-04-11 04:32:04 lte,packet,raw lte1 >> AT+QENG="servingcell"\r
+ 2025-04-11 04:32:04 lte,packet,raw lte1 << \r\n+QENG: "servingcell","NOCONN","LTE","FDD",247,01,2F5A0A,480,1300,3,5,5,9CEA,-103,-12,-70,11,0,-,11\r\n\r\nOK\r\n
+ 2025-04-11 04:32:04 lte,async,raw lte1: rcvd +QENG: "servingcell","NOCONN","LTE","FDD",247,01,2F5A0A,480,1300,3,5,5,9CEA,-103,-12,-70,11,0,-,11
+ 2025-04-11 04:32:04 lte,async,raw lte1: sent AT+QNWCFG="lte_csi_ext"
+ 2025-04-11 04:32:04 lte,packet,raw lte1 >> AT+QNWCFG="lte_csi_ext"\r
+ 2025-04-11 04:32:04 lte,packet,raw lte1 << \r\n+QNWCFG: "lte_csi_ext",1,1,1,8,0,7,3,2\r\n\r\nOK\r\n
+ 2025-04-11 04:32:04 lte,async,raw lte1: rcvd +QNWCFG: "lte_csi_ext",1,1,1,8,0,7,3,2
+ 2025-04-11 04:32:04 lte,async,raw lte1: sent AT+QNWCFG="LTE_tx_pwr"
+ 2025-04-11 04:32:04 lte,packet,raw lte1 >> AT+QNWCFG="LTE_tx_pwr"\r
+ 2025-04-11 04:32:04 lte,packet,raw lte1 << \r\n+QNWCFG: "lte_tx_pwr",1,-32768,-32768,-32768,-32768\r\n\r\nOK\r\n
+ 2025-04-11 04:32:04 lte,async,raw lte1: rcvd +QNWCFG: "lte_tx_pwr",1,-32768,-32768,-32768,-32768
+ 2025-04-11 04:32:04 lte,async,raw lte1: sent AT+QRSRP
+ 2025-04-11 04:32:04 lte,packet,raw lte1 >> AT+QRSRP\r
+ 2025-04-11 04:32:04 lte,packet,raw lte1 << \r\n+QRSRP: -103,-130,-32768,-32768,LTE\r\n\r\nOK\r\n
+ 2025-04-11 04:32:04 lte,async,raw lte1: rcvd +QRSRP: -103,-130,-32768,-32768,LTE
+ 2025-04-11 04:32:04 lte,async,raw lte1: sent AT+QCAINFO
+ 2025-04-11 04:32:04 lte,packet,raw lte1 >> AT+QCAINFO\r
+ 2025-04-11 04:32:04 lte,packet,raw lte1 << \r\n+QCAINFO: "PCC",1300,100,"LTE BAND 3",1,480,-102,-12,-70,2\r\n\r\nOK\r\n
+ 2025-04-11 04:32:04 lte,async,raw lte1: rcvd +QCAINFO: "PCC",1300,100,"LTE BAND 3",1,480,-102,-12,-70,2
+ 2025-04-11 04:32:05 lte,packet,raw lte1 mbim: <<< Q #45 - connect: packet statistics
+ 2025-04-11 04:32:05 lte,packet,raw lte1 mbim: wdm <<< send #45
+ 2025-04-11 04:32:05 lte,packet,raw lte1 mbim: 03000000 30000000 2d000000 01000000
+ 2025-04-11 04:32:05 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:05 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:32:05 lte,packet,raw lte1 mbim: wdm >>> recv #45
+ 2025-04-11 04:32:05 lte,packet,raw lte1 mbim: 03000080 60000000 2d000000 01000000
+ 2025-04-11 04:32:05 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:05 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:32:05 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:05 lte,packet,raw lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:32:05 lte,packet,raw lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:32:05 lte,packet,raw lte1 mbim: >>> D #45 - connect: packet statistics
+ 2025-04-11 04:32:05 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:32:05 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:05 lte,packet lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:32:05 lte,packet lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:32:06 lte,packet,raw lte1 mbim: <<< Q #46 - connect: packet statistics
+ 2025-04-11 04:32:06 lte,packet,raw lte1 mbim: wdm <<< send #46
+ 2025-04-11 04:32:06 lte,packet,raw lte1 mbim: 03000000 30000000 2e000000 01000000
+ 2025-04-11 04:32:06 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:06 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:32:06 lte,packet,raw lte1 mbim: wdm >>> recv #46
+ 2025-04-11 04:32:06 lte,packet,raw lte1 mbim: 03000080 60000000 2e000000 01000000
+ 2025-04-11 04:32:06 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:06 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:32:06 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:06 lte,packet,raw lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:32:06 lte,packet,raw lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:32:06 lte,packet,raw lte1 mbim: >>> D #46 - connect: packet statistics
+ 2025-04-11 04:32:06 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:32:06 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:06 lte,packet lte1 mbim: 00000000 00000000 bb000000 00000000
+ 2025-04-11 04:32:06 lte,packet lte1 mbim: 01000000 00000000 00000000 00000000
+ 2025-04-11 04:32:07 lte,packet,raw lte1 mbim: <<< Q #47 - connect: packet statistics
+ 2025-04-11 04:32:07 lte,packet,raw lte1 mbim: wdm <<< send #47
+ 2025-04-11 04:32:07 lte,packet,raw lte1 mbim: 03000000 30000000 2f000000 01000000
+ 2025-04-11 04:32:07 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:07 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:32:07 lte,packet,raw lte1 mbim: wdm >>> recv #47
+ 2025-04-11 04:32:07 lte,packet,raw lte1 mbim: 03000080 60000000 2f000000 01000000
+ 2025-04-11 04:32:07 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:07 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:32:07 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:07 lte,packet,raw lte1 mbim: 00000000 00000000 76010000 00000000
+ 2025-04-11 04:32:07 lte,packet,raw lte1 mbim: 02000000 00000000 00000000 00000000
+ 2025-04-11 04:32:07 lte,packet,raw lte1 mbim: >>> D #47 - connect: packet statistics
+ 2025-04-11 04:32:07 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:32:07 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:07 lte,packet lte1 mbim: 00000000 00000000 76010000 00000000
+ 2025-04-11 04:32:07 lte,packet lte1 mbim: 02000000 00000000 00000000 00000000
+ 2025-04-11 04:32:07 lte,async,raw lte1: sent AT+QENG="servingcell"
+ 2025-04-11 04:32:07 lte,packet,raw lte1 >> AT+QENG="servingcell"\r
+ 2025-04-11 04:32:07 lte,packet,raw lte1 << \r\n+QENG: "servingcell","NOCONN","LTE","FDD",247,01,2F5A0A,480,1300,3,5,5,9CEA,-100,-13,-67,12,6,220,-\r\n\r\nOK\r\n
+ 2025-04-11 04:32:07 lte,async,raw lte1: rcvd +QENG: "servingcell","NOCONN","LTE","FDD",247,01,2F5A0A,480,1300,3,5,5,9CEA,-100,-13,-67,12,6,220,-
+ 2025-04-11 04:32:07 lte,async,raw lte1: sent AT+QNWCFG="lte_csi_ext"
+ 2025-04-11 04:32:07 lte,packet,raw lte1 >> AT+QNWCFG="lte_csi_ext"\r
+ 2025-04-11 04:32:07 lte,packet,raw lte1 << \r\n+QNWCFG: "lte_csi_ext",1,1,1,7,0,7,3,2\r\n\r\nOK\r\n
+ 2025-04-11 04:32:07 lte,async,raw lte1: rcvd +QNWCFG: "lte_csi_ext",1,1,1,7,0,7,3,2
+ 2025-04-11 04:32:07 lte,async,raw lte1: sent AT+QNWCFG="LTE_tx_pwr"
+ 2025-04-11 04:32:07 lte,packet,raw lte1 >> AT+QNWCFG="LTE_tx_pwr"\r
+ 2025-04-11 04:32:07 lte,packet,raw lte1 << \r\n+QNWCFG: "lte_tx_pwr",1,16,7,22,18\r\n\r\nOK\r\n
+ 2025-04-11 04:32:07 lte,async,raw lte1: rcvd +QNWCFG: "lte_tx_pwr",1,16,7,22,18
+ 2025-04-11 04:32:07 lte,async,raw lte1: sent AT+QRSRP
+ 2025-04-11 04:32:07 lte,packet,raw lte1 >> AT+QRSRP\r
+ 2025-04-11 04:32:07 lte,packet,raw lte1 << \r\n+QRSRP: -100,-129,-136,-139,LTE\r\n\r\nOK\r\n
+ 2025-04-11 04:32:07 lte,async,raw lte1: rcvd +QRSRP: -100,-129,-136,-139,LTE
+ 2025-04-11 04:32:07 lte,async,raw lte1: sent AT+QCAINFO
+ 2025-04-11 04:32:07 lte,packet,raw lte1 >> AT+QCAINFO\r
+ 2025-04-11 04:32:07 lte,packet,raw lte1 << \r\n+QCAINFO: "PCC",1300,100,"LTE BAND 3",1,480,-100,-11,-70,4\r\n\r\nOK\r\n
+ 2025-04-11 04:32:07 lte,async,raw lte1: rcvd +QCAINFO: "PCC",1300,100,"LTE BAND 3",1,480,-100,-11,-70,4
+ 2025-04-11 04:32:08 lte,packet,raw lte1 mbim: <<< Q #48 - connect: packet statistics
+ 2025-04-11 04:32:08 lte,packet,raw lte1 mbim: wdm <<< send #48
+ 2025-04-11 04:32:08 lte,packet,raw lte1 mbim: 03000000 30000000 30000000 01000000
+ 2025-04-11 04:32:08 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:08 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:32:08 lte,packet,raw lte1 mbim: wdm >>> recv #48
+ 2025-04-11 04:32:08 lte,packet,raw lte1 mbim: 03000080 60000000 30000000 01000000
+ 2025-04-11 04:32:08 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:08 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:32:08 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:08 lte,packet,raw lte1 mbim: 00000000 00000000 76010000 00000000
+ 2025-04-11 04:32:08 lte,packet,raw lte1 mbim: 02000000 00000000 00000000 00000000
+ 2025-04-11 04:32:08 lte,packet,raw lte1 mbim: >>> D #48 - connect: packet statistics
+ 2025-04-11 04:32:08 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:32:08 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:08 lte,packet lte1 mbim: 00000000 00000000 76010000 00000000
+ 2025-04-11 04:32:08 lte,packet lte1 mbim: 02000000 00000000 00000000 00000000
+ 2025-04-11 04:32:09 lte,packet,raw lte1 mbim: <<< Q #49 - connect: packet statistics
+ 2025-04-11 04:32:09 lte,packet,raw lte1 mbim: wdm <<< send #49
+ 2025-04-11 04:32:09 lte,packet,raw lte1 mbim: 03000000 30000000 31000000 01000000
+ 2025-04-11 04:32:09 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:09 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:32:09 lte,packet,raw lte1 mbim: wdm >>> recv #49
+ 2025-04-11 04:32:09 lte,packet,raw lte1 mbim: 03000080 60000000 31000000 01000000
+ 2025-04-11 04:32:09 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:09 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:32:09 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:09 lte,packet,raw lte1 mbim: 00000000 00000000 76010000 00000000
+ 2025-04-11 04:32:09 lte,packet,raw lte1 mbim: 02000000 00000000 00000000 00000000
+ 2025-04-11 04:32:09 lte,packet,raw lte1 mbim: >>> D #49 - connect: packet statistics
+ 2025-04-11 04:32:09 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:32:09 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:09 lte,packet lte1 mbim: 00000000 00000000 76010000 00000000
+ 2025-04-11 04:32:09 lte,packet lte1 mbim: 02000000 00000000 00000000 00000000
+ 2025-04-11 04:32:10 lte,packet,raw lte1 mbim: <<< Q #50 - connect: packet statistics
+ 2025-04-11 04:32:10 lte,packet,raw lte1 mbim: wdm <<< send #50
+ 2025-04-11 04:32:10 lte,packet,raw lte1 mbim: 03000000 30000000 32000000 01000000
+ 2025-04-11 04:32:10 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:10 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:32:10 lte,packet,raw lte1 mbim: wdm >>> recv #50
+ 2025-04-11 04:32:10 lte,packet,raw lte1 mbim: 03000080 60000000 32000000 01000000
+ 2025-04-11 04:32:10 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:10 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:32:10 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:10 lte,packet,raw lte1 mbim: 00000000 00000000 76010000 00000000
+ 2025-04-11 04:32:10 lte,packet,raw lte1 mbim: 02000000 00000000 00000000 00000000
+ 2025-04-11 04:32:10 lte,packet,raw lte1 mbim: >>> D #50 - connect: packet statistics
+ 2025-04-11 04:32:10 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:32:10 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:10 lte,packet lte1 mbim: 00000000 00000000 76010000 00000000
+ 2025-04-11 04:32:10 lte,packet lte1 mbim: 02000000 00000000 00000000 00000000
+ 2025-04-11 04:32:10 lte,async,raw lte1: sent AT+QENG="servingcell"
+ 2025-04-11 04:32:10 lte,packet,raw lte1 >> AT+QENG="servingcell"\r
+ 2025-04-11 04:32:10 lte,packet,raw lte1 << \r\n+QENG: "servingcell","NOCONN","LTE","FDD",247,01,2F5A0A,480,1300,3,5,5,9CEA,-102,-13,-68,10,6,80,-\r\n\r\nOK\r\n
+ 2025-04-11 04:32:10 lte,async,raw lte1: rcvd +QENG: "servingcell","NOCONN","LTE","FDD",247,01,2F5A0A,480,1300,3,5,5,9CEA,-102,-13,-68,10,6,80,-
+ 2025-04-11 04:32:10 lte,async,raw lte1: sent AT+QNWCFG="lte_csi_ext"
+ 2025-04-11 04:32:10 lte,packet,raw lte1 >> AT+QNWCFG="lte_csi_ext"\r
+ 2025-04-11 04:32:10 lte,packet,raw lte1 << \r\n+QNWCFG: "lte_csi_ext",1,1,1,7,0,7,3,2\r\n\r\nOK\r\n
+ 2025-04-11 04:32:10 lte,async,raw lte1: rcvd +QNWCFG: "lte_csi_ext",1,1,1,7,0,7,3,2
+ 2025-04-11 04:32:10 lte,async,raw lte1: sent AT+QNWCFG="LTE_tx_pwr"
+ 2025-04-11 04:32:10 lte,packet,raw lte1 >> AT+QNWCFG="LTE_tx_pwr"\r
+ 2025-04-11 04:32:10 lte,packet,raw lte1 << \r\n+QNWCFG: "lte_tx_pwr",1,16,8,22,18\r\n\r\nOK\r\n
+ 2025-04-11 04:32:10 lte,async,raw lte1: rcvd +QNWCFG: "lte_tx_pwr",1,16,8,22,18
+ 2025-04-11 04:32:10 lte,async,raw lte1: sent AT+QRSRP
+ 2025-04-11 04:32:10 lte,packet,raw lte1 >> AT+QRSRP\r
+ 2025-04-11 04:32:10 lte,packet,raw lte1 << \r\n+QRSRP: -102,-132,-138,-140,LTE\r\n\r\nOK\r\n
+ 2025-04-11 04:32:10 lte,async,raw lte1: rcvd +QRSRP: -102,-132,-138,-140,LTE
+ 2025-04-11 04:32:10 lte,async,raw lte1: sent AT+QCAINFO
+ 2025-04-11 04:32:10 lte,packet,raw lte1 >> AT+QCAINFO\r
+ 2025-04-11 04:32:10 lte,packet,raw lte1 << \r\n+QCAINFO: "PCC",1300,100,"LTE BAND 3",1,480,-101,-13,-68,0\r\n\r\nOK\r\n
+ 2025-04-11 04:32:10 lte,async,raw lte1: rcvd +QCAINFO: "PCC",1300,100,"LTE BAND 3",1,480,-101,-13,-68,0
+ 2025-04-11 04:32:11 lte,packet,raw lte1 mbim: <<< Q #51 - connect: packet statistics
+ 2025-04-11 04:32:11 lte,packet,raw lte1 mbim: wdm <<< send #51
+ 2025-04-11 04:32:11 lte,packet,raw lte1 mbim: 03000000 30000000 33000000 01000000
+ 2025-04-11 04:32:11 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:11 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:32:11 lte,packet,raw lte1 mbim: wdm >>> recv #51
+ 2025-04-11 04:32:11 lte,packet,raw lte1 mbim: 03000080 60000000 33000000 01000000
+ 2025-04-11 04:32:11 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:11 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:32:11 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:11 lte,packet,raw lte1 mbim: 00000000 00000000 76010000 00000000
+ 2025-04-11 04:32:11 lte,packet,raw lte1 mbim: 02000000 00000000 00000000 00000000
+ 2025-04-11 04:32:11 lte,packet,raw lte1 mbim: >>> D #51 - connect: packet statistics
+ 2025-04-11 04:32:11 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:32:11 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:11 lte,packet lte1 mbim: 00000000 00000000 76010000 00000000
+ 2025-04-11 04:32:11 lte,packet lte1 mbim: 02000000 00000000 00000000 00000000
+ 2025-04-11 04:32:12 lte,packet,raw lte1 mbim: <<< Q #52 - connect: packet statistics
+ 2025-04-11 04:32:12 lte,packet,raw lte1 mbim: wdm <<< send #52
+ 2025-04-11 04:32:12 lte,packet,raw lte1 mbim: 03000000 30000000 34000000 01000000
+ 2025-04-11 04:32:12 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:12 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:32:12 lte,packet,raw lte1 mbim: wdm >>> recv #52
+ 2025-04-11 04:32:12 lte,packet,raw lte1 mbim: 03000080 60000000 34000000 01000000
+ 2025-04-11 04:32:12 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:12 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:32:12 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:12 lte,packet,raw lte1 mbim: 00000000 00000000 76010000 00000000
+ 2025-04-11 04:32:12 lte,packet,raw lte1 mbim: 02000000 00000000 00000000 00000000
+ 2025-04-11 04:32:12 lte,packet,raw lte1 mbim: >>> D #52 - connect: packet statistics
+ 2025-04-11 04:32:12 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:32:12 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:12 lte,packet lte1 mbim: 00000000 00000000 76010000 00000000
+ 2025-04-11 04:32:12 lte,packet lte1 mbim: 02000000 00000000 00000000 00000000
+ 2025-04-11 04:32:13 lte,packet,raw lte1 mbim: <<< Q #53 - connect: packet statistics
+ 2025-04-11 04:32:13 lte,packet,raw lte1 mbim: wdm <<< send #53
+ 2025-04-11 04:32:13 lte,packet,raw lte1 mbim: 03000000 30000000 35000000 01000000
+ 2025-04-11 04:32:13 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:13 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:32:13 lte,packet,raw lte1 mbim: wdm >>> recv #53
+ 2025-04-11 04:32:13 lte,packet,raw lte1 mbim: 03000080 60000000 35000000 01000000
+ 2025-04-11 04:32:13 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:13 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:32:13 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:13 lte,packet,raw lte1 mbim: 00000000 00000000 76010000 00000000
+ 2025-04-11 04:32:13 lte,packet,raw lte1 mbim: 02000000 00000000 00000000 00000000
+ 2025-04-11 04:32:13 lte,packet,raw lte1 mbim: >>> D #53 - connect: packet statistics
+ 2025-04-11 04:32:13 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:32:13 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:13 lte,packet lte1 mbim: 00000000 00000000 76010000 00000000
+ 2025-04-11 04:32:13 lte,packet lte1 mbim: 02000000 00000000 00000000 00000000
+ 2025-04-11 04:32:13 lte,async,raw lte1: sent AT+QENG="servingcell"
+ 2025-04-11 04:32:13 lte,packet,raw lte1 >> AT+QENG="servingcell"\r
+ 2025-04-11 04:32:13 lte,packet,raw lte1 << \r\n+QENG: "servingcell","NOCONN","LTE","FDD",247,01,2F5A0A,480,1300,3,5,5,9CEA,-99,-12,-67,11,7,60,-\r\n\r\nOK\r\n
+ 2025-04-11 04:32:13 lte,async,raw lte1: rcvd +QENG: "servingcell","NOCONN","LTE","FDD",247,01,2F5A0A,480,1300,3,5,5,9CEA,-99,-12,-67,11,7,60,-
+ 2025-04-11 04:32:13 lte,async,raw lte1: sent AT+QNWCFG="lte_csi_ext"
+ 2025-04-11 04:32:13 lte,packet,raw lte1 >> AT+QNWCFG="lte_csi_ext"\r
+ 2025-04-11 04:32:13 lte,packet,raw lte1 << \r\n+QNWCFG: "lte_csi_ext",1,1,1,7,0,7,3,2\r\n\r\nOK\r\n
+ 2025-04-11 04:32:13 lte,async,raw lte1: rcvd +QNWCFG: "lte_csi_ext",1,1,1,7,0,7,3,2
+ 2025-04-11 04:32:13 lte,async,raw lte1: sent AT+QNWCFG="LTE_tx_pwr"
+ 2025-04-11 04:32:13 lte,packet,raw lte1 >> AT+QNWCFG="LTE_tx_pwr"\r
+ 2025-04-11 04:32:13 lte,packet,raw lte1 << \r\n+QNWCFG: "lte_tx_pwr",1,16,6,22,18\r\n\r\nOK\r\n
+ 2025-04-11 04:32:13 lte,async,raw lte1: rcvd +QNWCFG: "lte_tx_pwr",1,16,6,22,18
+ 2025-04-11 04:32:13 lte,async,raw lte1: sent AT+QRSRP
+ 2025-04-11 04:32:13 lte,packet,raw lte1 >> AT+QRSRP\r
+ 2025-04-11 04:32:13 lte,packet,raw lte1 << \r\n+QRSRP: -99,-129,-138,-140,LTE\r\n\r\nOK\r\n
+ 2025-04-11 04:32:13 lte,async,raw lte1: rcvd +QRSRP: -99,-129,-138,-140,LTE
+ 2025-04-11 04:32:13 lte,async,raw lte1: sent AT+QCAINFO
+ 2025-04-11 04:32:13 lte,packet,raw lte1 >> AT+QCAINFO\r
+ 2025-04-11 04:32:13 lte,packet,raw lte1 << \r\n+QCAINFO: "PCC",1300,100,"LTE BAND 3",1,480,-99,-12,-67,3\r\n\r\nOK\r\n
+ 2025-04-11 04:32:13 lte,async,raw lte1: rcvd +QCAINFO: "PCC",1300,100,"LTE BAND 3",1,480,-99,-12,-67,3
+ 2025-04-11 04:32:14 lte,packet,raw lte1 mbim: <<< Q #54 - connect: packet statistics
+ 2025-04-11 04:32:14 lte,packet,raw lte1 mbim: wdm <<< send #54
+ 2025-04-11 04:32:14 lte,packet,raw lte1 mbim: 03000000 30000000 36000000 01000000
+ 2025-04-11 04:32:14 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:14 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 00000000
+ 2025-04-11 04:32:14 lte,packet,raw lte1 mbim: wdm >>> recv #54
+ 2025-04-11 04:32:14 lte,packet,raw lte1 mbim: 03000080 60000000 36000000 01000000
+ 2025-04-11 04:32:14 lte,packet,raw lte1 mbim: 00000000 a289cc33 bcbb8b4f b6b0133e
+ 2025-04-11 04:32:14 lte,packet,raw lte1 mbim: c2aae6df 14000000 00000000 30000000
+ 2025-04-11 04:32:14 lte,packet,raw lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:14 lte,packet,raw lte1 mbim: 00000000 00000000 76010000 00000000
+ 2025-04-11 04:32:14 lte,packet,raw lte1 mbim: 02000000 00000000 00000000 00000000
+ 2025-04-11 04:32:14 lte,packet,raw lte1 mbim: >>> D #54 - connect: packet statistics
+ 2025-04-11 04:32:14 lte,packet lte1 mbim: status data: 
+ 2025-04-11 04:32:14 lte,packet lte1 mbim: 00000000 00000000 00000000 00000000
+ 2025-04-11 04:32:14 lte,packet lte1 mbim: 00000000 00000000 76010000 00000000
+ 2025-04-11 04:32:14 lte,packet lte1 mbim: 02000000 00000000 00000000 00000000
