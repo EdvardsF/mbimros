@@ -5,6 +5,8 @@
 #include <algorithm>
 
 #include "hex_stream.h"
+#include "mbim_decoder.h"
+
 
 struct MatchInfo {
     std::string matchText;
@@ -87,12 +89,21 @@ std::vector<MatchInfo> parseMbimBlocks(std::vector<MatchInfo>& parsedLines) {
 
 
 int main() {
-    std::string fileContents = readFile("../mbim_log.txt");    
+    std::string fileContents = readFile("mbim_log.txt");    
     std::vector<MatchInfo> parsedLines = parseMbimLines(fileContents);
     std::vector<MatchInfo> parsedBlocks = parseMbimBlocks(parsedLines);
 
-    for (MatchInfo match: parsedBlocks) {
-        std::cout << match.start << "--" << match.end << ". Line: " << match.line << "    " << match.matchText << std::endl << std::endl;
-    }
+    std::string exampleMbim = parsedBlocks[1].matchText;
+    hexStream hexStream(exampleMbim);
+    MBIM_MESSAGE_HEADER header(hexStream);
+
+    std::cout << exampleMbim << std::endl;
+    std::cout << header.MESSAGE_LENGTH << std::endl;
+    std::cout << header.TRANSACTION_ID << std::endl;
+    std::cout << exampleMbim << std::endl;
+
+    // for (MatchInfo match: parsedBlocks) {
+    //     std::cout << match.start << "--" << match.end << ". Line: " << match.line << "    " << match.matchText << std::endl << std::endl;
+    // }
     return 0;
 }

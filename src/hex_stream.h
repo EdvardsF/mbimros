@@ -8,7 +8,7 @@ struct hexStream {
     std::string buffer;
     size_t bufferSize;
 
-    hexStream(std::string hex_data);
+    hexStream(std::string& hex_data);
 
     uint8_t readByte();
     uint32_t read4_le();
