@@ -1,0 +1,41 @@
+# Build folders
+build/
+cmake-build*/
+out/
+bin/
+obj/
+
+# CMake-generated files
+CMakeFiles/
+CMakeCache.txt
+Makefile
+cmake_install.cmake
+compile_commands.json
+
+# Compiled object files, libraries, executables
+*.o
+*.a
+*.so
+*.exe
+*.out
+main
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+*.bak
+*.dSYM/
+
+# VS Code settings (if using)
+.vscode/
+
+# CLion (JetBrains IDEs)
+.idea/
+
+# MacOS junk
+.DS_Store
+
+# Windows junk
+Thumbs.db
+desktop.ini
