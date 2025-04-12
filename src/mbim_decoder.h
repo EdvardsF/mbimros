@@ -1,9 +1,8 @@
 #pragma once
 
-
 #include <cstdint>
-
 #include "hex_stream.h"
+#include "field.h"
 
 enum class MESSAGE_TYPE_ENUM : uint32_t {
     MBIM_OPEN_MSG = 1,
@@ -13,9 +12,9 @@ enum class MESSAGE_TYPE_ENUM : uint32_t {
 };
 
 struct MBIM_MESSAGE_HEADER {
-    MESSAGE_TYPE_ENUM MESSAGE_TYPE;
-    uint32_t MESSAGE_LENGTH;
-    uint32_t TRANSACTION_ID;
+    Field<MESSAGE_TYPE_ENUM> MESSAGE_TYPE   { "MESSAGE_TYPE",   "Type of the message" };
+    Field<uint32_t> MESSAGE_LENGTH          { "MESSAGE_LENGTH", "Total length of the message in bytes." };
+    Field<uint32_t> TRANSACTION_ID          { "TRANSACTION_ID", "Message ID used to map queries to responses."};
 
-    MBIM_MESSAGE_HEADER(hexStream& hexStream);
+    MBIM_MESSAGE_HEADER(hexStream& hs);
 };

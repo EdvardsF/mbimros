@@ -97,10 +97,10 @@ int main() {
     hexStream hexStream(exampleMbim);
     MBIM_MESSAGE_HEADER header(hexStream);
 
-    std::cout << exampleMbim << std::endl;
-    std::cout << header.MESSAGE_LENGTH << std::endl;
-    std::cout << header.TRANSACTION_ID << std::endl;
-    std::cout << exampleMbim << std::endl;
+    // std::cout << exampleMbim << std::endl;
+    std::cout << header.MESSAGE_LENGTH.description << std::endl;
+    // std::cout << header.TRANSACTION_ID << std::endl;
+    // std::cout << exampleMbim << std::endl;
 
     // for (MatchInfo match: parsedBlocks) {
     //     std::cout << match.start << "--" << match.end << ". Line: " << match.line << "    " << match.matchText << std::endl << std::endl;
