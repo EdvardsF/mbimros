@@ -3,6 +3,7 @@
 #include <cstdint>
 #include "hex_stream.h"
 #include "field.h"
+#include "serializable.h"
 
 
 // ENUMS
