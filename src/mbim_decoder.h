@@ -5,6 +5,7 @@
 #include "field.h"
 
 
+// ENUMS
 
 // ----------------------------------------------------------------------------------------------
 enum class MESSAGE_TYPE_ENUM : uint32_t {
@@ -25,6 +26,11 @@ inline const char* message_type_desc(MESSAGE_TYPE_ENUM type) {
 }
 // ----------------------------------------------------------------------------------------------
 
+
+// HEADERS
+
+// ----------------------------------------------------------------------------------------------
+
 struct MBIM_MESSAGE_HEADER {
     Field<MESSAGE_TYPE_ENUM> MESSAGE_TYPE   { "MESSAGE_TYPE",   "Type of the message" };
     Field<uint32_t> MESSAGE_LENGTH          { "MESSAGE_LENGTH", "Total length of the message in bytes" };
@@ -38,4 +44,16 @@ struct MBIM_FRAGMENT_HEADER {
     Field<uint32_t> CURRENT_FRAGMENT        { "CURRENT_FRAGMENT", "ID of the current fragment"};
 
     MBIM_FRAGMENT_HEADER(hexStream& hs);
+};
+
+// ----------------------------------------------------------------------------------------------
+
+// MESSAGES
+
+// ----------------------------------------------------------------------------------------------
+
+struct MBIM_OPEN_MSG {
+    MBIM_MESSAGE_HEADER MESSAGE_HEADER;
+    Field<uint32_t> MAX_CONTROL_TRANSFER        { "MAX_CONTROL_TRANSFER", "Maximums size of a control transfer"};
+
 };

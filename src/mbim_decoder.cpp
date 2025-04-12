@@ -7,6 +7,7 @@ MBIM_MESSAGE_HEADER::MBIM_MESSAGE_HEADER(hexStream& hs) {
     TRANSACTION_ID.set(hs.read4_le());
 }
 
+
 MBIM_FRAGMENT_HEADER::MBIM_FRAGMENT_HEADER(hexStream& hs) {
     TOTAL_FRAGMENTS.set(hs.read4_le());
     CURRENT_FRAGMENT.set(hs.read4_le());
