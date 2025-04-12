@@ -37,6 +37,6 @@ size_t hexStream::m_getBufferSize() {
     return buffer.size() / 2;
 }
 
-bool hexStream::isEnoughSize(size_t size) {
+bool hexStream::m_isEnoughSize(size_t size) {
     return size <= m_getBufferSize();
 }

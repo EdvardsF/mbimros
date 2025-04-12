@@ -53,8 +53,9 @@ struct MBIM_FRAGMENT_HEADER : public Serializable {
 
 // ----------------------------------------------------------------------------------------------
 
-struct MBIM_OPEN_MSG {
+struct MBIM_OPEN_MSG : public Serializable {
     MBIM_MESSAGE_HEADER MESSAGE_HEADER;
-    Field<uint32_t> MAX_CONTROL_TRANSFER        { "MAX_CONTROL_TRANSFER", "Maximums size of a control transfer"};
+    Field<uint32_t> MAX_CONTROL_TRANSFER        { "MAX_CONTROL_TRANSFER", "Maximum size of a control transfer"};
 
+    MBIM_OPEN_MSG(hexStream& hs);
 };

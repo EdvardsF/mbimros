@@ -16,5 +16,5 @@ struct hexStream {
 
 private:
     size_t m_getBufferSize();
-    bool isEnoughSize(size_t size);
+    bool m_isEnoughSize(size_t size);
 };

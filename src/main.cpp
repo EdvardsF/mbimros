@@ -11,10 +11,13 @@ int main() {
     std::vector<MatchInfo> parsedBlocks = parseMbimBlocks(parsedLines);
 
     std::string exampleMbim = parsedBlocks[2].matchText;
-    hexStream hexStream(exampleMbim);
-    MBIM_MESSAGE_HEADER header(hexStream);
+    std::string ex = "010000000000000000000000000300000000";
+    hexStream hexStream(ex);
+    MBIM_OPEN_MSG open_msg(hexStream);
 
-    //std::cout << exampleMbim << std::endl;
+    std::cout << ex << std::endl;
+
+    std::cout << open_msg.to_string() << std::endl;
 
     // std::cout << exampleMbim << std::endl;
     //std::cout << header.to_string() << std::endl;
