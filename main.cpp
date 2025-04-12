@@ -20,7 +20,7 @@ std::string readFile(const std::string& filename) {
     return ss.str();
 }
 
-std::vector<MatchInfo> parseMbimLogLines(const std::string& logText) {
+std::vector<MatchInfo> parseMbimLines(const std::string& logText) {
     std::vector<MatchInfo> results; 
 
     std::regex pattern(R"(mbim:\s*((?:[0-9a-f]{8}\s?)+))");
@@ -40,9 +40,11 @@ std::vector<MatchInfo> parseMbimLogLines(const std::string& logText) {
             }
         }
         
-        // Erase spaces in the mbim hex data
+        // Erase new lines and spaces
         std::string hex = match[1].str();
-        hex.erase(std::remove(hex.begin(), hex.end(), ' '), hex.end());
+        hex.erase(std::remove_if(hex.begin(), hex.end(),
+                [](unsigned char c) { return c == ' ' || c == '\n'; }),
+                hex.end());
 
         results.push_back(MatchInfo{
             hex,
@@ -58,14 +60,37 @@ std::vector<MatchInfo> parseMbimLogLines(const std::string& logText) {
     return results;
 }
 
+std::vector<MatchInfo> parseMbimBlocks(std::vector<MatchInfo>& parsedLines) {
+    std::vector<MatchInfo> mbimBlocks;
+    MatchInfo currentMbimBlock;
+
+    int currentLine = parsedLines[0].line;
+    for (MatchInfo lineMatch: parsedLines) {
+        if (lineMatch.line == currentLine + 1 || lineMatch.line == currentLine) {
+            // Mbim data is followd in the next or current line
+            currentMbimBlock.matchText += lineMatch.matchText;
+            currentMbimBlock.end = lineMatch.end;
+            currentLine++;
+        } else {
+            // Mbim match not in the next line, thus a new block
+            mbimBlocks.push_back(currentMbimBlock);
+            currentMbimBlock = lineMatch;
+            currentLine = lineMatch.line;
+        }
+    }
+    mbimBlocks.push_back(currentMbimBlock);
+    return mbimBlocks;
+}
+
 
 
 int main() {
     std::string fileContents = readFile("mbim_log.txt");    
-    std::vector<MatchInfo> parsedLog = parseMbimLogLines(fileContents);
+    std::vector<MatchInfo> parsedLines = parseMbimLines(fileContents);
+    std::vector<MatchInfo> parsedBlocks = parseMbimBlocks(parsedLines);
 
-    for (MatchInfo match: parsedLog) {
-        std::cout << match.start << "--" << match.end << ". Line: " << match.line << "    " << match.matchText;
+    for (MatchInfo match: parsedBlocks) {
+        std::cout << match.start << "--" << match.end << ". Line: " << match.line << "    " << match.matchText << std::endl << std::endl;
     }
     return 0;
 }
