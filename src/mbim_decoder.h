@@ -4,12 +4,25 @@
 #include "hex_stream.h"
 #include "field.h"
 
+
+// ----------------------------------------------------------------------------------------------
 enum class MESSAGE_TYPE_ENUM : uint32_t {
     MBIM_OPEN_MSG = 1,
     MBIM_CLOSE_MSG,
     MBIM_COMMAND_MSG,
     MBIM_HOST_ERROR_MSG
 };
+
+inline const char* message_type_desc(MESSAGE_TYPE_ENUM type) {
+    switch (type) {
+        case MESSAGE_TYPE_ENUM::MBIM_OPEN_MSG:       return "Open message (establish link)";
+        case MESSAGE_TYPE_ENUM::MBIM_CLOSE_MSG:      return "Close message (tear down)";
+        case MESSAGE_TYPE_ENUM::MBIM_COMMAND_MSG:    return "Command from host";
+        case MESSAGE_TYPE_ENUM::MBIM_HOST_ERROR_MSG: return "Host error notification";
+        default: return "Unknown message type";
+    }
+}
+// ----------------------------------------------------------------------------------------------
 
 struct MBIM_MESSAGE_HEADER {
     Field<MESSAGE_TYPE_ENUM> MESSAGE_TYPE   { "MESSAGE_TYPE",   "Type of the message" };
