@@ -10,12 +10,14 @@ int main() {
     std::vector<MatchInfo> parsedLines = parseMbimLines(fileContents);
     std::vector<MatchInfo> parsedBlocks = parseMbimBlocks(parsedLines);
 
-    std::string exampleMbim = parsedBlocks[1].matchText;
+    std::string exampleMbim = parsedBlocks[2].matchText;
     hexStream hexStream(exampleMbim);
     MBIM_MESSAGE_HEADER header(hexStream);
 
+    //std::cout << exampleMbim << std::endl;
+
     // std::cout << exampleMbim << std::endl;
-    std::cout << header.MESSAGE_LENGTH.description << std::endl;
+    //std::cout << header.to_string() << std::endl;
     // std::cout << header.TRANSACTION_ID << std::endl;
     // std::cout << exampleMbim << std::endl;
 

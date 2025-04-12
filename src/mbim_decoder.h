@@ -16,7 +16,7 @@ enum class MESSAGE_TYPE_ENUM : uint32_t {
     MBIM_HOST_ERROR_MSG
 };
 
-inline const char* message_type_desc(MESSAGE_TYPE_ENUM type) {
+inline std::string map_type(MESSAGE_TYPE_ENUM type) {
     switch (type) {
         case MESSAGE_TYPE_ENUM::MBIM_OPEN_MSG:       return "Open message (establish link)";
         case MESSAGE_TYPE_ENUM::MBIM_CLOSE_MSG:      return "Close message (tear down)";
