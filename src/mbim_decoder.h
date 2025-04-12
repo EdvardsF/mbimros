@@ -1,0 +1,14 @@
+#include <cstdint>
+
+enum MESSAGE_TYPE : uint32_t {
+    MBIM_OPEN_MSG = 1,
+    MBIM_CLOSE_MSG,
+    MBIM_COMMAND_MSG,
+    MBIM_HOST_ERROR_MSG
+};
+
+struct MBIM_MESSAGE_HEADER {
+    MESSAGE_TYPE MESSAGE_TYPE;
+    uint32_t MESSAGE_LENGTH;
+    uint32_t TRANSACTION_ID;
+};

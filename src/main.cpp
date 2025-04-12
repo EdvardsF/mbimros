@@ -4,6 +4,8 @@
 #include <regex>
 #include <algorithm>
 
+#include "hex_stream.h"
+
 struct MatchInfo {
     std::string matchText;
     size_t start;
@@ -85,7 +87,7 @@ std::vector<MatchInfo> parseMbimBlocks(std::vector<MatchInfo>& parsedLines) {
 
 
 int main() {
-    std::string fileContents = readFile("mbim_log.txt");    
+    std::string fileContents = readFile("../mbim_log.txt");    
     std::vector<MatchInfo> parsedLines = parseMbimLines(fileContents);
     std::vector<MatchInfo> parsedBlocks = parseMbimBlocks(parsedLines);
 
