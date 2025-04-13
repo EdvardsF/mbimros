@@ -1,8 +1,9 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.h"
 
-#include "../src/mbim_decoder.h"
-#include "../src/hex_stream.h"
+#include "core/hex_stream.h"
+#include "protocol/mbim_decoder.h"
+
 
 TEST_CASE("MBIM_MESSAGE_HEADER parses fields correctly") {
     std::string hex_data = "010000003400000015000000";

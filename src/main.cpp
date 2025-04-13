@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "core/hex_stream.h"
-#include "protocol/mbim_decoder.h"
+#include "protocol/messages.h"
 #include "parser/parser.h"
 
 
