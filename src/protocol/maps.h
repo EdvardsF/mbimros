@@ -7,14 +7,15 @@
 
 inline std::string map_type(MESSAGE_TYPE_ENUM type) {
     switch (type) {
-        case MESSAGE_TYPE_ENUM::MBIM_OPEN_MSG:            return "to modem - open a connection";
-        case MESSAGE_TYPE_ENUM::MBIM_CLOSE_MSG:           return "to modem - close the connection";
-        case MESSAGE_TYPE_ENUM::MBIM_COMMAND_MSG:         return "to modem - send command";
-        case MESSAGE_TYPE_ENUM::MBIM_HOST_ERROR_MSG:      return "to modem - host error occured";
-        case MESSAGE_TYPE_ENUM::MBIM_OPEN_DONE:           return "to host - response to opening a conncetion";
-        case MESSAGE_TYPE_ENUM::MBIM_COMMAND_DONE:        return "to host - modem completed a commnad";
-        case MESSAGE_TYPE_ENUM::MBIM_FUNCTION_ERROR_MSG:  return "to host - error in modem";
-        case MESSAGE_TYPE_ENUM::MBIM_INDICATE_STATUS_MSG: return "to host - status indication";
+        case MESSAGE_TYPE_ENUM::MBIM_OPEN_MSG:            return "host -> modem: open a connection";
+        case MESSAGE_TYPE_ENUM::MBIM_CLOSE_MSG:           return "host -> modem: close the connection";
+        case MESSAGE_TYPE_ENUM::MBIM_COMMAND_MSG:         return "host -> modem: send command";
+        case MESSAGE_TYPE_ENUM::MBIM_HOST_ERROR_MSG:      return "host -> modem: host error occured";
+        case MESSAGE_TYPE_ENUM::MBIM_OPEN_DONE:           return "modem -> host: response to opening a conncetion";
+        case MESSAGE_TYPE_ENUM::MBIM_CLOSE_DONE:          return "modem -> host: modem is closing the connection";
+        case MESSAGE_TYPE_ENUM::MBIM_COMMAND_DONE:        return "modem -> host: modem completed a commnad";
+        case MESSAGE_TYPE_ENUM::MBIM_FUNCTION_ERROR_MSG:  return "modem -> host: error in modem";
+        case MESSAGE_TYPE_ENUM::MBIM_INDICATE_STATUS_MSG: return "modem -> host: status indication";
         default: return "Unknown message type";
     }
 }

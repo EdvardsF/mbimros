@@ -64,3 +64,10 @@ struct MBIM_OPEN_DONE : public Serializable {
 
     MBIM_OPEN_DONE(hexStream& hs);
 };
+
+struct MBIM_CLOSE_DONE : public Serializable {
+    MBIM_MESSAGE_HEADER MESSAGE_HEADER;
+    Field<MBIM_STATUS_TO_HOST_ENUM> STATUS      { "STATUS", "Status of the open procedure"};
+
+    MBIM_CLOSE_DONE(hexStream& hs);
+};

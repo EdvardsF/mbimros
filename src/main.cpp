@@ -11,10 +11,10 @@ int main() {
     std::vector<MatchInfo> parsedBlocks = parseMbimBlocks(parsedLines);
     std::string exampleMbim = parsedBlocks[2].matchText;
 
-    std::string mbim_open = "01000080000000000100000005000000";
+    std::string mbim_open = "02000080000000000100000000000000";
     std::string mbim_close = "0100000034000000150000000100000000000000a289cc33bcbb8b4fb6b0133ec2aae6df01000000000000000400000011111111";
     hexStream ex(mbim_open);
-    MBIM_OPEN_DONE mbim_close_msg(ex);
+    MBIM_CLOSE_DONE mbim_close_msg(ex);
 
     std::cout << mbim_close << std::endl;
 

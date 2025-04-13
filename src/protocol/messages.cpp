@@ -70,3 +70,10 @@ MBIM_OPEN_DONE::MBIM_OPEN_DONE(hexStream& hs) : MESSAGE_HEADER(hs) {
     STATUS.setFormatter(map_host_status);
     STATUS.set(static_cast<MBIM_STATUS_TO_HOST_ENUM>(hs.read4_le()));
 }
+
+MBIM_CLOSE_DONE::MBIM_CLOSE_DONE(hexStream& hs) : MESSAGE_HEADER(hs) {
+    includeHeader(&MESSAGE_HEADER);
+    STATUS.bind(this);
+    STATUS.setFormatter(map_host_status);
+    STATUS.set(static_cast<MBIM_STATUS_TO_HOST_ENUM>(hs.read4_le()));
+}
