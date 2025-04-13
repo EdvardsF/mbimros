@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include "hex_stream.h"
-#include "mbim_decoder.h"
-#include "parser.h"
+#include "core/hex_stream.h"
+#include "protocol/mbim_decoder.h"
+#include "parser/parser.h"
 
 
 int main() {

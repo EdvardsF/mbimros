@@ -2,9 +2,9 @@
 
 #include <cstdint>
 #include <unordered_map>
-#include "hex_stream.h"
-#include "field.h"
-#include "serializable.h"
+#include "../core/hex_stream.h"
+#include "../core/field.h"
+#include "../core/serializable.h"
 
 
 // ENUMS AND THEIR MAPS
