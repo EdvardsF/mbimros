@@ -46,7 +46,7 @@ TEST_CASE("MBIM_CLOSE_MSG parses fields correctly") {
     REQUIRE(msg.MESSAGE_HEADER.MESSAGE_TYPE.value == MESSAGE_TYPE_ENUM::MBIM_CLOSE_MSG);
 }
 
-TEST_CASE("MBIM_COMMAND_MSG parses fields correctly") {
+TEST_CASE("MBIM_HOST_ERROR_MSG parses fields correctly") {
     std::string msg_header = "010000003400000015000000";
     std::string msg_fragment_header = "0100000000000000";
     std::string payload = "a289cc33bcbb8b4fb6b0133ec2aae6df01000000000000000400000011111111";

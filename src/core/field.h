@@ -51,21 +51,21 @@ struct Field : public FieldBase {
     std::string getValueAsString() const override {
         if constexpr (std::is_same_v<T, std::string>) {
             if (strToString) {
-                return value + " (" + strToString(value) + ")";
+                return value + " [" + strToString(value) + "]";
             }
             return value;
         } else if constexpr (std::is_enum_v<T>) {
             if (enumToString) {
                 std::ostringstream oss;
                 oss << static_cast<std::underlying_type_t<T>>(value)
-                    << " (" << enumToString(value) << ")";
+                    << " [" << enumToString(value) << "]";
                 return oss.str();
             } else {
                 return std::to_string(static_cast<std::underlying_type_t<T>>(value));
             }
         } else if constexpr (std::is_integral_v<T>) {
             if (enumToString) {
-                return std::to_string(value) + " (" + enumToString(value) + ")";
+                return std::to_string(value) + " [" + enumToString(value) + "]";
             } else {
                 return std::to_string(value);
             }

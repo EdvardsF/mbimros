@@ -13,7 +13,7 @@ std::string Serializable::to_string() const {
     for (const auto* f : fields) {
         oss << f->getName() << ": " << f->getValueAsString();
         if (!f->getDescription().empty()) {
-            oss << " (" << f->getDescription() << ")";
+            oss << " ..." << f->getDescription() << "";
         }
         oss << "\n";
     }
