@@ -3,6 +3,8 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <memory>
+
 #include "field_base.h"
 
 template<typename T>
@@ -26,9 +28,12 @@ public:
     void includeHeader(const Serializable* header);
     void includeFragmentHeader(const Serializable* header);
 
+    void includeInformationBuffer(std::unique_ptr<Serializable> buffer);
+
 protected:
     std::vector<FieldBase*> fields;
     std::vector<std::pair<std::string, std::string>> printableFields;
+    std::unique_ptr<Serializable> embedded_buffer = nullptr;
 };
 
 template<typename T>

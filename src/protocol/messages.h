@@ -3,12 +3,13 @@
 #include <cstdint>
 #include <unordered_map>
 
+#include "information_buffer.h"
+#include "enums.h"
+#include "maps.h"
+
 #include "../core/hex_stream.h"
 #include "../core/field.h"
 #include "../core/serializable.h"
-
-#include "enums.h"
-#include "maps.h"
 
 
 struct MBIM_MESSAGE_HEADER : public Serializable {
@@ -46,10 +47,11 @@ struct MBIM_COMMAND_MSG : public Serializable {
     Field<uint32_t> CID                               { "CID", "Command ID"};
     Field<MESSAGE_QUERY_OR_SET_ENUM> COMMAND_TYPE     { "COMMAND_TYPE", "Whether to query or set"};
     Field<uint32_t> INFORMATION_BUFFER_LENGTH         { "INFORMATION_BUFFER_LENGTH", "Length in bytes of the following information buffer"};
-    Field<std::string> INFORMATION_BUFFER             { "INFORMATION_BUFFER", "Contains command related data"};
+    std::unique_ptr<informationBuffer> INFORMATION_BUFFER;
 
     MBIM_COMMAND_MSG(hexStream& hs);
 };
+
 
 struct MBIM_HOST_ERROR_MSG : public Serializable {
     MBIM_MESSAGE_HEADER MESSAGE_HEADER;

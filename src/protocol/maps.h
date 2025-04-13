@@ -303,3 +303,14 @@ inline std::string map_host_status(MBIM_STATUS_TO_HOST_ENUM status) {
             return "Unrecognized status code";
     }
 }
+
+
+inline std::string map_device_type(DEVICE_TYPE_ENUM type) {
+    switch (type) {
+        case DEVICE_TYPE_ENUM::MBIM_DEVICE_TYPE_UNKNOWN:         return "Device type is unknown";
+        case DEVICE_TYPE_ENUM::MBIM_DEVICE_TYPE_EMBEDDED:        return "Modem is embedded in the system";
+        case DEVICE_TYPE_ENUM::MBIM_DEVICE_TYPE_REMOVABLE:       return "Modem is probably on a USB stick";
+        case DEVICE_TYPE_ENUM::MBIM_DEVICE_TYPE_REMOTE:          return "Probably tethered cellular phone modem";
+        default: return "Unknown";
+    }
+}

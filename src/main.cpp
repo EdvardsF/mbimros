@@ -3,7 +3,9 @@
 #include "core/hex_stream.h"
 #include "protocol/messages.h"
 #include "parser/parser.h"
+#include "protocol/information_buffer.h"
 
+extern void register_all_buffers();
 
 int main() {
     std::string fileContents = readFile("mbim_log.txt");    
@@ -11,10 +13,12 @@ int main() {
     std::vector<MatchInfo> parsedBlocks = parseMbimBlocks(parsedLines);
     std::string exampleMbim = parsedBlocks[2].matchText;
 
+    register_all_buffers();
+
     std::string mbim_open = "02000080000000000100000000000000";
-    std::string mbim_close = "0100000034000000150000000100000000000000a289cc33bcbb8b4fb6b0133ec2aae6df010000000400000011111111";
+    std::string mbim_close = "0100000034000000150000000100000000000000a289cc33bcbb8b4fb6b0133ec2aae6df01000000000000000800000001000000";
     hexStream ex(mbim_close);
-    MBIM_INDICATE_STATUS_MSG mbim_close_msg(ex);
+    MBIM_COMMAND_MSG mbim_close_msg(ex);
 
     std::cout << mbim_close << std::endl;
 
