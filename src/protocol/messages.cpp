@@ -54,6 +54,7 @@ MBIM_COMMAND_MSG::MBIM_COMMAND_MSG(hexStream& hs) : MESSAGE_HEADER(hs), FRAGMENT
     INFORMATION_BUFFER_LENGTH.bind(this);
     INFORMATION_BUFFER_LENGTH.set(hs.read4_le());
 
+    // TODO: To avoid duplicating this in each message struct, move it to somewhere later 
     if (auto it = buffer_registry.find({DEVICE_SERVICE_ID.value, CID.value}); it != buffer_registry.end()) {
         auto buffer = it->second();
         buffer->parse(hs);
@@ -103,8 +104,14 @@ MBIM_COMMAND_DONE::MBIM_COMMAND_DONE(hexStream& hs) : MESSAGE_HEADER(hs), FRAGME
     INFORMATION_BUFFER_LENGTH.bind(this);
     INFORMATION_BUFFER_LENGTH.set(hs.read4_le());
 
-    // INFORMATION_BUFFER.bind(this);
-    // INFORMATION_BUFFER.set(hs.read_n_text_be(INFORMATION_BUFFER_LENGTH.value));
+    // TODO: To avoid duplicating this in each message struct, move it to somewhere later 
+    if (auto it = buffer_registry.find({DEVICE_SERVICE_ID.value, CID.value}); it != buffer_registry.end()) {
+        auto buffer = it->second();
+        buffer->parse(hs);
+        includeInformationBuffer(std::move(buffer));
+    } else {
+        hs.read_n_text_be(INFORMATION_BUFFER_LENGTH.value);
+    }
 }
 
 MBIM_INDICATE_STATUS_MSG::MBIM_INDICATE_STATUS_MSG(hexStream& hs) : MESSAGE_HEADER(hs), FRAGMENT_HEADER(hs) {
@@ -122,6 +129,12 @@ MBIM_INDICATE_STATUS_MSG::MBIM_INDICATE_STATUS_MSG(hexStream& hs) : MESSAGE_HEAD
     INFORMATION_BUFFER_LENGTH.bind(this);
     INFORMATION_BUFFER_LENGTH.set(hs.read4_le());
 
-    // INFORMATION_BUFFER.bind(this);
-    // INFORMATION_BUFFER.set(hs.read_n_text_be(INFORMATION_BUFFER_LENGTH.value));
+    // TODO: To avoid duplicating this in each message struct, move it to somewhere later 
+    if (auto it = buffer_registry.find({DEVICE_SERVICE_ID.value, CID.value}); it != buffer_registry.end()) {
+        auto buffer = it->second();
+        buffer->parse(hs);
+        includeInformationBuffer(std::move(buffer));
+    } else {
+        hs.read_n_text_be(INFORMATION_BUFFER_LENGTH.value);
+    }
 }
