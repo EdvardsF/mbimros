@@ -43,7 +43,7 @@ struct Field : public FieldBase {
             if (enumToString) {
                 std::ostringstream oss;
                 oss << static_cast<std::underlying_type_t<T>>(value)
-                    << " (" << enumToString(value) << ")";
+                    << " [" << enumToString(value) << "]";
                 return oss.str();
             } else {
                 return std::to_string(static_cast<std::underlying_type_t<T>>(value));

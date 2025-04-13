@@ -23,8 +23,13 @@ MBIM_FRAGMENT_HEADER::MBIM_FRAGMENT_HEADER(hexStream& hs) {
     CURRENT_FRAGMENT.set(hs.read4_le());
 }
 
+
 MBIM_OPEN_MSG::MBIM_OPEN_MSG(hexStream& hs) : MESSAGE_HEADER(hs) {
     includeHeader(&MESSAGE_HEADER);
     MAX_CONTROL_TRANSFER.bind(this);
     MAX_CONTROL_TRANSFER.set(hs.read4_le());
+}
+
+MBIM_CLOSE_MSG::MBIM_CLOSE_MSG(hexStream& hs) : MESSAGE_HEADER(hs) {
+    includeHeader(&MESSAGE_HEADER);
 }

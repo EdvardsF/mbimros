@@ -18,8 +18,8 @@ enum class MESSAGE_TYPE_ENUM : uint32_t {
 
 inline std::string map_type(MESSAGE_TYPE_ENUM type) {
     switch (type) {
-        case MESSAGE_TYPE_ENUM::MBIM_OPEN_MSG:       return "Open message (establish link)";
-        case MESSAGE_TYPE_ENUM::MBIM_CLOSE_MSG:      return "Close message (tear down)";
+        case MESSAGE_TYPE_ENUM::MBIM_OPEN_MSG:       return "Open a connection";
+        case MESSAGE_TYPE_ENUM::MBIM_CLOSE_MSG:      return "Close the connection";
         case MESSAGE_TYPE_ENUM::MBIM_COMMAND_MSG:    return "Command from host";
         case MESSAGE_TYPE_ENUM::MBIM_HOST_ERROR_MSG: return "Host error notification";
         default: return "Unknown message type";
@@ -58,6 +58,10 @@ struct MBIM_OPEN_MSG : public Serializable {
     Field<uint32_t> MAX_CONTROL_TRANSFER        { "MAX_CONTROL_TRANSFER", "Maximum size of a control transfer"};
 
     MBIM_OPEN_MSG(hexStream& hs);
-    std::string to_string() const override;
+};
+
+struct MBIM_CLOSE_MSG : public Serializable {
+    MBIM_MESSAGE_HEADER MESSAGE_HEADER;
+    MBIM_CLOSE_MSG(hexStream& hs);
 };
 
