@@ -2,7 +2,7 @@
 #include "catch.h"
 
 #include "core/hex_stream.h"
-#include "protocol/mbim_decoder.h"
+#include "protocol/messages.h"
 
 
 TEST_CASE("MBIM_MESSAGE_HEADER parses fields correctly") {
