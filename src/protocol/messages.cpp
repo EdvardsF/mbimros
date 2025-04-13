@@ -63,3 +63,10 @@ MBIM_HOST_ERROR_MSG::MBIM_HOST_ERROR_MSG(hexStream& hs) : MESSAGE_HEADER(hs) {
     ERROR_STATUS_CODE.setFormatter(map_host_error);
     ERROR_STATUS_CODE.set(static_cast<MBIM_PROTOCOL_ERROR_CODES_ENUM>(hs.read4_le()));
 }
+
+MBIM_OPEN_DONE::MBIM_OPEN_DONE(hexStream& hs) : MESSAGE_HEADER(hs) {
+    includeHeader(&MESSAGE_HEADER);
+    STATUS.bind(this);
+    STATUS.setFormatter(map_host_status);
+    STATUS.set(static_cast<MBIM_STATUS_TO_HOST_ENUM>(hs.read4_le()));
+}

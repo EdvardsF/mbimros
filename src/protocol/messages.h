@@ -57,3 +57,10 @@ struct MBIM_HOST_ERROR_MSG : public Serializable {
 
     MBIM_HOST_ERROR_MSG(hexStream& hs);
 };
+
+struct MBIM_OPEN_DONE : public Serializable {
+    MBIM_MESSAGE_HEADER MESSAGE_HEADER;
+    Field<MBIM_STATUS_TO_HOST_ENUM> STATUS      { "STATUS", "Status of the open procedure"};
+
+    MBIM_OPEN_DONE(hexStream& hs);
+};

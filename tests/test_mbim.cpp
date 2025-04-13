@@ -72,3 +72,15 @@ TEST_CASE("MBIM_HOST_ERROR_MSG parses fields correctly") {
 
     REQUIRE(msg.ERROR_STATUS_CODE.value == MBIM_PROTOCOL_ERROR_CODES_ENUM::MBIM_ERROR_LENGTH_MISMATCH);
 }
+
+TEST_CASE("MBIM_OPEN_DONE parses fields correctly") {
+    std::string msg_header = "010000800000000001000000";
+    std::string payload = "05000000";
+    std::string to_test = msg_header + payload;
+    hexStream hs(to_test);
+
+    MBIM_OPEN_DONE msg(hs);
+
+    REQUIRE(msg.STATUS.value == MBIM_STATUS_TO_HOST_ENUM::MBIM_STATUS_PIN_REQUIRED);
+}
+
