@@ -168,3 +168,27 @@ inline std::string (*get_cid_mapper_for_uuid(const std::string& uuid))(uint32_t)
 
     return nullptr;
 }
+
+
+inline std::string map_host_error(MBIM_PROTOCOL_ERROR_CODES_ENUM type) {
+    switch (type) {
+        case MBIM_PROTOCOL_ERROR_CODES_ENUM::MBIM_ERROR_TIMEOUT_FRAGMENT:
+            return "Timeout while waiting for next fragment";
+        case MBIM_PROTOCOL_ERROR_CODES_ENUM::MBIM_ERROR_FRAGMENT_OUT_OF_SEQUENCE:
+            return "Received fragment out of sequence";
+        case MBIM_PROTOCOL_ERROR_CODES_ENUM::MBIM_ERROR_LENGTH_MISMATCH:
+            return "Mismatch in expected length";
+        case MBIM_PROTOCOL_ERROR_CODES_ENUM::MBIM_ERROR_DUPLICATED_TID:
+            return "Duplicated transaction ID";
+        case MBIM_PROTOCOL_ERROR_CODES_ENUM::MBIM_ERROR_NOT_OPENED:
+            return "Channel is not open";
+        case MBIM_PROTOCOL_ERROR_CODES_ENUM::MBIM_ERROR_UNKNOW:
+            return "Unknown error";
+        case MBIM_PROTOCOL_ERROR_CODES_ENUM::MBIM_ERROR_CANCEL:
+            return "Operation was canceled";
+        case MBIM_PROTOCOL_ERROR_CODES_ENUM::MBIM_ERROR_MAX_TRANSFER:
+            return "Transfer exceeds maximum size";
+        default:
+            return "Unrecognized host error";
+    }
+}

@@ -57,3 +57,9 @@ MBIM_COMMAND_MSG::MBIM_COMMAND_MSG(hexStream& hs) : MESSAGE_HEADER(hs), FRAGMENT
     INFORMATION_BUFFER.set(hs.read_n_text_be(INFORMATION_BUFFER_LENGTH.value));
 }
 
+MBIM_HOST_ERROR_MSG::MBIM_HOST_ERROR_MSG(hexStream& hs) : MESSAGE_HEADER(hs) {
+    includeHeader(&MESSAGE_HEADER);
+    ERROR_STATUS_CODE.bind(this);
+    ERROR_STATUS_CODE.setFormatter(map_host_error);
+    ERROR_STATUS_CODE.set(static_cast<MBIM_PROTOCOL_ERROR_CODES_ENUM>(hs.read4_le()));
+}

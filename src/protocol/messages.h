@@ -50,3 +50,10 @@ struct MBIM_COMMAND_MSG : public Serializable {
 
     MBIM_COMMAND_MSG(hexStream& hs);
 };
+
+struct MBIM_HOST_ERROR_MSG : public Serializable {
+    MBIM_MESSAGE_HEADER MESSAGE_HEADER;
+    Field<MBIM_PROTOCOL_ERROR_CODES_ENUM> ERROR_STATUS_CODE      { "ERROR_STATUS_CODE", "Status code of the error"};
+
+    MBIM_HOST_ERROR_MSG(hexStream& hs);
+};
