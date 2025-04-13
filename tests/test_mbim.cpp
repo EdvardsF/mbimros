@@ -110,3 +110,19 @@ TEST_CASE("MBIM_COMMAND_DONE parses fields correctly") {
     REQUIRE(msg.INFORMATION_BUFFER_LENGTH.value == 4);
     REQUIRE(msg.INFORMATION_BUFFER.value == "11111111");
 }
+
+
+TEST_CASE("MBIM_INDICATE_STATUS_MSG parses fields correctly") {
+    std::string msg_header = "010000003400000015000000";
+    std::string msg_fragment_header = "0100000000000000";
+    std::string payload = "a289cc33bcbb8b4fb6b0133ec2aae6df010000000400000011111111";
+    std::string to_test = msg_header + msg_fragment_header + payload;
+    hexStream hs(to_test);
+
+    MBIM_INDICATE_STATUS_MSG msg(hs);
+
+    REQUIRE(msg.DEVICE_SERVICE_ID.value == "a289cc33bcbb8b4fb6b0133ec2aae6df");
+    REQUIRE(msg.CID.value == 1);
+    REQUIRE(msg.INFORMATION_BUFFER_LENGTH.value == 4);
+    REQUIRE(msg.INFORMATION_BUFFER.value == "11111111");
+}

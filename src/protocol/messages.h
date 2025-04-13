@@ -84,3 +84,15 @@ struct MBIM_COMMAND_DONE : public Serializable {
 
     MBIM_COMMAND_DONE(hexStream& hs);
 };
+
+struct MBIM_INDICATE_STATUS_MSG : public Serializable {
+    MBIM_MESSAGE_HEADER MESSAGE_HEADER;
+    MBIM_FRAGMENT_HEADER FRAGMENT_HEADER;
+
+    Field<std::string> DEVICE_SERVICE_ID              { "DEVICE_SERVICE_ID", "Identifies the device service the following CID applies to."};
+    Field<uint32_t> CID                               { "CID", "Command ID"};
+    Field<uint32_t> INFORMATION_BUFFER_LENGTH         { "INFORMATION_BUFFER_LENGTH", "Length in bytes of the following information buffer"};
+    Field<std::string> INFORMATION_BUFFER             { "INFORMATION_BUFFER", "Contains command related data"};
+
+    MBIM_INDICATE_STATUS_MSG(hexStream& hs);
+};
