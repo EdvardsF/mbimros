@@ -21,8 +21,10 @@ public:
     void addField(const Field<T>& f, F&& enumToString);
 
     const Serializable* embedded_header = nullptr;
+    const Serializable* embedded_fragment_header = nullptr;
 
     void includeHeader(const Serializable* header);
+    void includeFragmentHeader(const Serializable* header);
 
 protected:
     std::vector<FieldBase*> fields;

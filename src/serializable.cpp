@@ -22,3 +22,7 @@ std::string Serializable::to_string() const {
 void Serializable::includeHeader(const Serializable* header) {
     embedded_header = header;
 }
+
+void Serializable::includeFragmentHeader(const Serializable* header) {
+    embedded_fragment_header = header;
+}

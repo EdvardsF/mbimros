@@ -33,3 +33,26 @@ MBIM_OPEN_MSG::MBIM_OPEN_MSG(hexStream& hs) : MESSAGE_HEADER(hs) {
 MBIM_CLOSE_MSG::MBIM_CLOSE_MSG(hexStream& hs) : MESSAGE_HEADER(hs) {
     includeHeader(&MESSAGE_HEADER);
 }
+
+MBIM_COMMAND_MSG::MBIM_COMMAND_MSG(hexStream& hs) : MESSAGE_HEADER(hs), FRAGMENT_HEADER(hs) {
+    includeHeader(&MESSAGE_HEADER);
+    includeFragmentHeader(&FRAGMENT_HEADER);
+
+    DEVICE_SERVICE_ID.bind(this);
+    DEVICE_SERVICE_ID.setFormatter(map_uuid);
+    DEVICE_SERVICE_ID.set(hs.read_n_text_be(16));
+
+    CID.bind(this);
+    CID.setFormatter(get_cid_mapper_for_uuid(DEVICE_SERVICE_ID.value));
+    CID.set(hs.read4_le());
+
+    COMMAND_TYPE.bind(this);
+    COMMAND_TYPE.setFormatter(map_query_or_set);
+    COMMAND_TYPE.set(static_cast<MESSAGE_QUERY_OR_SET_ENUM>(hs.read4_le()));
+
+    INFORMATION_BUFFER_LENGTH.bind(this);
+    INFORMATION_BUFFER.bind(this);
+    INFORMATION_BUFFER_LENGTH.set(hs.read4_le());
+    INFORMATION_BUFFER.set(hs.read_n_text_be(INFORMATION_BUFFER_LENGTH.value));
+}
+
