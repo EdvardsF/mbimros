@@ -7,6 +7,9 @@ void Serializable::registerField(FieldBase* field) {
 
 std::string Serializable::to_string() const {
     std::ostringstream oss;
+    if (embedded_header) {
+        oss << embedded_header->to_string();
+    }
     for (const auto* f : fields) {
         oss << f->getName() << ": " << f->getValueAsString();
         if (!f->getDescription().empty()) {
@@ -15,4 +18,7 @@ std::string Serializable::to_string() const {
         oss << "\n";
     }
     return oss.str();
+}
+void Serializable::includeHeader(const Serializable* header) {
+    embedded_header = header;
 }

@@ -11,13 +11,18 @@ struct Field;  // forward declare
 class Serializable {
 public:
     void registerField(FieldBase* field);
-    std::string to_string() const;
+    virtual std::string to_string() const;
+    virtual ~Serializable() = default;
 
     template<typename T>
     void addField(const Field<T>& f);
 
     template<typename T, typename F>
     void addField(const Field<T>& f, F&& enumToString);
+
+    const Serializable* embedded_header = nullptr;
+
+    void includeHeader(const Serializable* header);
 
 protected:
     std::vector<FieldBase*> fields;

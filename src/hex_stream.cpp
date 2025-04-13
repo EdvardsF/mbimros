@@ -7,7 +7,7 @@ hexStream::hexStream(std::string& hex_data) {
 }
 
 uint8_t hexStream::readByte() {
-    if (!isEnoughSize(1))
+    if (!m_isEnoughSize(1))
         throw std::invalid_argument("Hex buffer too short.");
 
     std::string byte_str = buffer.substr(0, 2);

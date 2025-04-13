@@ -58,4 +58,6 @@ struct MBIM_OPEN_MSG : public Serializable {
     Field<uint32_t> MAX_CONTROL_TRANSFER        { "MAX_CONTROL_TRANSFER", "Maximum size of a control transfer"};
 
     MBIM_OPEN_MSG(hexStream& hs);
+    std::string to_string() const override;
 };
+
