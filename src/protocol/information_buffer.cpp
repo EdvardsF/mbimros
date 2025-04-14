@@ -2,7 +2,7 @@
 
 struct MBIM_DEVICE_CAPS_INFO : public informationBuffer {
     Field<DEVICE_TYPE_ENUM> DEVICE_TYPE             { "DEVICE_TYPE", "Type of the device" };
-    Field<CELLULAR_CLASS_ENUM> CELLULAR_CLASS       { "CELLULAR_CLASS", "Bitmap of relevant cellular technologies" };
+    Field<uint32_t> CELLULAR_CLASS                  { "CELLULAR_CLASS", "Bitmap of relevant cellular technologies" };
     Field<VOICE_CLASS_ENUM> VOICE_CLASS             { "VOICE_CLASS", "Modem voice class" };
     Field<SIM_CLASS_ENUM> SIM_CLASS                 { "SIM_CLASS", "Physical SIM or eSIM" };
     Field<DATA_CLASS_ENUM> DATA_CLASS               { "DATA_CLASS", "Bitmap of radio technologies supported by the modem" };
@@ -18,7 +18,8 @@ struct MBIM_DEVICE_CAPS_INFO : public informationBuffer {
         DEVICE_TYPE.set(static_cast<DEVICE_TYPE_ENUM>(hs.read4_le()));
 
         CELLULAR_CLASS.bind(this);
-        CELLULAR_CLASS.set(static_cast<CELLULAR_CLASS_ENUM>(hs.read4_le()));
+        CELLULAR_CLASS.setFormatter(map_cellular_class);
+        CELLULAR_CLASS.set(hs.read4_le());
 
         VOICE_CLASS.bind(this);
         VOICE_CLASS.set(static_cast<VOICE_CLASS_ENUM>(hs.read4_le()));

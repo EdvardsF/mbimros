@@ -36,13 +36,15 @@ struct Field : public FieldBase {
     void setFormatter(F&& func) {
         if constexpr (std::is_same_v<T, std::string>) {
             strToString = std::forward<F>(func);
-        } else {
+        } else if constexpr (std::is_enum_v<T>) {
             enumToString = std::forward<F>(func);
+        } else if constexpr (std::is_same_v<T, uint32_t>) {
+            bitmaskToString = std::forward<F>(func);
         }
     }
 
 
-
+    std::function<std::string(uint32_t)> bitmaskToString;
 
     std::string getName() const override { return name; }
 
@@ -63,6 +65,11 @@ struct Field : public FieldBase {
             } else {
                 return std::to_string(static_cast<std::underlying_type_t<T>>(value));
             }
+        } else if constexpr (std::is_same_v<T, uint32_t>) {
+            if (bitmaskToString) {
+                return std::to_string(value) + " [" + bitmaskToString(value) + "]";
+            }
+            return std::to_string(value);
         } else if constexpr (std::is_integral_v<T>) {
             if (enumToString) {
                 return std::to_string(value) + " [" + enumToString(value) + "]";
@@ -73,5 +80,6 @@ struct Field : public FieldBase {
             return "[unsupported type]";
         }
     }
+
 
 };
