@@ -69,7 +69,7 @@ std::string hexStream::readAll() {
 
 std::string hexStream::read_n_text_be(size_t n) {
     std::string result;
-    for (int i = 0; i < n; i++) {
+    for (size_t i = 0; i < n; i++) {
         result += readByteText();
     }
     return result;
