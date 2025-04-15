@@ -333,3 +333,21 @@ inline std::string map_cellular_class(uint32_t value) {
     }
     return oss.str();
 }
+
+inline std::string map_voice_class(VOICE_CLASS_ENUM type) {
+    switch (type) {
+        case VOICE_CLASS_ENUM::MBIM_VOICE_CLASS_UNKNOWN:                   return "The device uses an unknown method to support voice connections";
+        case VOICE_CLASS_ENUM::MBIM_VOICE_CLASS_NO_VOICE:                  return "The device does not support voice connections";
+        case VOICE_CLASS_ENUM::MBIM_VOICE_CLASS_SEPARATE_VOICE_DATA:       return "The device supports separate voice and data connections";
+        case VOICE_CLASS_ENUM::MBIM_VOICE_CLASS_SIMULTANEOUS_VOICE_DATA:   return "The device supports simultaneous voice and data connections";
+        default: return "Unknown";
+    }
+}
+
+inline std::string map_sim_class(SIM_CLASS_ENUM type) {
+    switch (type) {
+        case SIM_CLASS_ENUM::MBIM_SIM_CLASS_SIM_LOGICAL:                   return "eSIM";
+        case SIM_CLASS_ENUM::MBIM_SIM_CLASS_SIM_REMOVABLE:                  return "Physical SIM";
+        default: return "Unknown";
+    }
+}

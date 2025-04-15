@@ -22,9 +22,11 @@ struct MBIM_DEVICE_CAPS_INFO : public informationBuffer {
         CELLULAR_CLASS.set(hs.read4_le());
 
         VOICE_CLASS.bind(this);
+        VOICE_CLASS.setFormatter(map_voice_class);
         VOICE_CLASS.set(static_cast<VOICE_CLASS_ENUM>(hs.read4_le()));
         
         SIM_CLASS.bind(this);
+        SIM_CLASS.setFormatter(map_sim_class);
         SIM_CLASS.set(static_cast<SIM_CLASS_ENUM>(hs.read4_le()));
 
         DATA_CLASS.bind(this);
