@@ -56,7 +56,7 @@ std::string hexStream::read4_text_le() {
 
 std::string hexStream::read4_text_be() {
     std::string result;
-    for (int i = 0; i < 3; i++) {
+    for (size_t i = 0; i < 3; i++) {
         result += readByteText();
     }
     return result;
