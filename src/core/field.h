@@ -43,6 +43,10 @@ struct Field : public FieldBase {
         }
     }
 
+    bool isBitmask() const override {
+        return static_cast<bool>(bitmaskToString);
+    }
+
 
     std::function<std::string(uint32_t)> bitmaskToString;
 
@@ -67,7 +71,7 @@ struct Field : public FieldBase {
             }
         } else if constexpr (std::is_same_v<T, uint32_t>) {
             if (bitmaskToString) {
-                return std::to_string(value) + " [" + bitmaskToString(value) + "]";
+                return std::to_string(value) + "\n" + bitmaskToString(value);
             }
             return std::to_string(value);
         } else if constexpr (std::is_integral_v<T>) {

@@ -13,12 +13,21 @@ std::string Serializable::to_string() const {
         oss << embedded_header->to_string();
     }
 
+    if (embedded_fragment_header) {
+        oss << embedded_fragment_header->to_string();
+    }
+
+
     for (const auto* f : fields) {
-        oss << f->getName() << ": " << f->getValueAsString();
-        if (!f->getDescription().empty()) {
-            oss << " ..." << f->getDescription();
+        if (f->isBitmask()) {
+            oss << f->getName() << ": ..." << f->getDescription() << " | RAW=" << f->getValueAsString();
+        } else {
+            oss << f->getName() << ": " << f->getValueAsString();
+            if (!f->getDescription().empty()) {
+                oss << " ..." << f->getDescription();
+            }
+            oss << "\n";
         }
-        oss << "\n";
     }
 
     if (embedded_buffer) {

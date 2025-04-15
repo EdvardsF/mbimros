@@ -318,24 +318,18 @@ inline std::string map_device_type(DEVICE_TYPE_ENUM type) {
 inline std::string map_cellular_class(uint32_t value) {
     std::vector<std::string> flags;
 
-    if (value & static_cast<uint32_t>(CTRL_CAPS_ENUM::MBIM_CTRL_CAPS_REG_MANUAL))
-        flags.push_back("REG_MANUAL");
-    if (value & static_cast<uint32_t>(CTRL_CAPS_ENUM::MBIM_CTRL_CAPS_HW_RADIO_SWITCH))
-        flags.push_back("HW_RADIO_SWITCH");
-    if (value & static_cast<uint32_t>(CTRL_CAPS_ENUM::MBIM_CTRL_CAPS_CDMA_MOBILE_IP))
-        flags.push_back("CDMA_MOBILE_IP");
-    if (value & static_cast<uint32_t>(CTRL_CAPS_ENUM::MBIM_CTRL_CAPS_CDMA_SIMPLE_IP))
-        flags.push_back("CDMA_SIMPLE_IP");
-    if (value & static_cast<uint32_t>(CTRL_CAPS_ENUM::MBIM_CTRL_CAPS_MULTI_CARRIER))
-        flags.push_back("MULTI_CARRIER");
-
+    if (value & static_cast<uint32_t>(CELLULAR_CLASS_ENUM::MBIM_CELLULAR_CLASS_GSM))
+        flags.push_back("[MBIM_CELLULAR_CLASS_GSM] - GSM capable device");
+    if (value & static_cast<uint32_t>(CELLULAR_CLASS_ENUM::MBIM_CELLULAR_CLASS_CDMA))
+        flags.push_back("[MBIM_CELLULAR_CLASS_CDMA] - CDMA capable device");
+  
     if (flags.empty())
         return "NONE";
 
     std::ostringstream oss;
     for (size_t i = 0; i < flags.size(); ++i) {
-        if (i > 0) oss << ", ";
-        oss << flags[i];
+        oss << "\t -> ";
+        oss << flags[i] << "\n";
     }
     return oss.str();
 }
