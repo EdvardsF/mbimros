@@ -7,9 +7,11 @@
 #include "enums.h"
 #include "maps.h"
 
-#include "../core/hex_stream.h"
-#include "../core/field.h"
-#include "../core/serializable.h"
+#include "../../parser/parser.h"
+#include "../../core/hex_stream.h"
+#include "../../core/field.h"
+#include "../../core/serializable.h"
+
 
 
 struct MBIM_MESSAGE_HEADER : public Serializable {

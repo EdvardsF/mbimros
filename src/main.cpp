@@ -1,9 +1,9 @@
 #include <iostream>
 
 #include "core/hex_stream.h"
-#include "protocol/messages.h"
+#include "protocol/v1/messages.h"
 #include "parser/parser.h"
-#include "protocol/information_buffer.h"
+#include "protocol/v1/information_buffer.h"
 
 extern void register_all_buffers();
 

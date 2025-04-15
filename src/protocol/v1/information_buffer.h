@@ -6,9 +6,9 @@
 #include <functional>
 #include <utility>
 
-#include "../core/serializable.h"
-#include "../core/hex_stream.h"
-#include "../core/field.h"
+#include "../../core/serializable.h"
+#include "../../core/hex_stream.h"
+#include "../../core/field.h"
 
 #include "maps.h"
 #include "enums.h"
