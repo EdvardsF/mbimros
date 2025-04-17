@@ -2,8 +2,6 @@
 #include <cstdint>
 #include <unordered_map>
 
-#include "../enums.h"
-
 inline std::string map_basic_connect_cid(uint32_t cid) {
     static const std::unordered_map<uint32_t, std::string> cid_map = {
         { 1,  "MBIM_CID_DEVICE_CAPS" },

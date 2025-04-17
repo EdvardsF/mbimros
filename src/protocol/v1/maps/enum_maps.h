@@ -3,8 +3,6 @@
 #include <string>
 #include <sstream>
 
-#include "../enums.h"
-
 inline std::string map_device_type(DEVICE_TYPE_ENUM type) {
     switch (type) {
         case DEVICE_TYPE_ENUM::MBIM_DEVICE_TYPE_UNKNOWN:         return "Device type is unknown";

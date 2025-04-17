@@ -4,8 +4,6 @@
 #include <sstream>
 #include <vector>
 
-#include "../enums.h"
-
 inline std::string map_cellular_class(uint32_t value) {
     std::vector<std::string> flags;
 
