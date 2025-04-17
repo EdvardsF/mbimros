@@ -56,7 +56,7 @@ MBIM_COMMAND_MSG::MBIM_COMMAND_MSG(hexStream& hs) : MESSAGE_HEADER(hs), FRAGMENT
     // TODO: To avoid duplicating this in each message struct, move it to somewhere later 
     if (auto it = buffer_registry.find({DEVICE_SERVICE_ID.value, CID.value}); it != buffer_registry.end()) {
         auto buffer = it->second();
-        buffer->parse(hs);
+        buffer->parse(hs, COMMAND_TYPE.value);
         includeInformationBuffer(std::move(buffer));
     } else {
         hs.readHexBytes(INFORMATION_BUFFER_LENGTH.value);

@@ -19,6 +19,6 @@ struct MBIM_DEVICE_CAPS_INFO : public informationBuffer {
     Field<uint32_t> CTRL_CAPS             { "CTRL_CAPS", "Bitmap of the capabilities the modem supports" };
     Field<uint32_t> MAX_SESSIONS          { "MAX_SESSIONS", "Max IP data stream sessions supported" };
 
-    void parse(hexStream& hs) override;
+    void parse(hexStream& hs, MESSAGE_QUERY_OR_SET_ENUM command_type) override;
 };
 

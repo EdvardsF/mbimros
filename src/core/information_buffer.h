@@ -13,8 +13,16 @@
 #include "../protocol/v1/maps/maps.h"
 
 struct informationBuffer : public Serializable {
-    virtual void parse(hexStream& hs) = 0;
+    virtual void parse(hexStream& hs) {
+        throw std::runtime_error("This InformationBuffer does not support basic parse()");
+    }
+
+    virtual void parse(hexStream& hs, MESSAGE_QUERY_OR_SET_ENUM) {
+        throw std::runtime_error("This InformationBuffer does not support command_type parse()");
+    }
+    
     virtual ~informationBuffer() = default;
+    
 
 private:
     std::vector<std::unique_ptr<Field<std::string>>> dynamic_fields;
