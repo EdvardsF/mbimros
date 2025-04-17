@@ -12,19 +12,19 @@ struct hexStream {
     hexStream(std::string& hex_data);
 
     uint8_t readByte();
-    std::string readByteText();
-    uint32_t read4_le();
-    uint32_t read4_be();
-    std::string read4_text_le();
-    std::string read4_text_be();
-    std::string read_n_text_be(size_t n);
-    std::u16string read_utf16le(size_t num_code_units);
-    std::string readAll();
+    std::string readByteAsHex();
+    uint32_t readUint32LE();
+    uint32_t readUint32BE();
+    std::string readUint32HexLE();
+    std::string readUint32HexBE();
+    std::string readHexBytes(size_t n);
+    std::u16string readUtf16LE(size_t num_code_units);
+    std::string readRemaining();
 
     size_t currentOffset() const;
     void seek(size_t newOffset);
 
 private:
-    size_t m_getBufferSize() const;
-    bool m_isEnoughSize(size_t size) const;
+    size_t availableBytes() const;
+    void checkAvailable(size_t count) const;
 };
