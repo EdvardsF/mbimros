@@ -12,13 +12,15 @@ std::string Serializable::to_string() const {
     if (embedded_header) {
         oss << "-----------------HEADER-----------------\n";
         oss << embedded_header->to_string();
+        if (!embedded_fragment_header) {
+            oss << "\n------------COMMAND METADATA-------------\n";
+        }
     }
 
     if (embedded_fragment_header) {
         oss << "\n------------FRAGMENT HEADER-------------\n";
         oss << embedded_fragment_header->to_string();
         oss << "\n------------COMMAND METADATA-------------\n";
-
     }
 
 
