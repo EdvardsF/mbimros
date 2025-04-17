@@ -18,7 +18,7 @@ compile_commands.json
 *.so
 *.exe
 *.out
-main
+mbimros
 test_mbim
 
 # Logs and temporary files
