@@ -1,6 +1,11 @@
 #pragma once
 
 #include "../../core/information_buffer.h"
+#include "../../core/variable_field.h"
+#include "../../core/information_buffer.h"
+
+#include "enums.h"
+#include "maps/maps.h"
 
 void register_all_buffers();
 

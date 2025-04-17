@@ -10,8 +10,7 @@
 #include "hex_stream.h"
 #include "field.h"
 
-#include "../protocol/v1/maps.h"
-#include "../protocol/v1/enums.h"
+#include "../protocol/v1/maps/maps.h"
 
 struct informationBuffer : public Serializable {
     virtual void parse(hexStream& hs) = 0;

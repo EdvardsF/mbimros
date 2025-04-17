@@ -5,7 +5,6 @@
 #include <unordered_map>
 
 #include "enums.h"
-#include "maps.h"
 
 #include "../../parser/parser.h"
 #include "../../core/hex_stream.h"
