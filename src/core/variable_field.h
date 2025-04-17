@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../core/field.h"
-#include "../../core/hex_stream.h"
+#include "field.h"
+#include "hex_stream.h"
 
 template<typename T = std::string>
 class VariableField : public Field<T> {

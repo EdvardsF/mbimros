@@ -4,7 +4,10 @@
 #include <sstream>
 #include <type_traits>
 #include <functional>
+
 #include "field_base.h"
+#include "serializable.h"
+
 
 struct Serializable;
 

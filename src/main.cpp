@@ -3,7 +3,7 @@
 #include "core/hex_stream.h"
 #include "protocol/v1/messages.h"
 #include "parser/parser.h"
-#include "protocol/v1/information_buffer.h"
+#include "core/information_buffer.h"
 
 extern void register_all_buffers();
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "information_buffer.h"
+#include "../../core/information_buffer.h"
 
 void register_all_buffers();
 

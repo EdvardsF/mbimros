@@ -6,12 +6,12 @@
 #include <functional>
 #include <utility>
 
-#include "../../core/serializable.h"
-#include "../../core/hex_stream.h"
-#include "../../core/field.h"
+#include "serializable.h"
+#include "hex_stream.h"
+#include "field.h"
 
-#include "maps.h"
-#include "enums.h"
+#include "../protocol/v1/maps.h"
+#include "../protocol/v1/enums.h"
 
 struct informationBuffer : public Serializable {
     virtual void parse(hexStream& hs) = 0;

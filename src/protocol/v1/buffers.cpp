@@ -1,6 +1,6 @@
 #include "buffers.h"
-#include "information_buffer.h"
-#include "variable_field.h"
+#include "../../core/information_buffer.h"
+#include "../../core/variable_field.h"
 
 #include <iostream>
 
