@@ -5,7 +5,7 @@
 void MBIM_DEVICE_CAPS_INFO::parse(hexStream& hs, MESSAGE_QUERY_OR_SET_ENUM command_type) {
     if (command_type == MESSAGE_QUERY_OR_SET_ENUM::QUERY) {
 
-    } else {
+    } else if (command_type == MESSAGE_QUERY_OR_SET_ENUM::SET) {
         size_t base_offset = hs.currentOffset();
 
         DEVICE_TYPE.bind(this);
