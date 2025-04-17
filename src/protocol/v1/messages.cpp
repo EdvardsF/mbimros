@@ -4,7 +4,7 @@
 
 MBIM_MESSAGE_HEADER::MBIM_MESSAGE_HEADER(hexStream& hs) {
     MESSAGE_TYPE.bind(this);
-    MESSAGE_TYPE.setFormatter(map_type);
+    MESSAGE_TYPE.setEnumFormatter(map_type);
     MESSAGE_TYPE.set(static_cast<MESSAGE_TYPE_ENUM>(hs.read4_le()));
 
     MESSAGE_LENGTH.bind(this);
@@ -39,15 +39,15 @@ MBIM_COMMAND_MSG::MBIM_COMMAND_MSG(hexStream& hs) : MESSAGE_HEADER(hs), FRAGMENT
     includeFragmentHeader(&FRAGMENT_HEADER);
 
     DEVICE_SERVICE_ID.bind(this);
-    DEVICE_SERVICE_ID.setFormatter(map_uuid);
+    DEVICE_SERVICE_ID.setStringFormatter(map_uuid);
     DEVICE_SERVICE_ID.set(hs.read_n_text_be(16));
 
     CID.bind(this);
-    CID.setFormatter(get_cid_mapper_for_uuid(DEVICE_SERVICE_ID.value));
+    CID.setNumberFormatter(get_cid_mapper_for_uuid(DEVICE_SERVICE_ID.value));
     CID.set(hs.read4_le());
 
     COMMAND_TYPE.bind(this);
-    COMMAND_TYPE.setFormatter(map_query_or_set);
+    COMMAND_TYPE.setEnumFormatter(map_query_or_set);
     COMMAND_TYPE.set(static_cast<MESSAGE_QUERY_OR_SET_ENUM>(hs.read4_le()));
 
     INFORMATION_BUFFER_LENGTH.bind(this);
@@ -66,21 +66,21 @@ MBIM_COMMAND_MSG::MBIM_COMMAND_MSG(hexStream& hs) : MESSAGE_HEADER(hs), FRAGMENT
 MBIM_HOST_ERROR_MSG::MBIM_HOST_ERROR_MSG(hexStream& hs) : MESSAGE_HEADER(hs) {
     includeHeader(&MESSAGE_HEADER);
     ERROR_STATUS_CODE.bind(this);
-    ERROR_STATUS_CODE.setFormatter(map_host_error);
+    ERROR_STATUS_CODE.setEnumFormatter(map_host_error);
     ERROR_STATUS_CODE.set(static_cast<MBIM_PROTOCOL_ERROR_CODES_ENUM>(hs.read4_le()));
 }
 
 MBIM_OPEN_DONE::MBIM_OPEN_DONE(hexStream& hs) : MESSAGE_HEADER(hs) {
     includeHeader(&MESSAGE_HEADER);
     STATUS.bind(this);
-    STATUS.setFormatter(map_host_status);
+    STATUS.setEnumFormatter(map_host_status);
     STATUS.set(static_cast<MBIM_STATUS_TO_HOST_ENUM>(hs.read4_le()));
 }
 
 MBIM_CLOSE_DONE::MBIM_CLOSE_DONE(hexStream& hs) : MESSAGE_HEADER(hs) {
     includeHeader(&MESSAGE_HEADER);
     STATUS.bind(this);
-    STATUS.setFormatter(map_host_status);
+    STATUS.setEnumFormatter(map_host_status);
     STATUS.set(static_cast<MBIM_STATUS_TO_HOST_ENUM>(hs.read4_le()));
 }
 
@@ -89,15 +89,15 @@ MBIM_COMMAND_DONE::MBIM_COMMAND_DONE(hexStream& hs) : MESSAGE_HEADER(hs), FRAGME
     includeFragmentHeader(&FRAGMENT_HEADER);
 
     DEVICE_SERVICE_ID.bind(this);
-    DEVICE_SERVICE_ID.setFormatter(map_uuid);
+    DEVICE_SERVICE_ID.setEnumFormatter(map_uuid);
     DEVICE_SERVICE_ID.set(hs.read_n_text_be(16));
 
     CID.bind(this);
-    CID.setFormatter(get_cid_mapper_for_uuid(DEVICE_SERVICE_ID.value));
+    CID.setNumberFormatter(get_cid_mapper_for_uuid(DEVICE_SERVICE_ID.value));
     CID.set(hs.read4_le());
 
     STATUS.bind(this);
-    STATUS.setFormatter(map_host_status);
+    STATUS.setEnumFormatter(map_host_status);
     STATUS.set(static_cast<MBIM_STATUS_TO_HOST_ENUM>(hs.read4_le()));
 
     INFORMATION_BUFFER_LENGTH.bind(this);
@@ -118,11 +118,11 @@ MBIM_INDICATE_STATUS_MSG::MBIM_INDICATE_STATUS_MSG(hexStream& hs) : MESSAGE_HEAD
     includeFragmentHeader(&FRAGMENT_HEADER);
 
     DEVICE_SERVICE_ID.bind(this);
-    DEVICE_SERVICE_ID.setFormatter(map_uuid);
+    DEVICE_SERVICE_ID.setStringFormatter(map_uuid);
     DEVICE_SERVICE_ID.set(hs.read_n_text_be(16));
 
     CID.bind(this);
-    CID.setFormatter(get_cid_mapper_for_uuid(DEVICE_SERVICE_ID.value));
+    CID.setNumberFormatter(get_cid_mapper_for_uuid(DEVICE_SERVICE_ID.value));
     CID.set(hs.read4_le());
 
     INFORMATION_BUFFER_LENGTH.bind(this);

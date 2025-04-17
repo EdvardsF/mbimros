@@ -135,3 +135,4 @@ enum class CTRL_CAPS_ENUM : uint32_t {
     MBIM_CTRL_CAPS_CDMA_SIMPLE_IP    = 8,
     MBIM_CTRL_CAPS_MULTI_CARRIER     = 16
 };
+

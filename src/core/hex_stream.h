@@ -7,6 +7,7 @@
 struct hexStream {
     std::string buffer;
     size_t bufferSize;
+    size_t offset;
 
     hexStream(std::string& hex_data);
 
@@ -17,9 +18,13 @@ struct hexStream {
     std::string read4_text_le();
     std::string read4_text_be();
     std::string read_n_text_be(size_t n);
+    std::u16string read_utf16le(size_t num_code_units);
     std::string readAll();
 
+    size_t currentOffset() const;
+    void seek(size_t newOffset);
+
 private:
-    size_t m_getBufferSize();
-    bool m_isEnoughSize(size_t size);
+    size_t m_getBufferSize() const;
+    bool m_isEnoughSize(size_t size) const;
 };

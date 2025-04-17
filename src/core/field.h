@@ -11,13 +11,18 @@ struct Serializable;
 template<typename T>
 struct Field : public FieldBase {
     T value;
-    const char* name;
-    const char* description;
+    std::string name;
+    std::string description;
     Serializable* owner = nullptr;
-    std::function<std::string(T)> enumToString = nullptr;  // <-- add this
 
-    Field(const char* name_, const char* desc_)
-        : value{}, name(name_), description(desc_) {}
+    std::function<std::string(T)> enumToString;
+    std::function<std::string(T)> bitmaskToString;
+    std::function<std::string(const std::string&)> strToString;
+    std::function<std::string(uint32_t)> numberToString;
+
+
+    Field(const std::string& _name, const std::string& _desc)
+        : value{}, name(_name), description(_desc) {}
 
     void bind(Serializable* s) {
         owner = s;
@@ -26,20 +31,29 @@ struct Field : public FieldBase {
         }
     }
 
-    std::function<std::string(const std::string&)> strToString = nullptr;
-
     void set(T val) {
         value = val;
     }
 
     template<typename F>
-    void setFormatter(F&& func) {
-        if constexpr (std::is_same_v<T, std::string>) {
-            strToString = std::forward<F>(func);
-        } else if constexpr (std::is_enum_v<T>) {
-            enumToString = std::forward<F>(func);
-        } else if constexpr (std::is_same_v<T, uint32_t>) {
-            bitmaskToString = std::forward<F>(func);
+    void setEnumFormatter(F&& func) {
+        enumToString = std::forward<F>(func);
+    }
+
+    template<typename F>
+    void setBitmaskFormatter(F&& func) {
+        bitmaskToString = std::forward<F>(func);
+    }
+
+    template<typename F>
+    void setStringFormatter(F&& func) {
+        strToString = std::forward<F>(func);
+    }
+
+    template<typename F>
+    void setNumberFormatter(F&& func) {
+        if constexpr (std::is_same_v<T, uint32_t>) {
+            numberToString = std::forward<F>(func);
         }
     }
 
@@ -47,8 +61,6 @@ struct Field : public FieldBase {
         return static_cast<bool>(bitmaskToString);
     }
 
-
-    std::function<std::string(uint32_t)> bitmaskToString;
 
     std::string getName() const override { return name; }
 
@@ -72,8 +84,11 @@ struct Field : public FieldBase {
         } else if constexpr (std::is_same_v<T, uint32_t>) {
             if (bitmaskToString) {
                 return std::to_string(value) + "\n" + bitmaskToString(value);
+            } else if (numberToString) {
+                return std::to_string(value) + " [" + numberToString(value) + "]";
+            } else {
+                return std::to_string(value);
             }
-            return std::to_string(value);
         } else if constexpr (std::is_integral_v<T>) {
             if (enumToString) {
                 return std::to_string(value) + " [" + enumToString(value) + "]";

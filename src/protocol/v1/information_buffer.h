@@ -16,6 +16,9 @@
 struct informationBuffer : public Serializable {
     virtual void parse(hexStream& hs) = 0;
     virtual ~informationBuffer() = default;
+
+private:
+    std::vector<std::unique_ptr<Field<std::string>>> dynamic_fields;
 };
 
 struct pair_hash {
@@ -26,9 +29,11 @@ struct pair_hash {
 
 using BufferFactory = std::function<std::unique_ptr<informationBuffer>()>;
 
-inline std::unordered_map<std::pair<std::string, uint32_t>, BufferFactory, pair_hash> buffer_registry;
+extern std::unordered_map<std::pair<std::string, uint32_t>, BufferFactory, pair_hash> buffer_registry;
 
 template<typename T>
 void register_buffer(const std::string& uuid, uint32_t cid) {
     buffer_registry[{uuid, cid}] = []() { return std::make_unique<T>(); };
 }
+
+void register_all_buffers();

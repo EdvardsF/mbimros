@@ -7,4 +7,5 @@ struct FieldBase {
     virtual std::string getDescription() const = 0;
     virtual bool isBitmask() const { return false; }
     virtual ~FieldBase() = default;
+    virtual bool isDataField() const { return false; }
 };
