@@ -28,3 +28,12 @@ struct FieldParsingException : public MBIMBaseException {
         return "FieldParsingException";
     }
 };
+
+struct InvalidOffsetException : public MBIMBaseException {
+    explicit InvalidOffsetException(const std::string& details)
+        : MBIMBaseException("Given variable offset is out of bounds" + details) {}
+
+    std::string type() const override {
+        return "InvalidOffsetException";
+    }
+};
