@@ -7,14 +7,10 @@
 #include "core/exception/mbim_base_exception.h"
 #include "core/exception/mbim_errors.h"
 #include "core/exception/mbim_warnings.h"
+#include "helpers/helpers.h"
 
 
 extern void register_all_buffers();
-
-template<typename WarningType>
-void registerWarningHelper(const WarningType& warning) {
-    MBIMBaseWarning::registerWarning(std::make_unique<WarningType>(warning));
-}
 
 
 

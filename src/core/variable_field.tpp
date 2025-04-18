@@ -4,13 +4,15 @@
 #include <locale>
 
 #include "variable_field.h"
+#include "exception/mbim_base_exception.h"
+#include "exception/mbim_warnings.h"
 
 #include <iostream>
 
 
 template<typename T>
-VariableField<T>::VariableField(const std::string& name, const std::string& desc)
-    : Field<T>(name, desc) {}
+VariableField<T>::VariableField(const std::string& name, const std::string& desc, size_t _maxLength)
+    : Field<T>(name, desc), maxLength(_maxLength) {}
 
 template<typename T>
 void VariableField<T>::setOffsetLength(uint32_t ofs, uint32_t len, hexStream& hs, size_t bs) {
@@ -22,6 +24,14 @@ void VariableField<T>::setOffsetLength(uint32_t ofs, uint32_t len, hexStream& hs
 template<typename T>
 void VariableField<T>::resolve() {
     if (length == 0 || hs_ref == nullptr) return;
+
+    if (length > maxLength) {
+        VariableFieldTooLongWarning ex(
+            "Field '" + this->getName() + "' exceeds maximum allowed length per specification: max: " +
+            std::to_string(maxLength) + ", got: " + std::to_string(length) + "."
+        );
+        registerWarningHelper(ex);
+    }
 
     size_t saved = hs_ref->currentOffset();
 
