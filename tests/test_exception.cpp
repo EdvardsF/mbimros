@@ -1,9 +1,9 @@
 #include "../external/catch.h"
 
 #include <sstream>
+#include <memory>
 
 #include "../src/core/exception/mbim_base_exception.h"
-
 
 TEST_CASE("MBIMException basic behavior", "[exception]") {
     MBIMBaseException ex("Test exception");
@@ -18,7 +18,6 @@ TEST_CASE("MBIMException basic behavior", "[exception]") {
     REQUIRE(output.find("[ ERROR ]") != std::string::npos);
     REQUIRE(output.find("Test exception") != std::string::npos);
 }
-
 
 #include "../src/core/exception/mbim_errors.h"
 
@@ -44,43 +43,40 @@ TEST_CASE("Different MBIMException derived classes produce correct messages", "[
     REQUIRE(std::string(ex2.what()).find("Failed to parse field") != std::string::npos);
 }
 
-
 TEST_CASE("MBIMWarning basic behavior", "[warning]") {
     MBIMBaseWarning::clearWarnings();
-    MBIMBaseWarning warn("Something might be wrong");
-    MBIMBaseWarning::registerWarning(warn);
 
-    REQUIRE(warn.getMessage() == "Something might be wrong");
-    REQUIRE(warn.type() == "MBIMWarning");
+    auto warn = std::make_unique<MBIMBaseWarning>("Something might be wrong");
+    MBIMBaseWarning::registerWarning(std::move(warn));
 
     const auto& warnings = MBIMBaseWarning::getWarnings();
     REQUIRE(warnings.size() == 1);
-    REQUIRE(warnings[0].getMessage() == "Something might be wrong");
+    REQUIRE(warnings[0]->getMessage() == "Something might be wrong");
+    REQUIRE(warnings[0]->type() == "MBIMWarning");
 
     std::ostringstream oss;
-    oss << warn;
+    oss << *warnings[0];
     std::string output = oss.str();
     REQUIRE(output.find("[ WARNING ]") != std::string::npos);
 }
-
 
 #include "../src/core/exception/mbim_warnings.h"
 
 TEST_CASE("Specific MBIMWarning derived classes register properly", "[warning]") {
     MBIMBaseWarning::clearWarnings();
 
-    VariableFieldTooLongWarning warn1("expected 8, got 16");
-    UnknownFieldWarning warn2("Unknown tag 0xAA");
-    MBIMBaseWarning::registerWarning(warn1);
-    MBIMBaseWarning::registerWarning(warn2);
+    auto warn1 = std::make_unique<VariableFieldTooLongWarning>("expected 8, got 16");
+    auto warn2 = std::make_unique<UnknownFieldWarning>("Unknown tag 0xAA");
 
-    REQUIRE(warn1.type() == "VariableFieldTooLongWarning");
-    REQUIRE(warn2.type() == "UnknownFieldWarning");
-
+    MBIMBaseWarning::registerWarning(std::move(warn1));
+    MBIMBaseWarning::registerWarning(std::move(warn2));
 
     const auto& warnings = MBIMBaseWarning::getWarnings();
     REQUIRE(warnings.size() == 2);
 
-    REQUIRE(warnings[0].getMessage().find("Variable field too long") != std::string::npos);
-    REQUIRE(warnings[1].getMessage().find("Unknown field encountered") != std::string::npos);
+    REQUIRE(warnings[0]->type() == "VariableFieldTooLongWarning");
+    REQUIRE(warnings[0]->getMessage().find("Variable field too long") != std::string::npos);
+
+    REQUIRE(warnings[1]->type() == "UnknownFieldWarning");
+    REQUIRE(warnings[1]->getMessage().find("Unknown field encountered") != std::string::npos);
 }
