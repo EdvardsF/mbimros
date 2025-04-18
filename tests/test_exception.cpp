@@ -1,11 +1,11 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.h"
 
-#include "../src/core/exception/mbim_exception.h"
+#include "../src/core/exception/mbim_base_exception.h"
 
 
 TEST_CASE("MBIMException basic behavior", "[exception]") {
-    MBIMException ex("Test exception");
+    MBIMBaseException ex("Test exception");
 
     REQUIRE(std::string(ex.what()) == "Test exception");
     REQUIRE(ex.type() == "MBIMException");
@@ -45,14 +45,14 @@ TEST_CASE("Different MBIMException derived classes produce correct messages", "[
 
 
 TEST_CASE("MBIMWarning basic behavior", "[warning]") {
-    MBIMWarning::clearWarnings();
-    MBIMWarning warn("Something might be wrong");
-    MBIMWarning::registerWarning(warn);
+    MBIMBaseWarning::clearWarnings();
+    MBIMBaseWarning warn("Something might be wrong");
+    MBIMBaseWarning::registerWarning(warn);
 
     REQUIRE(warn.getMessage() == "Something might be wrong");
     REQUIRE(warn.type() == "MBIMWarning");
 
-    const auto& warnings = MBIMWarning::getWarnings();
+    const auto& warnings = MBIMBaseWarning::getWarnings();
     REQUIRE(warnings.size() == 1);
     REQUIRE(warnings[0].getMessage() == "Something might be wrong");
 
@@ -66,18 +66,18 @@ TEST_CASE("MBIMWarning basic behavior", "[warning]") {
 #include "../src/core/exception/mbim_warnings.h"
 
 TEST_CASE("Specific MBIMWarning derived classes register properly", "[warning]") {
-    MBIMWarning::clearWarnings();
+    MBIMBaseWarning::clearWarnings();
 
     VariableFieldTooLongWarning warn1("expected 8, got 16");
     UnknownFieldWarning warn2("Unknown tag 0xAA");
-    MBIMWarning::registerWarning(warn1);
-    MBIMWarning::registerWarning(warn2);
+    MBIMBaseWarning::registerWarning(warn1);
+    MBIMBaseWarning::registerWarning(warn2);
 
     REQUIRE(warn1.type() == "VariableFieldTooLongWarning");
     REQUIRE(warn2.type() == "UnknownFieldWarning");
 
 
-    const auto& warnings = MBIMWarning::getWarnings();
+    const auto& warnings = MBIMBaseWarning::getWarnings();
     REQUIRE(warnings.size() == 2);
 
     REQUIRE(warnings[0].getMessage().find("Variable field too long") != std::string::npos);

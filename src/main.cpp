@@ -4,7 +4,7 @@
 #include "protocol/v1/messages.h"
 #include "parser/parser.h"
 #include "core/information_buffer.h"
-#include "core/exception/mbim_exception.h"
+#include "core/exception/mbim_base_exception.h"
 #include "core/exception/mbim_errors.h"
 #include "core/exception/mbim_warnings.h"
 
