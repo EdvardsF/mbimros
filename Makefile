@@ -5,21 +5,30 @@ SRC_DIR := src
 TEST_DIR := tests
 
 SRCS := $(shell find $(SRC_DIR) -name '*.cpp')
+TEST_SRCS := $(shell find $(TEST_DIR) -name '*.cpp')
 
 OUT := mbimros
-TEST_SRCS := $(TEST_DIR)/test_exception.cpp
-TEST_OUTPUT := test_mbim
+TEST_OUT := test_mbimros
 
 all: $(OUT)
 
 $(OUT): $(SRCS)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
-test:
-	$(CXX) $(CXXFLAGS) $(filter-out src/main.cpp, $(SRCS)) $(TEST_SRCS) -o $(TEST_OUTPUT)
-	./$(TEST_OUTPUT)
+# Build and run all tests
+test: $(TEST_OUT)
+	./$(TEST_OUT)
+
+# Only build tests, don't run
+$(TEST_OUT): $(filter-out $(SRC_DIR)/main.cpp, $(SRCS)) $(TEST_SRCS)
+	$(CXX) $(CXXFLAGS) $^ -o $@
+
+# Run a specific test file
+test_one:
+	$(CXX) $(CXXFLAGS) $(filter-out $(SRC_DIR)/main.cpp, $(SRCS)) $(TEST_FILE) -o single_test
+	./single_test
 
 clean:
-	rm -f $(OUT) $(TEST_OUTPUT)
+	rm -f $(OUT) $(TEST_OUT) single_test
 
-.PHONY: all clean test
+.PHONY: all clean test test_one
