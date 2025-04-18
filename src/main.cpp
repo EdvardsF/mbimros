@@ -11,6 +11,13 @@
 
 extern void register_all_buffers();
 
+template<typename WarningType>
+void registerWarningHelper(const WarningType& warning) {
+    MBIMBaseWarning::registerWarning(std::make_unique<WarningType>(warning));
+}
+
+
+
 int main() {
     std::string fileContents = readFile("mbim_log.txt");    
     std::vector<MatchInfo> parsedLines = parseMbimLines(fileContents);
@@ -44,6 +51,14 @@ int main() {
     MBIM_COMMAND_MSG mbim_close_msg(ex);
 
     std::cout << mbim_close << std::endl;
+
+    DeprecatedFieldWarning exc1("Field MBIM_FIELD is depracated.");
+    registerWarningHelper(exc1);
+
+    UnsupportedFeatureWarning exc2("Feature x is currently not supported.");
+    registerWarningHelper(exc2);
+
+
 
     std::cout << mbim_close_msg.to_string() << std::endl;
 

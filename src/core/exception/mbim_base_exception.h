@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <memory>
 
 class MBIMBaseException : public std::exception {
 private:
@@ -31,12 +32,13 @@ public:
     virtual std::string type() const;
     const std::string& getMessage() const;
 
-    static void registerWarning(const MBIMBaseWarning& warning);
-    static const std::vector<MBIMBaseWarning>& getWarnings();
+    static void registerWarning(std::unique_ptr<MBIMBaseWarning> warning);
+    static const std::vector<std::unique_ptr<MBIMBaseWarning>>& getWarnings();
     static void clearWarnings();
 
     friend std::ostream& operator<<(std::ostream& os, const MBIMBaseWarning& ex);
 
 private:
-    static std::vector<MBIMBaseWarning>& warnings();
+    static std::vector<std::unique_ptr<MBIMBaseWarning>>& warnings();
+
 };

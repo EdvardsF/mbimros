@@ -13,7 +13,7 @@ struct Field;  // forward declare
 class Serializable {
 public:
     void registerField(FieldBase* field);
-    virtual std::string to_string() const;
+    virtual std::string to_string(bool printWarnings = true) const;
     virtual ~Serializable() = default;
 
     template<typename T>

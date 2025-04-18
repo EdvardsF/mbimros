@@ -1,19 +1,29 @@
-#include "serializable.h"
 #include <sstream>
 #include <iomanip>
 #include <algorithm>
+
+#include "serializable.h"
+#include "exception/mbim_base_exception.h"
+#include "exception/mbim_warnings.h"
 
 
 void Serializable::registerField(FieldBase* field) {
     fields.push_back(field);
 }
 
-std::string Serializable::to_string() const {
+std::string Serializable::to_string(bool printWarnings) const {
     std::ostringstream oss;
+
+    if (printWarnings && MBIMBaseWarning::getWarnings().size() > 0) {
+        oss << "---------------WARNINGS----------------\n";
+        for (const auto& warning : MBIMBaseWarning::getWarnings()) {
+            oss << *warning << "\n";
+        }
+    }
 
     if (embedded_header) {
         oss << "-----------------HEADER-----------------\n";
-        oss << embedded_header->to_string();
+        oss << embedded_header->to_string(false);
         if (!embedded_fragment_header) {
             oss << "\n------------COMMAND METADATA-------------\n";
         }
@@ -21,7 +31,7 @@ std::string Serializable::to_string() const {
 
     if (embedded_fragment_header) {
         oss << "\n------------FRAGMENT HEADER-------------\n";
-        oss << embedded_fragment_header->to_string();
+        oss << embedded_fragment_header->to_string(false);
         oss << "\n------------COMMAND METADATA-------------\n";
     }
 
@@ -70,7 +80,7 @@ std::string Serializable::to_string() const {
 
     if (embedded_buffer) {
         oss << "\n----------INFORMATION_BUFFER-----------\n";
-        oss << embedded_buffer->to_string();
+        oss << embedded_buffer->to_string(false);
     }
 
     return oss.str();

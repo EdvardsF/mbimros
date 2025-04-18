@@ -1,6 +1,5 @@
 #include "mbim_base_exception.h"
 
-
 MBIMBaseException::MBIMBaseException(const std::string& msg)
     : message(msg) {}
 
@@ -22,22 +21,22 @@ const std::string& MBIMBaseException::getMessage() const {
     return message;
 }
 
+// ------------------------- Warnings -------------------------
 
 MBIMBaseWarning::MBIMBaseWarning(const std::string& msg)
     : message(msg) {}
 
 MBIMBaseWarning::~MBIMBaseWarning() = default;
 
-void MBIMBaseWarning::registerWarning(const MBIMBaseWarning& warning) {
-    warnings().push_back(warning);
+void MBIMBaseWarning::registerWarning(std::unique_ptr<MBIMBaseWarning> warning) {
+    warnings().push_back(std::move(warning));
 }
-
 
 const std::string& MBIMBaseWarning::getMessage() const {
     return message;
 }
 
-const std::vector<MBIMBaseWarning>& MBIMBaseWarning::getWarnings() {
+const std::vector<std::unique_ptr<MBIMBaseWarning>>& MBIMBaseWarning::getWarnings() {
     return warnings();
 }
 
@@ -55,7 +54,7 @@ std::ostream& operator<<(std::ostream& os, const MBIMBaseWarning& ex) {
     return os;
 }
 
-std::vector<MBIMBaseWarning>& MBIMBaseWarning::warnings() {
-    static std::vector<MBIMBaseWarning> warnings_instance;
+std::vector<std::unique_ptr<MBIMBaseWarning>>& MBIMBaseWarning::warnings() {
+    static std::vector<std::unique_ptr<MBIMBaseWarning>> warnings_instance;
     return warnings_instance;
 }
