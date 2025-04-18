@@ -16,6 +16,15 @@ VariableField<T>::VariableField(const std::string& name, const std::string& desc
 
 template<typename T>
 void VariableField<T>::setOffsetLength(uint32_t ofs, uint32_t len, hexStream& hs, size_t bs) {
+
+    if (len > maxLength) {
+        VariableFieldTooLongWarning ex(
+            "Field '" + this->getName() + "' exceeds maximum allowed length per specification: max: " +
+            std::to_string(maxLength) + ", got: " + std::to_string(length) + "."
+        );
+        registerWarningHelper(ex);
+    }
+
     offset = ofs + bs;
     length = len;
     hs_ref = &hs;
@@ -24,14 +33,6 @@ void VariableField<T>::setOffsetLength(uint32_t ofs, uint32_t len, hexStream& hs
 template<typename T>
 void VariableField<T>::resolve() {
     if (length == 0 || hs_ref == nullptr) return;
-
-    if (length > maxLength) {
-        VariableFieldTooLongWarning ex(
-            "Field '" + this->getName() + "' exceeds maximum allowed length per specification: max: " +
-            std::to_string(maxLength) + ", got: " + std::to_string(length) + "."
-        );
-        registerWarningHelper(ex);
-    }
 
     size_t saved = hs_ref->currentOffset();
 
