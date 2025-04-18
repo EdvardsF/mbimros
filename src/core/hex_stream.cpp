@@ -93,16 +93,27 @@ size_t hexStream::currentOffset() const {
 }
 
 void hexStream::seek(size_t newOffset) {
-    if (newOffset > buffer.size() / 2)
-        throw std::out_of_range("hexStream::seek out of bounds");
+    size_t maxOffset = buffer.size() / 2;
+    if (newOffset > maxOffset) {
+        throw InvalidOffsetException(
+            "Tried to seek to offset " + std::to_string(newOffset) +
+            ", but maximum allowed offset is " + std::to_string(maxOffset) + "."
+        );
+    }
     offset = newOffset;
 }
+
 
 size_t hexStream::availableBytes() const {
     return (buffer.size() / 2) - offset;
 }
 
 void hexStream::checkAvailable(size_t count) const {
-    if (count > availableBytes())
-        throw std::invalid_argument("hexStream: insufficient bytes available");
+    if (count > availableBytes()) {
+        throw BufferTooShortException(
+            "Requested " + std::to_string(count) + 
+            " bytes, but only " + std::to_string(availableBytes()) + " available."
+        );
+    }
 }
+

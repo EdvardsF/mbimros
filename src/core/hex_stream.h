@@ -4,6 +4,8 @@
 #include <cstdint>
 #include <stdexcept>
 
+#include "exception/mbim_errors.h"
+
 struct hexStream {
     std::string buffer;
     size_t bufferSize;
