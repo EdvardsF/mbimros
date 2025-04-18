@@ -25,7 +25,7 @@ $(TEST_OUT): $(filter-out $(SRC_DIR)/main.cpp, $(SRCS)) $(TEST_SRCS)
 
 # Run a specific test file
 test_one:
-	$(CXX) $(CXXFLAGS) $(filter-out $(SRC_DIR)/main.cpp, $(SRCS)) $(TEST_FILE) -o single_test
+	$(CXX) $(CXXFLAGS) $(filter-out $(SRC_DIR)/main.cpp, $(SRCS)) tests/catch_config.cpp $(TEST_FILE) -o single_test
 	./single_test
 
 clean:
