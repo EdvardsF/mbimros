@@ -4,10 +4,10 @@
 #include <sstream>
 #include <type_traits>
 #include <functional>
+#include <unordered_map>
 
 #include "field_base.h"
 #include "serializable.h"
-
 
 struct Serializable;
 
@@ -23,6 +23,7 @@ struct Field : public FieldBase {
     std::function<std::string(const std::string&)> strToString;
     std::function<std::string(uint32_t)> numberToString;
 
+    std::unordered_map<uint32_t, std::string> bitDescriptions;
 
     Field(const std::string& _name, const std::string& _desc)
         : value{}, name(_name), description(_desc) {}
@@ -61,9 +62,16 @@ struct Field : public FieldBase {
     }
 
     bool isBitmask() const override {
-        return static_cast<bool>(bitmaskToString);
+        return static_cast<bool>(bitmaskToString) || !bitDescriptions.empty();
     }
 
+    uint32_t getRawValue() const override {
+        if constexpr (std::is_integral_v<T>) {
+            return static_cast<uint32_t>(value);
+        } else {
+            return 0;
+        }
+    }
 
     std::string getName() const override { return name; }
 
@@ -84,14 +92,8 @@ struct Field : public FieldBase {
             } else {
                 return std::to_string(static_cast<std::underlying_type_t<T>>(value));
             }
-        } else if constexpr (std::is_same_v<T, uint32_t>) {
-            if (bitmaskToString) {
-                return std::to_string(value) + "\n" + bitmaskToString(value);
-            } else if (numberToString) {
-                return std::to_string(value) + " [" + numberToString(value) + "]";
-            } else {
-                return std::to_string(value);
-            }
+        } else if constexpr (std::is_same_v<T, uint32_t>) { // bitmask (quick and dirty fix)
+            return std::to_string(value);
         } else if constexpr (std::is_integral_v<T>) {
             if (enumToString) {
                 return std::to_string(value) + " [" + enumToString(value) + "]";
@@ -103,5 +105,31 @@ struct Field : public FieldBase {
         }
     }
 
+    // Quick and dirty fix to improve formatting without chaging data types across whole code base
+    std::vector<std::pair<std::string,std::string>> getBitmaskDescriptions() const override {
+        std::vector<std::pair<std::string, std::string>> descriptions;
 
+        std::istringstream stream(bitmaskToString(value));
+        std::string line;
+        while (std::getline(stream, line)) {
+            std::vector<std::string> result;
+            std::stringstream ss(line);
+            std::string token;
+
+            while (std::getline(ss, token, '-')) {
+                result.push_back(token);
+            }
+
+            descriptions.push_back({result[0], result[1]});
+
+        }
+        return descriptions;
+    }
+
+private:
+    std::string bitFlagName(uint32_t bit) const {
+        std::ostringstream oss;
+        oss << "0x" << std::hex << bit;
+        return oss.str();
+    }
 };

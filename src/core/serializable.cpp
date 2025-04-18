@@ -1,5 +1,7 @@
 #include "serializable.h"
 #include <sstream>
+#include <iomanip>
+#include <algorithm>
 
 
 void Serializable::registerField(FieldBase* field) {
@@ -23,24 +25,46 @@ std::string Serializable::to_string() const {
         oss << "\n------------COMMAND METADATA-------------\n";
     }
 
-
     bool data_buffer_marker_printed = false;
 
+    size_t max_width = 0;
     for (const auto* f : fields) {
-        // Check if it's a VariableField and the marker wasn't printed yet
+        std::ostringstream tmp;
+        tmp << std::left << f->getName() << ": " << f->getValueAsString();
+        max_width = std::max(max_width, tmp.str().size());
+
+        if (f->isBitmask()) {
+            for (const auto& [flag, _] : f->getBitmaskDescriptions()) {
+                std::ostringstream flag_tmp;
+                flag_tmp << "  -> " << flag;
+                max_width = std::max(max_width, flag_tmp.str().size());
+            }
+        }
+    }
+    max_width += 2;
+
+    for (const auto* f : fields) {
         if (!data_buffer_marker_printed && f->isDataField()) {
             oss << "\n---------------DATA BUFFER---------------\n";
             data_buffer_marker_printed = true;
         }
 
+        std::ostringstream line;
+        line << std::left << f->getName() << ": " << f->getValueAsString();
+
+        oss << std::left << std::setw(max_width) << line.str();
+        if (!f->getDescription().empty()) {
+            oss << "// " << f->getDescription();
+        }
+        oss << "\n";
+
         if (f->isBitmask()) {
-            oss << f->getName() << ": ..." << f->getDescription() << " | RAW=" << f->getValueAsString();
-        } else {
-            oss << f->getName() << ": " << f->getValueAsString();
-            if (!f->getDescription().empty()) {
-                oss << " ..." << f->getDescription();
+            for (const auto& [flag, description] : f->getBitmaskDescriptions()) {
+                std::ostringstream flag_line;
+                flag_line << "  -> " << flag;
+                oss << std::left << std::setw(max_width) << flag_line.str();
+                oss << "// " << description << "\n";
             }
-            oss << "\n";
         }
     }
 
@@ -51,6 +75,8 @@ std::string Serializable::to_string() const {
 
     return oss.str();
 }
+
+
 
 void Serializable::includeHeader(const Serializable* header) {
     embedded_header = header;

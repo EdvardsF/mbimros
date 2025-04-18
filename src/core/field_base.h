@@ -8,4 +8,8 @@ struct FieldBase {
     virtual bool isBitmask() const { return false; }
     virtual ~FieldBase() = default;
     virtual bool isDataField() const { return false; }
+    virtual uint32_t getRawValue() const { return 0; }
+    virtual std::vector<std::pair<std::string,std::string>> getBitmaskDescriptions() const {
+        return {};
+    }
 };
