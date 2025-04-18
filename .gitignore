@@ -20,6 +20,8 @@ compile_commands.json
 *.out
 mbimros
 test_mbim
+single_test
+test_mbimros
 
 # Logs and temporary files
 *.log
