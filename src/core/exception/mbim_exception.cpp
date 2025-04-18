@@ -9,8 +9,8 @@ const char* MBIMException::what() const noexcept {
 }
 
 std::ostream& operator<<(std::ostream& os, const MBIMException& ex) {
-    os << "[ ERROR ] " << ex.type() << ":\n"
-       << "  - " << ex.message << "\n";
+    os << "[ ERROR ] (" << ex.type() << ")\n"
+       << "  - " << ex.getMessage() << "\n";
     return os;
 }
 
@@ -18,17 +18,20 @@ std::string MBIMException::type() const {
     return "MBIMException";
 }
 
+const std::string& MBIMException::getMessage() const {
+    return message;
+}
+
 
 MBIMWarning::MBIMWarning(const std::string& msg)
-    : message(msg) {
-    warnings().push_back(*this);
+    : message(msg) {}
+
+MBIMWarning::~MBIMWarning() = default;
+
+void MBIMWarning::registerWarning(const MBIMWarning& warning) {
+    warnings().push_back(warning);
 }
 
-std::ostream& operator<<(std::ostream& os, const MBIMException& ex) {
-    os << "[ WARNING ] " << ex.type() << ":\n"
-       << "  - " << ex.message << "\n";
-    return os;
-}
 
 const std::string& MBIMWarning::getMessage() const {
     return message;
@@ -38,12 +41,17 @@ const std::vector<MBIMWarning>& MBIMWarning::getWarnings() {
     return warnings();
 }
 
+std::string MBIMWarning::type() const {
+    return "MBIMWarning";
+}
+
 void MBIMWarning::clearWarnings() {
     warnings().clear();
 }
 
-std::ostream& operator<<(std::ostream& os, const MBIMWarning& warn) {
-    os << "MBIM WARNING! " << warn.message << "\n";
+std::ostream& operator<<(std::ostream& os, const MBIMWarning& ex) {
+    os << "[ WARNING ] (" << ex.type() << ")\n"
+       << "  - " << ex.getMessage() << "\n";
     return os;
 }
 
