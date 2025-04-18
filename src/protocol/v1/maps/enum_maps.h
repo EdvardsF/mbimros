@@ -126,3 +126,35 @@ inline std::string map_host_status(MBIM_STATUS_TO_HOST_ENUM status) {
         default: return "Unrecognized status code";
     }
 }
+
+inline std::string map_subscriber_ready_state(SUBSCRIBER_READY_STATE_ENUM state) {
+    switch (state) {
+        case SUBSCRIBER_READY_STATE_ENUM::MBIMSubscriberReadyStateNotInitialized:
+            return "The SIM has not yet completed its initialization";
+        case SUBSCRIBER_READY_STATE_ENUM::MBIMSubscriberReadyStateInitialized:
+            return "The SIM is initialized. All subscriber fields must be valid.";
+        case SUBSCRIBER_READY_STATE_ENUM::MBIMSubscriberReadyStateSimNotInserted:
+            return "The SIM card is not inserted into the device";
+        case SUBSCRIBER_READY_STATE_ENUM::MBIMSubscriberReadyStateBadSim:
+            return "The SIM card inserted into the device is invalid";
+        case SUBSCRIBER_READY_STATE_ENUM::MBIMSubscriberReadyStateFailure:
+            return "A general SIM failure has occurred";
+        case SUBSCRIBER_READY_STATE_ENUM::MBIMSubscriberReadyStateNotActivated:
+            return "The subscription is not activated";
+        case SUBSCRIBER_READY_STATE_ENUM::MBIMSubscriberReadyStateDeviceLocked:
+            return "The SIM is locked and requires PIN1 or PUK1 to unlock";
+        default:
+            return "Unknown Subscriber Ready State";
+    }
+}
+
+inline std::string map_ready_info_flags(MBIM_READY_INFO_FLAGS_ENUM flag) {
+    switch (flag) {
+        case MBIM_READY_INFO_FLAGS_ENUM::MBIMReadyInfoFlagsNone:
+            return "The device is in normal mode";
+        case MBIM_READY_INFO_FLAGS_ENUM::MBIMReadyInfoFlagsProtectUniqueID:
+            return "When this flag is specified, the host will not display the SubscriberId specified in the same CID.";
+        default:
+            return "Unknown Ready Info Flag";
+    }
+}

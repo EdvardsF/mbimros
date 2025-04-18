@@ -136,3 +136,17 @@ enum class CTRL_CAPS_ENUM : uint32_t {
     MBIM_CTRL_CAPS_MULTI_CARRIER     = 16
 };
 
+enum class SUBSCRIBER_READY_STATE_ENUM : uint32_t {
+    MBIMSubscriberReadyStateNotInitialized = 0,
+    MBIMSubscriberReadyStateInitialized,
+    MBIMSubscriberReadyStateSimNotInserted,
+    MBIMSubscriberReadyStateBadSim,
+    MBIMSubscriberReadyStateFailure,
+    MBIMSubscriberReadyStateNotActivated,
+    MBIMSubscriberReadyStateDeviceLocked
+};
+
+enum class MBIM_READY_INFO_FLAGS_ENUM : uint32_t {
+    MBIMReadyInfoFlagsNone = 0,
+    MBIMReadyInfoFlagsProtectUniqueID
+};
