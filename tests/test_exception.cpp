@@ -1,5 +1,6 @@
-#define CATCH_CONFIG_MAIN
 #include "catch.h"
+
+#include <sstream>
 
 #include "../src/core/exception/mbim_base_exception.h"
 

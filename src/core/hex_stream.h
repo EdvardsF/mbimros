@@ -26,7 +26,8 @@ struct hexStream {
     size_t currentOffset() const;
     void seek(size_t newOffset);
 
-private:
     size_t availableBytes() const;
+
+private:
     void checkAvailable(size_t count) const;
 };
