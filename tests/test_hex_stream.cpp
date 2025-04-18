@@ -1,4 +1,4 @@
-#include "catch.h"
+#include "../external/catch.h"
 
 #include "../src/core/exception/mbim_errors.h"
 #include "../src/core/hex_stream.h"

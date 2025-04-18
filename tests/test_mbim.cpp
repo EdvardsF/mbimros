@@ -1,5 +1,4 @@
-// #define CATCH_CONFIG_MAIN
-// #include "catch.h"
+// #include "../external/catch.h"
 
 // #include "core/hex_stream.h"
 // #include "protocol/messages.h"

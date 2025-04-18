@@ -1,4 +1,4 @@
-#include "catch.h"
+#include "../external/catch.h"
 
 #include <sstream>
 
