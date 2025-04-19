@@ -31,9 +31,18 @@ struct FieldParsingException : public MBIMBaseException {
 
 struct InvalidOffsetException : public MBIMBaseException {
     explicit InvalidOffsetException(const std::string& details)
-        : MBIMBaseException("Given variable offset is out of bounds" + details) {}
+        : MBIMBaseException("Given variable offset is out of bounds: " + details) {}
 
     std::string type() const override {
         return "InvalidOffsetException";
+    }
+};
+
+struct InvalidByteAlignment : public MBIMBaseException {
+    explicit InvalidByteAlignment(const std::string& details)
+        : MBIMBaseException("Invalid hex buffer length: " + details) {}
+
+    std::string type() const override {
+        return "InvalidByteAlignment";
     }
 };

@@ -103,6 +103,17 @@ void hexStream::seek(size_t newOffset) {
     offset = newOffset;
 }
 
+size_t hexStream::totalBufferSize() {
+    return buffer.size() / 2;
+}
+
+bool hexStream::isAlignedAt4Bytes() {
+    if (buffer.size() % 2 != 0) {
+        throw InvalidByteAlignment("hex buffer must have an even number of characters (full bytes required), got: " + std::to_string(buffer.size()) + " characters.");
+    }
+    return buffer.size() % 8 == 0;
+}
+
 
 size_t hexStream::availableBytes() const {
     return (buffer.size() / 2) - offset;

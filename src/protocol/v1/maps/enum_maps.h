@@ -132,7 +132,7 @@ inline std::string map_subscriber_ready_state(SUBSCRIBER_READY_STATE_ENUM state)
         case SUBSCRIBER_READY_STATE_ENUM::MBIMSubscriberReadyStateNotInitialized:
             return "The SIM has not yet completed its initialization";
         case SUBSCRIBER_READY_STATE_ENUM::MBIMSubscriberReadyStateInitialized:
-            return "The SIM is initialized. All subscriber fields must be valid.";
+            return "The SIM is initialized";
         case SUBSCRIBER_READY_STATE_ENUM::MBIMSubscriberReadyStateSimNotInserted:
             return "The SIM card is not inserted into the device";
         case SUBSCRIBER_READY_STATE_ENUM::MBIMSubscriberReadyStateBadSim:
@@ -153,7 +153,7 @@ inline std::string map_ready_info_flags(MBIM_READY_INFO_FLAGS_ENUM flag) {
         case MBIM_READY_INFO_FLAGS_ENUM::MBIMReadyInfoFlagsNone:
             return "The device is in normal mode";
         case MBIM_READY_INFO_FLAGS_ENUM::MBIMReadyInfoFlagsProtectUniqueID:
-            return "When this flag is specified, the host will not display the SubscriberId specified in the same CID.";
+            return "whether the host will display the SubscriberId in this CID";
         default:
             return "Unknown Ready Info Flag";
     }

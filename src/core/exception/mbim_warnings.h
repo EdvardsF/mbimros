@@ -38,3 +38,12 @@ struct UnsupportedFeatureWarning : public MBIMBaseWarning {
         return "UnsupportedFeatureWarning";
     }
 };
+
+struct HexBufferTooLongWarning : public MBIMBaseWarning {
+    explicit HexBufferTooLongWarning(const std::string& details)
+        : MBIMBaseWarning("Hex buffer is longer than expected, some bytes did not get parsed: " + details) {}
+
+    std::string type() const override {
+        return "HexBufferTooLongWarning";
+    }
+};

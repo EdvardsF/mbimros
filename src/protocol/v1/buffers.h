@@ -3,6 +3,10 @@
 #include "../../core/information_buffer.h"
 #include "../../core/variable_field.h"
 #include "../../core/information_buffer.h"
+#include "../../core/exception/mbim_base_exception.h"
+#include "../../core/exception/mbim_warnings.h"
+#include "../../helpers/helpers.h"
+
 
 #include "enums.h"
 #include "maps/maps.h"
@@ -21,5 +25,14 @@ struct MBIM_DEVICE_CAPS_INFO : public informationBuffer {
 
     void parse(hexStream& hs, MESSAGE_QUERY_OR_SET_ENUM command_type) override;
 };
+
+struct MBIM_SUBSCRIBER_READY_INFO : public informationBuffer {
+    Field<SUBSCRIBER_READY_STATE_ENUM> READY_STATE      { "READY_STATE", "Subscription ready state" };
+    Field<MBIM_READY_INFO_FLAGS_ENUM> READY_INFO        { "READY_INFO", "Whether to show ICCID in this command" };
+    Field<uint32_t> ELEMENT_COUNT                       { "ELEMENT_COUNT", "Number of telephone numbers following this element" };
+
+    void parse(hexStream& hs, MESSAGE_QUERY_OR_SET_ENUM command_type) override;
+};
+
 
 

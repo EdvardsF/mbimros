@@ -22,6 +22,8 @@ struct hexStream {
     std::string readHexBytes(size_t n);
     std::u16string readUtf16LE(size_t num_code_units);
     std::string readRemaining();
+    size_t totalBufferSize();
+    bool isAlignedAt4Bytes();
 
     size_t currentOffset() const;
     void seek(size_t newOffset);

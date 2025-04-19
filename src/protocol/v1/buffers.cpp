@@ -70,9 +70,69 @@ void MBIM_DEVICE_CAPS_INFO::parse(hexStream& hs, MESSAGE_QUERY_OR_SET_ENUM comma
         firmware_info->resolve();
         hardware_info->resolve();
     }
+
+    if (hs.availableBytes() != 0) {
+        HexBufferTooLongWarning ex("last " + std::to_string(hs.availableBytes()) + " bytes not parsed.");
+        registerWarningHelper(ex);
+    }
         
+}
+
+void MBIM_SUBSCRIBER_READY_INFO::parse(hexStream& hs, MESSAGE_QUERY_OR_SET_ENUM command_type) {
+    if (command_type == MESSAGE_QUERY_OR_SET_ENUM::QUERY) {
+        
+
+    } else if (command_type == MESSAGE_QUERY_OR_SET_ENUM::SET) {
+        size_t base_offset = hs.currentOffset();
+
+        READY_STATE.bind(this);
+        READY_STATE.setEnumFormatter(map_subscriber_ready_state);
+        READY_STATE.set(static_cast<SUBSCRIBER_READY_STATE_ENUM>(hs.readUint32LE()));
+
+        auto* subscriber_id = new VariableField<>("SUBSCRIBER_ID", "IMSI for GSM-based deices, MIN or IRM for cdma-based", 30);
+        subscriber_id->bind(this);
+        uint32_t off_1 = hs.readUint32LE();
+        uint32_t len_1 = hs.readUint32LE();
+        subscriber_id->setOffsetLength(off_1, len_1, hs, base_offset);
+
+        auto* sim_iccid = new VariableField<>("SIM_ICCID", "International Circuit Card ID", 40);
+        sim_iccid->bind(this);
+        uint32_t off_2 = hs.readUint32LE();
+        uint32_t len_2 = hs.readUint32LE();
+        sim_iccid->setOffsetLength(off_2, len_2, hs, base_offset);
+
+        READY_INFO.bind(this);
+        READY_INFO.setEnumFormatter(map_ready_info_flags);
+        READY_INFO.set(static_cast<MBIM_READY_INFO_FLAGS_ENUM>(hs.readUint32LE()));
+
+        ELEMENT_COUNT.bind(this);
+        ELEMENT_COUNT.set(hs.readUint32LE());
+
+        std::vector<VariableField<>*> listItems;
+        for (size_t i = 0; i < ELEMENT_COUNT.value; i++) {
+            auto* item_n = new VariableField<>("TELEPHONE_NUMBER_" + std::to_string(i), "Stored telephone number", 15);
+            item_n->bind(this);
+            uint32_t offset = hs.readUint32LE();
+            uint32_t length = hs.readUint32LE();
+            listItems.push_back(item_n);
+            item_n->setOffsetLength(offset, length, hs, base_offset);
+        }
+
+        subscriber_id->resolve();
+        sim_iccid->resolve();
+
+        for (auto* item: listItems) {
+            item->resolve();
+        }
+    }
+
+    if (hs.availableBytes() != 0) {
+        HexBufferTooLongWarning ex("last " + std::to_string(hs.availableBytes()) + " bytes not parsed.");
+        registerWarningHelper(ex);
+    }
 }
 
 void register_all_buffers() {
     register_buffer<MBIM_DEVICE_CAPS_INFO>("a289cc33bcbb8b4fb6b0133ec2aae6df", 1); // BASIC_CONNECT + DEVICE_CAPS
+    register_buffer<MBIM_SUBSCRIBER_READY_INFO>("a289cc33bcbb8b4fb6b0133ec2aae6df", 2); // BASIC_CONNECT + MBIM_SUBSCRIBER_READY_STATUS
 }

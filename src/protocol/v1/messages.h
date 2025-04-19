@@ -11,6 +11,8 @@
 #include "../../core/field.h"
 #include "../../core/serializable.h"
 #include "../../core/information_buffer.h"
+#include "../../core/exception/mbim_base_exception.h"
+#include "../../core/exception/mbim_errors.h"
 
 
 
