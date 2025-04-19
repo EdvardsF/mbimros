@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+
 void EMPTY_BUFFER::parse(hexStream& hs) {
     HexStreamParseGuard _(hs);
 }
@@ -9,37 +10,14 @@ void EMPTY_BUFFER::parse(hexStream& hs) {
 void MBIM_DEVICE_CAPS_INFO::parse(hexStream& hs) {
     HexStreamParseGuard guard(hs);
 
-    DEVICE_TYPE.bind(this);
-    DEVICE_TYPE.setEnumFormatter(map_device_type);
-    DEVICE_TYPE.set(static_cast<DEVICE_TYPE_ENUM>(hs.readUint32LE()));
-
-    CELLULAR_CLASS.bind(this);
-    CELLULAR_CLASS.setBitmaskFormatter(map_cellular_class);
-    CELLULAR_CLASS.set(hs.readUint32LE());
-
-    VOICE_CLASS.bind(this);
-    VOICE_CLASS.setEnumFormatter(map_voice_class);
-    VOICE_CLASS.set(static_cast<VOICE_CLASS_ENUM>(hs.readUint32LE()));
-
-    SIM_CLASS.bind(this);
-    SIM_CLASS.setEnumFormatter(map_sim_class);
-    SIM_CLASS.set(static_cast<SIM_CLASS_ENUM>(hs.readUint32LE()));
-
-    DATA_CLASS.bind(this);
-    DATA_CLASS.setBitmaskFormatter(map_data_class);
-    DATA_CLASS.set(hs.readUint32LE());
-
-    SMS_CAPS.bind(this);
-    SMS_CAPS.setBitmaskFormatter(map_sms_caps);
-    SMS_CAPS.set(hs.readUint32LE());
-
-    CTRL_CAPS.bind(this);
-    CTRL_CAPS.setBitmaskFormatter(map_ctrl_caps);
-    CTRL_CAPS.set(hs.readUint32LE());
-
-    MAX_SESSIONS.bind(this);
-    MAX_SESSIONS.set(hs.readUint32LE());
-
+    bindFormatSet(DEVICE_TYPE, this, map_device_type, hs.readUint32LE());
+    bindFormatSet(CELLULAR_CLASS, this, map_cellular_class, hs.readUint32LE());
+    bindFormatSet(VOICE_CLASS, this, map_voice_class, hs.readUint32LE());
+    bindFormatSet(SIM_CLASS, this, map_sim_class, hs.readUint32LE());
+    bindFormatSet(DATA_CLASS, this, map_data_class, hs.readUint32LE());
+    bindFormatSet(SMS_CAPS, this, map_sms_caps, hs.readUint32LE());
+    bindFormatSet(CTRL_CAPS, this, map_ctrl_caps, hs.readUint32LE());
+    bindSimpleSet(MAX_SESSIONS, this, hs.readUint32LE());
 
     auto* data_class = new VariableField<>("DATA_CLASS", "A custom data class in case data class bitmask contains 80000000h, ignored otherwise", 22);
     data_class->bind(this);
@@ -76,9 +54,7 @@ void MBIM_DEVICE_CAPS_INFO::parse(hexStream& hs) {
 void MBIM_SUBSCRIBER_READY_INFO::parse(hexStream& hs) {
     HexStreamParseGuard guard(hs);
 
-    READY_STATE.bind(this);
-    READY_STATE.setEnumFormatter(map_subscriber_ready_state);
-    READY_STATE.set(static_cast<SUBSCRIBER_READY_STATE_ENUM>(hs.readUint32LE()));
+    bindFormatSet(READY_STATE, this, map_subscriber_ready_state, hs.readUint32LE());
 
     auto* subscriber_id = new VariableField<>("SUBSCRIBER_ID", "IMSI for GSM-based deices, MIN or IRM for cdma-based", 30);
     
@@ -91,12 +67,8 @@ void MBIM_SUBSCRIBER_READY_INFO::parse(hexStream& hs) {
     uint32_t len_2 = hs.readUint32LE();
     sim_iccid->setOffsetLength(off_2, len_2, hs, guard.startOffset());
 
-    READY_INFO.bind(this);
-    READY_INFO.setEnumFormatter(map_ready_info_flags);
-    READY_INFO.set(static_cast<MBIM_READY_INFO_FLAGS_ENUM>(hs.readUint32LE()));
-
-    ELEMENT_COUNT.bind(this);
-    ELEMENT_COUNT.set(hs.readUint32LE());
+    bindFormatSet(READY_INFO, this, map_ready_info_flags, hs.readUint32LE());
+    bindSimpleSet(ELEMENT_COUNT, this, hs.readUint32LE());
 
     subscriber_id->bind(this);
     sim_iccid->bind(this);
@@ -120,39 +92,35 @@ void MBIM_SUBSCRIBER_READY_INFO::parse(hexStream& hs) {
 }
 void MBIM_SET_RADIO_STATE::parse(hexStream& hs) {
     HexStreamParseGuard guard(hs);
-
-    RADIO_SWITCH_STATE.bind(this);
-    RADIO_SWITCH_STATE.setEnumFormatter(map_radio_switch_state);
-    RADIO_SWITCH_STATE.set(static_cast<MBIM_RADIO_SWITCH_STATE_ENUM>(hs.readUint32LE()));
+    bindFormatSet(RADIO_SWITCH_STATE, this, map_radio_switch_state, hs.readUint32LE());
 }
 
 void MBIM_RADIO_STATE_INFO::parse(hexStream& hs) {
     HexStreamParseGuard guard(hs);
 
-    HW_RADIO_STATE.bind(this);
-    HW_RADIO_STATE.setEnumFormatter(map_radio_switch_state);
-    HW_RADIO_STATE.set(static_cast<MBIM_RADIO_SWITCH_STATE_ENUM>(hs.readUint32LE()));
-
-    SW_RADIO_STATE.bind(this);
-    SW_RADIO_STATE.setEnumFormatter(map_radio_switch_state);
-    SW_RADIO_STATE.set(static_cast<MBIM_RADIO_SWITCH_STATE_ENUM>(hs.readUint32LE()));
+    bindFormatSet(HW_RADIO_STATE, this, map_radio_switch_state, hs.readUint32LE());
+    bindFormatSet(SW_RADIO_STATE, this, map_radio_switch_state, hs.readUint32LE());
 }
 
 
 void register_all_buffers() {
-    register_buffer<EMPTY_BUFFER>("a289cc33bcbb8b4fb6b0133ec2aae6df", 1, BufferDirection::HostToModemQuery); // BASIC_CONNECT + DEVICE_CAPS
-    register_buffer<MBIM_DEVICE_CAPS_INFO>("a289cc33bcbb8b4fb6b0133ec2aae6df", 1, BufferDirection::ModemToHostResponse); // BASIC_CONNECT + DEVICE_CAPS
+    // BASIC_CONNECT + DEVICE_CAPS
+    register_buffer<EMPTY_BUFFER>("a289cc33bcbb8b4fb6b0133ec2aae6df", 1, BufferDirection::HostToModemQuery);
+    register_buffer<MBIM_DEVICE_CAPS_INFO>("a289cc33bcbb8b4fb6b0133ec2aae6df", 1, BufferDirection::ModemToHostResponse);
 
-    register_buffer<EMPTY_BUFFER>("a289cc33bcbb8b4fb6b0133ec2aae6df", 2, BufferDirection::HostToModemQuery); // BASIC_CONNECT + MBIM_SUBSCRIBER_READY_STATUS
-    register_buffer<MBIM_SUBSCRIBER_READY_INFO>("a289cc33bcbb8b4fb6b0133ec2aae6df", 2, BufferDirection::ModemToHostResponse); // BASIC_CONNECT + MBIM_SUBSCRIBER_READY_STATUS
-    register_buffer<MBIM_SUBSCRIBER_READY_INFO>("a289cc33bcbb8b4fb6b0133ec2aae6df", 2, BufferDirection::ModemToHostIndication); // BASIC_CONNECT + MBIM_SUBSCRIBER_READY_STATUS
+    // BASIC_CONNECT + MBIM_SUBSCRIBER_READY_STATUS
+    register_buffer<EMPTY_BUFFER>("a289cc33bcbb8b4fb6b0133ec2aae6df", 2, BufferDirection::HostToModemQuery);
+    register_buffer<MBIM_SUBSCRIBER_READY_INFO>("a289cc33bcbb8b4fb6b0133ec2aae6df", 2, BufferDirection::ModemToHostResponse);
+    register_buffer<MBIM_SUBSCRIBER_READY_INFO>("a289cc33bcbb8b4fb6b0133ec2aae6df", 2, BufferDirection::ModemToHostIndication);
 
-    register_buffer<EMPTY_BUFFER>("a289cc33bcbb8b4fb6b0133ec2aae6df", 3, BufferDirection::HostToModemQuery); // BASIC_CONNECT + MBIM_CID_RADIO_STATE
-    register_buffer<MBIM_SET_RADIO_STATE>("a289cc33bcbb8b4fb6b0133ec2aae6df", 3, BufferDirection::HostToModemSet); // BASIC_CONNECT + MBIM_CID_RADIO_STATE
+    // BASIC_CONNECT + MBIM_CID_RADIO_STATE
+    register_buffer<EMPTY_BUFFER>("a289cc33bcbb8b4fb6b0133ec2aae6df", 3, BufferDirection::HostToModemQuery); 
+    register_buffer<MBIM_SET_RADIO_STATE>("a289cc33bcbb8b4fb6b0133ec2aae6df", 3, BufferDirection::HostToModemSet); 
 
-    register_buffer<MBIM_SET_RADIO_STATE>("a289cc33bcbb8b4fb6b0133ec2aae6df", 3, BufferDirection::HostToModemSet); // BASIC_CONNECT + MBIM_CID_RADIO_STATE
-    register_buffer<EMPTY_BUFFER>("a289cc33bcbb8b4fb6b0133ec2aae6df", 3, BufferDirection::HostToModemQuery); // BASIC_CONNECT + MBIM_CID_RADIO_STATE
-    register_buffer<MBIM_RADIO_STATE_INFO>("a289cc33bcbb8b4fb6b0133ec2aae6df", 3, BufferDirection::ModemToHostResponse); // BASIC_CONNECT + MBIM_CID_RADIO_STATE
-    register_buffer<MBIM_RADIO_STATE_INFO>("a289cc33bcbb8b4fb6b0133ec2aae6df", 3, BufferDirection::ModemToHostIndication); // BASIC_CONNECT + MBIM_CID_RADIO_STATE
+    // BASIC_CONNECT + MBIM_CID_RADIO_STATE
+    register_buffer<MBIM_SET_RADIO_STATE>("a289cc33bcbb8b4fb6b0133ec2aae6df", 4, BufferDirection::HostToModemSet);
+    register_buffer<EMPTY_BUFFER>("a289cc33bcbb8b4fb6b0133ec2aae6df", 4, BufferDirection::HostToModemQuery);
+    register_buffer<MBIM_RADIO_STATE_INFO>("a289cc33bcbb8b4fb6b0133ec2aae6df", 4, BufferDirection::ModemToHostResponse);
+    register_buffer<MBIM_RADIO_STATE_INFO>("a289cc33bcbb8b4fb6b0133ec2aae6df", 4, BufferDirection::ModemToHostIndication);
 
 }

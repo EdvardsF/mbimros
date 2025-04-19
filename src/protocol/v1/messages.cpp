@@ -87,7 +87,7 @@ MBIM_COMMAND_MSG::MBIM_COMMAND_MSG(hexStream& hs) : MESSAGE_HEADER(hs), FRAGMENT
         // TODO: include information buffer length in this call
         includeInformationBuffer(std::move(buffer));
     } else {
-        hs.readHexBytes(INFORMATION_BUFFER_LENGTH.value);
+        throw CidNotFoundException("UUID " + DEVICE_SERVICE_ID.value + "; CID " + std::to_string(CID.value));
     }
 }
 
@@ -153,7 +153,7 @@ MBIM_COMMAND_DONE::MBIM_COMMAND_DONE(hexStream& hs) : MESSAGE_HEADER(hs), FRAGME
         buffer->parse(hs);
         includeInformationBuffer(std::move(buffer));
     } else {
-        hs.readHexBytes(INFORMATION_BUFFER_LENGTH.value);
+        throw CidNotFoundException("UUID " + DEVICE_SERVICE_ID.value + "; CID " + std::to_string(CID.value));
     }
 }
 
@@ -182,6 +182,5 @@ MBIM_INDICATE_STATUS_MSG::MBIM_INDICATE_STATUS_MSG(hexStream& hs) : MESSAGE_HEAD
         buffer->parse(hs);
         includeInformationBuffer(std::move(buffer));
     } else {
-        hs.readHexBytes(INFORMATION_BUFFER_LENGTH.value);
-    }
+        throw CidNotFoundException("UUID " + DEVICE_SERVICE_ID.value + "; CID " + std::to_string(CID.value));    }
 }

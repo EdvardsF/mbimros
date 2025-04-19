@@ -46,3 +46,12 @@ struct InvalidByteAlignment : public MBIMBaseException {
         return "InvalidByteAlignment";
     }
 };
+
+struct CidNotFoundException : public MBIMBaseException {
+    explicit CidNotFoundException(const std::string& details)
+        : MBIMBaseException("No CID found for this UUID: " + details) {}
+
+    std::string type() const override {
+        return "CidNotFoundException";
+    }
+};

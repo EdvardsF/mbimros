@@ -17,6 +17,7 @@ struct Field : public FieldBase {
     std::string name;
     std::string description;
     Serializable* owner = nullptr;
+    using value_type = T;
 
     std::function<std::string(T)> enumToString;
     std::function<std::string(T)> bitmaskToString;
