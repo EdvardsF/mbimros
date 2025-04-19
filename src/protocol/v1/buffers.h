@@ -8,6 +8,8 @@
 #include "../../core/hex_stream_guard.h"
 
 #include "../../helpers/binding_helpers.h"
+#include "../../helpers/registration_helpers.h"
+
 
 
 #include "enums.h"
