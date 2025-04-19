@@ -133,8 +133,24 @@ void MBIM_SUBSCRIBER_READY_INFO::parse(hexStream& hs, MESSAGE_QUERY_OR_SET_ENUM 
         registerWarningHelper(ex);
     }
 }
+void MBIM_SET_RADIO_STATE::parse(hexStream& hs, MESSAGE_QUERY_OR_SET_ENUM command_type) {
+    if (command_type == MESSAGE_QUERY_OR_SET_ENUM::QUERY) {
+
+    } else if (command_type == MESSAGE_QUERY_OR_SET_ENUM::SET) {
+        RADIO_SWITCH_STATE.bind(this);
+        RADIO_SWITCH_STATE.setEnumFormatter(map_radio_switch_state);
+        RADIO_SWITCH_STATE.set(static_cast<MBIM_RADIO_SWITCH_STATE_ENUM>(hs.readUint32LE()));
+    }
+
+    if (hs.availableBytes() != 0) {
+        HexBufferTooLongWarning ex("last " + std::to_string(hs.availableBytes()) + " bytes not parsed.");
+        registerWarningHelper(ex);
+    }
+}
+
 
 void register_all_buffers() {
     register_buffer<MBIM_DEVICE_CAPS_INFO>("a289cc33bcbb8b4fb6b0133ec2aae6df", 1); // BASIC_CONNECT + DEVICE_CAPS
     register_buffer<MBIM_SUBSCRIBER_READY_INFO>("a289cc33bcbb8b4fb6b0133ec2aae6df", 2); // BASIC_CONNECT + MBIM_SUBSCRIBER_READY_STATUS
+    register_buffer<MBIM_SET_RADIO_STATE>("a289cc33bcbb8b4fb6b0133ec2aae6df", 3); // BASIC_CONNECT + MBIM_CID_RADIO_STATE
 }

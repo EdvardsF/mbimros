@@ -34,5 +34,10 @@ struct MBIM_SUBSCRIBER_READY_INFO : public informationBuffer {
     void parse(hexStream& hs, MESSAGE_QUERY_OR_SET_ENUM command_type) override;
 };
 
+struct MBIM_SET_RADIO_STATE : public informationBuffer {
+    Field<MBIM_RADIO_SWITCH_STATE_ENUM> RADIO_SWITCH_STATE      { "RADIO_SWITCH_STATE", "Controls whether radio is turned on" };
+
+    void parse(hexStream& hs, MESSAGE_QUERY_OR_SET_ENUM command_type) override;
+};
 
 
