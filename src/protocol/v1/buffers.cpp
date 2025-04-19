@@ -26,8 +26,7 @@ void MBIM_DEVICE_CAPS_INFO::parse(hexStream& hs) {
     readOLPairAndBind<std::string>("DATA_CLASS", "A custom data class in case data class bitmask contains 80000000h, ignored otherwise", hs, this, guard.startOffset(), 36);
     readOLPairAndBind<std::string>("DEVICE_ID", "IMEI for GSM-based deices, ESN or MEID for cdma-based", hs, this, guard.startOffset(), 36);
     readOLPairAndBind<std::string>("FIRMWARE_INFO", "Firmware specific information", hs, this, guard.startOffset(), 60);
-    readOLPairAndBind<std::string>("HARDWRE_INFO", "Hardware specific information", hs, this, guard.startOffset(), 60);
-        
+    readOLPairAndBind<std::string>("HARDWRE_INFO", "Hardware specific information", hs, this, guard.startOffset(), 60);   
 }
 
 void MBIM_SUBSCRIBER_READY_INFO::parse(hexStream& hs) {
@@ -42,19 +41,7 @@ void MBIM_SUBSCRIBER_READY_INFO::parse(hexStream& hs) {
     subscriber_id->bind(this);
     sim_iccid->bind(this);
 
-    std::vector<VariableField<>*> listItems;
-    for (size_t i = 0; i < ELEMENT_COUNT.value; i++) {
-        auto* item_n = new VariableField<>("TELEPHONE_NUMBER_" + std::to_string(i), "Stored telephone number", 15);
-        item_n->bind(this);
-        uint32_t offset = hs.readUint32LE();
-        uint32_t length = hs.readUint32LE();
-        listItems.push_back(item_n);
-        item_n->setOffsetLength(offset, length, hs, guard.startOffset());
-    }
-
-    for (auto* item: listItems) {
-        item->resolve();
-    }
+    bindReadElementList<std::string>("TELEPHONE_NUMBER", "Stored telephone number", ELEMENT_COUNT.value, hs, this, guard.startOffset(), 15);
 }
 void MBIM_SET_RADIO_STATE::parse(hexStream& hs) {
     HexStreamParseGuard guard(hs);

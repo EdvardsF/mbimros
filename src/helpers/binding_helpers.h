@@ -42,5 +42,16 @@ template<typename T>
 VariableField<T>* readOLPairAndBind(const std::string& name, const std::string& description, hexStream& hs, Serializable* owner, size_t baseOffset, size_t maxFieldLength) {
     VariableField<T>* field = readOLPair<T>(name, description, hs, baseOffset, maxFieldLength);
     field->bind(owner);
+    field->resolve();
     return field;
+}
+
+template<typename T>
+std::vector<VariableField<T>*> bindReadElementList(const std::string& base_name, const std::string& description, size_t count, hexStream& hs, Serializable* owner, size_t baseOffset, size_t maxFieldLength) {
+    std::vector<VariableField<T>*> fields;
+    for (size_t i = 0; i < count; i++) {
+        VariableField<T>* field = readOLPairAndBind<std::string>(base_name + "_" + std::to_string(i), description, hs, owner, baseOffset, maxFieldLength);
+        fields.push_back(field);
+    }
+    return fields;
 }
