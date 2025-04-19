@@ -73,10 +73,18 @@ MBIM_COMMAND_MSG::MBIM_COMMAND_MSG(hexStream& hs) : MESSAGE_HEADER(hs), FRAGMENT
     INFORMATION_BUFFER_LENGTH.bind(this);
     INFORMATION_BUFFER_LENGTH.set(hs.readUint32LE());
 
+    std::unordered_map<std::tuple<std::string, uint32_t, BufferDirection>, BufferFactory, buffer_key_hash>::iterator it;
+    if (COMMAND_TYPE.value == MESSAGE_QUERY_OR_SET_ENUM::QUERY) {
+        it = buffer_registry.find({DEVICE_SERVICE_ID.value, CID.value, BufferDirection::HostToModemQuery});
+    } else {
+        it = buffer_registry.find({DEVICE_SERVICE_ID.value, CID.value, BufferDirection::HostToModemSet});
+    }
+
     // TODO: To avoid duplicating this in each message struct, move it to somewhere later 
-    if (auto it = buffer_registry.find({DEVICE_SERVICE_ID.value, CID.value}); it != buffer_registry.end()) {
+    if (; it != buffer_registry.end()) {
         auto buffer = it->second();
-        buffer->parse(hs, COMMAND_TYPE.value);
+        buffer->parse(hs);
+        // TODO: include information buffer length in this call
         includeInformationBuffer(std::move(buffer));
     } else {
         hs.readHexBytes(INFORMATION_BUFFER_LENGTH.value);
@@ -140,7 +148,7 @@ MBIM_COMMAND_DONE::MBIM_COMMAND_DONE(hexStream& hs) : MESSAGE_HEADER(hs), FRAGME
     INFORMATION_BUFFER_LENGTH.set(hs.readUint32LE());
 
     // TODO: To avoid duplicating this in each message struct, move it to somewhere later 
-    if (auto it = buffer_registry.find({DEVICE_SERVICE_ID.value, CID.value}); it != buffer_registry.end()) {
+    if (auto it = buffer_registry.find({DEVICE_SERVICE_ID.value, CID.value, BufferDirection::ModemToHostResponse}); it != buffer_registry.end()) {
         auto buffer = it->second();
         buffer->parse(hs);
         includeInformationBuffer(std::move(buffer));
@@ -169,7 +177,7 @@ MBIM_INDICATE_STATUS_MSG::MBIM_INDICATE_STATUS_MSG(hexStream& hs) : MESSAGE_HEAD
     INFORMATION_BUFFER_LENGTH.set(hs.readUint32LE());
 
     // TODO: To avoid duplicating this in each message struct, move it to somewhere later 
-    if (auto it = buffer_registry.find({DEVICE_SERVICE_ID.value, CID.value}); it != buffer_registry.end()) {
+    if (auto it = buffer_registry.find({DEVICE_SERVICE_ID.value, CID.value, BufferDirection::ModemToHostIndication}); it != buffer_registry.end()) {
         auto buffer = it->second();
         buffer->parse(hs);
         includeInformationBuffer(std::move(buffer));
