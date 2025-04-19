@@ -90,13 +90,12 @@ void MBIM_SUBSCRIBER_READY_INFO::parse(hexStream& hs, MESSAGE_QUERY_OR_SET_ENUM 
         READY_STATE.set(static_cast<SUBSCRIBER_READY_STATE_ENUM>(hs.readUint32LE()));
 
         auto* subscriber_id = new VariableField<>("SUBSCRIBER_ID", "IMSI for GSM-based deices, MIN or IRM for cdma-based", 30);
-        subscriber_id->bind(this);
+        
         uint32_t off_1 = hs.readUint32LE();
         uint32_t len_1 = hs.readUint32LE();
         subscriber_id->setOffsetLength(off_1, len_1, hs, base_offset);
 
         auto* sim_iccid = new VariableField<>("SIM_ICCID", "International Circuit Card ID", 40);
-        sim_iccid->bind(this);
         uint32_t off_2 = hs.readUint32LE();
         uint32_t len_2 = hs.readUint32LE();
         sim_iccid->setOffsetLength(off_2, len_2, hs, base_offset);
@@ -107,6 +106,9 @@ void MBIM_SUBSCRIBER_READY_INFO::parse(hexStream& hs, MESSAGE_QUERY_OR_SET_ENUM 
 
         ELEMENT_COUNT.bind(this);
         ELEMENT_COUNT.set(hs.readUint32LE());
+
+        subscriber_id->bind(this);
+        sim_iccid->bind(this);
 
         std::vector<VariableField<>*> listItems;
         for (size_t i = 0; i < ELEMENT_COUNT.value; i++) {
