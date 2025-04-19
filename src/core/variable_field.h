@@ -1,8 +1,12 @@
 #pragma once
 
+#include "field_base.h"
 #include "field.h"
 #include "hex_stream.h"
-#include "../helpers/helpers.h"
+#include "exception/mbim_base_exception.h"
+#include "exception/mbim_warnings.h"
+#include "../helpers/warning_helpers.h"
+
 
 template<typename T = std::string>
 class VariableField : public Field<T> {

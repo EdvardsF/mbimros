@@ -4,7 +4,7 @@
 #include "exception/mbim_base_exception.h"
 #include "exception/mbim_errors.h"
 #include "exception/mbim_warnings.h"
-#include "../helpers/helpers.h"
+#include "../helpers/warning_helpers.h"
 
 class HexStreamParseGuard {
 public:

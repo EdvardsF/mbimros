@@ -18,36 +18,10 @@ void MBIM_DEVICE_CAPS_INFO::parse(hexStream& hs) {
     bindFormatSet(SMS_CAPS, this, map_sms_caps, hs.readUint32LE());
     bindFormatSet(CTRL_CAPS, this, map_ctrl_caps, hs.readUint32LE());
     bindSimpleSet(MAX_SESSIONS, this, hs.readUint32LE());
-
-    auto* data_class = new VariableField<>("DATA_CLASS", "A custom data class in case data class bitmask contains 80000000h, ignored otherwise", 22);
-    data_class->bind(this);
-    // Must be declared outside the function's arguments, since argument don't get evaluated in a fixed order
-    uint32_t off_1 = hs.readUint32LE();
-    uint32_t len_1 = hs.readUint32LE();
-    data_class->setOffsetLength(off_1, len_1, hs, guard.startOffset());
-
-    auto* device_id = new VariableField<>("DEVICE_ID", "IMEI for GSM-based deices, ESN or MEID for cdma-based", 36);
-    device_id->bind(this);
-    uint32_t off_2 = hs.readUint32LE();
-    uint32_t len_2 = hs.readUint32LE();
-    device_id->setOffsetLength(off_2, len_2, hs, guard.startOffset());
-
-    auto* firmware_info = new VariableField<>("FIRMWARE_INFO", "Firmware specific information", 60);
-    firmware_info->bind(this);
-    uint32_t off_3 = hs.readUint32LE();
-    uint32_t len_3 = hs.readUint32LE();
-    firmware_info->setOffsetLength(off_3, len_3, hs, guard.startOffset());
-
-    auto* hardware_info = new VariableField<>("HARDWRE_INFO", "Hardware specific information", 60);
-    hardware_info->bind(this);
-    uint32_t off_4 = hs.readUint32LE();
-    uint32_t len_4 = hs.readUint32LE();
-    hardware_info->setOffsetLength(off_4, len_4, hs, guard.startOffset());
-
-    data_class->resolve();
-    device_id->resolve();
-    firmware_info->resolve();
-    hardware_info->resolve();
+    readOLPairAndBind<std::string>("DATA_CLASS", "A custom data class in case data class bitmask contains 80000000h, ignored otherwise", hs, this, guard.startOffset(), 36);
+    readOLPairAndBind<std::string>("DEVICE_ID", "IMEI for GSM-based deices, ESN or MEID for cdma-based", hs, this, guard.startOffset(), 36);
+    readOLPairAndBind<std::string>("FIRMWARE_INFO", "Firmware specific information", hs, this, guard.startOffset(), 60);
+    readOLPairAndBind<std::string>("HARDWRE_INFO", "Hardware specific information", hs, this, guard.startOffset(), 60);
         
 }
 
@@ -55,18 +29,8 @@ void MBIM_SUBSCRIBER_READY_INFO::parse(hexStream& hs) {
     HexStreamParseGuard guard(hs);
 
     bindFormatSet(READY_STATE, this, map_subscriber_ready_state, hs.readUint32LE());
-
-    auto* subscriber_id = new VariableField<>("SUBSCRIBER_ID", "IMSI for GSM-based deices, MIN or IRM for cdma-based", 30);
-    
-    uint32_t off_1 = hs.readUint32LE();
-    uint32_t len_1 = hs.readUint32LE();
-    subscriber_id->setOffsetLength(off_1, len_1, hs, guard.startOffset());
-
-    auto* sim_iccid = new VariableField<>("SIM_ICCID", "International Circuit Card ID", 40);
-    uint32_t off_2 = hs.readUint32LE();
-    uint32_t len_2 = hs.readUint32LE();
-    sim_iccid->setOffsetLength(off_2, len_2, hs, guard.startOffset());
-
+    VariableField<>* subscriber_id = readOLPair<std::string>("SUBSCRIBER_ID", "IMSI for GSM-based deices, MIN or IRM for cdma-based", hs, guard.startOffset(), 30);
+    VariableField<>* sim_iccid = readOLPair<std::string>("SIM_ICCID", "International Circuit Card ID", hs, guard.startOffset(), 40);
     bindFormatSet(READY_INFO, this, map_ready_info_flags, hs.readUint32LE());
     bindSimpleSet(ELEMENT_COUNT, this, hs.readUint32LE());
 
@@ -82,9 +46,6 @@ void MBIM_SUBSCRIBER_READY_INFO::parse(hexStream& hs) {
         listItems.push_back(item_n);
         item_n->setOffsetLength(offset, length, hs, guard.startOffset());
     }
-
-    subscriber_id->resolve();
-    sim_iccid->resolve();
 
     for (auto* item: listItems) {
         item->resolve();

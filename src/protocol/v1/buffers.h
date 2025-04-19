@@ -7,34 +7,13 @@
 #include "../../core/exception/mbim_warnings.h"
 #include "../../core/hex_stream_guard.h"
 
-#include "../../helpers/helpers.h"
-
+#include "../../helpers/binding_helpers.h"
 
 
 #include "enums.h"
 #include "maps/maps.h"
 
 void register_all_buffers();
-
-template<typename FieldType, typename FormatterFunc>
-void bindFormatSet(FieldType& field, Serializable* owner, FormatterFunc formatter, uint32_t value) {
-    field.bind(owner);
-    field.setEnumFormatter(std::move(formatter));
-    field.set(static_cast<typename FieldType::value_type>(value));
-}
-
-template<typename FieldType>
-void bindBitmaskSet(FieldType& field, Serializable* owner, std::function<std::string(uint32_t)> formatter, uint32_t value) {
-    field.bind(owner);
-    field.setBitmaskFormatter(std::move(formatter));
-    field.set(value);
-}
-
-template<typename FieldType>
-void bindSimpleSet(FieldType& field, Serializable* owner, uint32_t value) {
-    field.bind(owner);
-    field.set(value);
-}
 
 struct EMPTY_BUFFER : public informationBuffer {
     void parse(hexStream& hs) override;

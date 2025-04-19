@@ -1,11 +1,8 @@
-#pragma once
-
 #include <codecvt>
 #include <locale>
 
 #include "variable_field.h"
-#include "exception/mbim_base_exception.h"
-#include "exception/mbim_warnings.h"
+#include "../helpers/warning_helpers.h"
 
 #include <iostream>
 
@@ -34,13 +31,13 @@ template<typename T>
 void VariableField<T>::resolve() {
     if (length == 0 || hs_ref == nullptr) return;
 
-    //size_t saved = hs_ref->currentOffset();
+    size_t saved = hs_ref->currentOffset();
 
     const_cast<hexStream*>(hs_ref)->seek(offset);
     auto data = hs_ref->readUtf16LE(length / 2);
     std::wstring_convert<std::codecvt_utf8_utf16<char16_t>, char16_t> conv;
 
-    //const_cast<hexStream*>(hs_ref)->seek(saved);
+    const_cast<hexStream*>(hs_ref)->seek(saved);
 
     this->set(conv.to_bytes(data));
 }
