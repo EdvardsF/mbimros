@@ -55,3 +55,12 @@ struct CidNotFoundException : public MBIMBaseException {
         return "CidNotFoundException";
     }
 };
+
+struct OpeationNotApplicableException : public MBIMBaseException {
+    explicit OpeationNotApplicableException(const std::string& details)
+        : MBIMBaseException("Given set/query/notification operation is not supported for this CID. " + details) {}
+
+    std::string type() const override {
+        return "OpeationNotApplicableException";
+    }
+};

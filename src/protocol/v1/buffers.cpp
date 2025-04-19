@@ -7,6 +7,11 @@ void EMPTY_BUFFER::parse(hexStream& hs) {
     HexStreamParseGuard _(hs);
 }
 
+void NOT_APPLICABLE_BUFFER::parse(hexStream&) {
+    throw OpeationNotApplicableException("");
+}
+
+
 void MBIM_DEVICE_CAPS_INFO::parse(hexStream& hs) {
     HexStreamParseGuard guard(hs);
 
@@ -67,16 +72,23 @@ void MBIM_RADIO_STATE_INFO::parse(hexStream& hs) {
 void register_all_buffers() {
     // BASIC_CONNECT + DEVICE_CAPS
     register_buffer<EMPTY_BUFFER>("a289cc33bcbb8b4fb6b0133ec2aae6df", 1, BufferDirection::HostToModemQuery);
+    register_buffer<NOT_APPLICABLE_BUFFER>("a289cc33bcbb8b4fb6b0133ec2aae6df", 1, BufferDirection::HostToModemSet);
     register_buffer<MBIM_DEVICE_CAPS_INFO>("a289cc33bcbb8b4fb6b0133ec2aae6df", 1, BufferDirection::ModemToHostResponse);
+    register_buffer<NOT_APPLICABLE_BUFFER>("a289cc33bcbb8b4fb6b0133ec2aae6df", 1, BufferDirection::ModemToHostIndication);
+
 
     // BASIC_CONNECT + MBIM_SUBSCRIBER_READY_STATUS
     register_buffer<EMPTY_BUFFER>("a289cc33bcbb8b4fb6b0133ec2aae6df", 2, BufferDirection::HostToModemQuery);
+    register_buffer<NOT_APPLICABLE_BUFFER>("a289cc33bcbb8b4fb6b0133ec2aae6df", 2, BufferDirection::HostToModemSet);
     register_buffer<MBIM_SUBSCRIBER_READY_INFO>("a289cc33bcbb8b4fb6b0133ec2aae6df", 2, BufferDirection::ModemToHostResponse);
     register_buffer<MBIM_SUBSCRIBER_READY_INFO>("a289cc33bcbb8b4fb6b0133ec2aae6df", 2, BufferDirection::ModemToHostIndication);
 
     // BASIC_CONNECT + MBIM_CID_RADIO_STATE
     register_buffer<EMPTY_BUFFER>("a289cc33bcbb8b4fb6b0133ec2aae6df", 3, BufferDirection::HostToModemQuery); 
+    register_buffer<NOT_APPLICABLE_BUFFER>("a289cc33bcbb8b4fb6b0133ec2aae6df", 3, BufferDirection::HostToModemSet);
     register_buffer<MBIM_SET_RADIO_STATE>("a289cc33bcbb8b4fb6b0133ec2aae6df", 3, BufferDirection::HostToModemSet); 
+    register_buffer<NOT_APPLICABLE_BUFFER>("a289cc33bcbb8b4fb6b0133ec2aae6df", 3, BufferDirection::ModemToHostIndication);
+
 
     // BASIC_CONNECT + MBIM_CID_RADIO_STATE
     register_buffer<MBIM_SET_RADIO_STATE>("a289cc33bcbb8b4fb6b0133ec2aae6df", 4, BufferDirection::HostToModemSet);

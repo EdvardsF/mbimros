@@ -19,6 +19,10 @@ struct EMPTY_BUFFER : public informationBuffer {
     void parse(hexStream& hs) override;
 };
 
+struct NOT_APPLICABLE_BUFFER : public informationBuffer {
+    void parse(hexStream& hs) override;
+};
+
 struct MBIM_DEVICE_CAPS_INFO : public informationBuffer {
     Field<DEVICE_TYPE_ENUM> DEVICE_TYPE   { "DEVICE_TYPE", "Type of the device" };
     Field<uint32_t> CELLULAR_CLASS        { "CELLULAR_CLASS", "Bitmap of relevant cellular technologies" };
