@@ -158,3 +158,15 @@ inline std::string map_ready_info_flags(MBIM_READY_INFO_FLAGS_ENUM flag) {
             return "Unknown Ready Info Flag";
     }
 }
+
+
+inline std::string map_radio_switch_state(MBIM_RADIO_SWITCH_STATE_ENUM flag) {
+    switch (flag) {
+        case MBIM_RADIO_SWITCH_STATE_ENUM::MBIM_RADIO_OFF:
+            return "Switch off device's radio";
+        case MBIM_RADIO_SWITCH_STATE_ENUM::MBIM_RADIO_ON:
+            return "Switch on device's radio";
+        default:
+            return "Unknown Radio Switch State";
+    }
+}

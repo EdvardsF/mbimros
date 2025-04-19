@@ -136,6 +136,7 @@ enum class CTRL_CAPS_ENUM : uint32_t {
     MBIM_CTRL_CAPS_MULTI_CARRIER     = 16
 };
 
+// todo:  fix capitalizing
 enum class SUBSCRIBER_READY_STATE_ENUM : uint32_t {
     MBIMSubscriberReadyStateNotInitialized = 0,
     MBIMSubscriberReadyStateInitialized,
@@ -149,4 +150,9 @@ enum class SUBSCRIBER_READY_STATE_ENUM : uint32_t {
 enum class MBIM_READY_INFO_FLAGS_ENUM : uint32_t {
     MBIMReadyInfoFlagsNone = 0,
     MBIMReadyInfoFlagsProtectUniqueID
+};
+
+enum class MBIM_RADIO_SWITCH_STATE_ENUM : uint32_t {
+    MBIM_RADIO_OFF = 0,
+    MBIM_RADIO_ON
 };
