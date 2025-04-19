@@ -12,9 +12,9 @@ public:
         : hs_(hs), start_offset_(hs.currentOffset()) {}
 
     ~HexStreamParseGuard() {
-        size_t remaining = hs_.availableBytes();
-        if (remaining != 0) {
-            HexBufferTooLongWarning ex("last " + std::to_string(remaining) + " bytes not parsed.");
+        size_t unparsedByteCount = hs_.unparsedByteCount();
+        if (unparsedByteCount > 0) {
+            HexBufferTooLongWarning ex("last " + std::to_string(unparsedByteCount) + " bytes not parsed.");
             registerWarningHelper(ex);
         }
     }

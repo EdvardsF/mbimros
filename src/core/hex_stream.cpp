@@ -3,13 +3,17 @@
 #include <string>
 
 hexStream::hexStream(std::string& hex_data)
-    : buffer(hex_data), offset(0) {}
+    : buffer(hex_data), offset(0) {
+        visited.resize(buffer.size() / 2, false);
+    }
 
 uint8_t hexStream::readByte() {
     checkAvailable(1);
 
     std::string byte_str = buffer.substr(offset * 2, 2);
+    visited[offset] = true;
     offset++;
+
     return static_cast<uint8_t>(std::stoul(byte_str, nullptr, 16));
 }
 
@@ -78,13 +82,19 @@ std::string hexStream::readHexBytes(size_t count) {
 
     for (size_t i = 0; i < count; ++i) {
         result += readByteAsHex();
+        visited[offset - 1] = true;
     }
     return result;
 }
 
 std::string hexStream::readRemaining() {
     std::string remaining = buffer.substr(offset * 2);
-    offset = buffer.size() / 2;
+
+    while (offset < buffer.size() / 2) {
+        visited[offset] = true;
+        ++offset;
+    }
+
     return remaining;
 }
 
@@ -126,5 +136,15 @@ void hexStream::checkAvailable(size_t count) const {
             " bytes, but only " + std::to_string(availableBytes()) + " available."
         );
     }
+}
+
+size_t hexStream::unparsedByteCount() const {
+    size_t count = 0;
+    for (bool v : visited) {
+        if (!v) {
+            count++;
+        }
+    }
+    return count;
 }
 

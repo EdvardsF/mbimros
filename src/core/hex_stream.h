@@ -10,6 +10,7 @@ struct hexStream {
     std::string buffer;
     size_t bufferSize;
     size_t offset;
+    std::vector<bool> visited;
 
     hexStream(std::string& hex_data);
 
@@ -29,6 +30,7 @@ struct hexStream {
     void seek(size_t newOffset);
 
     size_t availableBytes() const;
+    size_t unparsedByteCount() const;
 
 private:
     void checkAvailable(size_t count) const;
