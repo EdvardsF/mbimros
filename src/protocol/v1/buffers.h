@@ -5,7 +5,10 @@
 #include "../../core/information_buffer.h"
 #include "../../core/exception/mbim_base_exception.h"
 #include "../../core/exception/mbim_warnings.h"
+#include "../../core/hex_stream_guard.h"
+
 #include "../../helpers/helpers.h"
+
 
 
 #include "enums.h"

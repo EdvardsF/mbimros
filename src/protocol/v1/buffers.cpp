@@ -3,14 +3,11 @@
 #include <iostream>
 
 void EMPTY_BUFFER::parse(hexStream& hs) {
-    if (hs.availableBytes() != 0) {
-        HexBufferTooLongWarning ex("last " + std::to_string(hs.availableBytes()) + " bytes not parsed.");
-        registerWarningHelper(ex);
-    }
+    HexStreamParseGuard _(hs);
 }
 
 void MBIM_DEVICE_CAPS_INFO::parse(hexStream& hs) {
-    size_t base_offset = hs.currentOffset();
+    HexStreamParseGuard guard(hs);
 
     DEVICE_TYPE.bind(this);
     DEVICE_TYPE.setEnumFormatter(map_device_type);
@@ -49,40 +46,35 @@ void MBIM_DEVICE_CAPS_INFO::parse(hexStream& hs) {
     // Must be declared outside the function's arguments, since argument don't get evaluated in a fixed order
     uint32_t off_1 = hs.readUint32LE();
     uint32_t len_1 = hs.readUint32LE();
-    data_class->setOffsetLength(off_1, len_1, hs, base_offset);
+    data_class->setOffsetLength(off_1, len_1, hs, guard.startOffset());
 
     auto* device_id = new VariableField<>("DEVICE_ID", "IMEI for GSM-based deices, ESN or MEID for cdma-based", 36);
     device_id->bind(this);
     uint32_t off_2 = hs.readUint32LE();
     uint32_t len_2 = hs.readUint32LE();
-    device_id->setOffsetLength(off_2, len_2, hs, base_offset);
+    device_id->setOffsetLength(off_2, len_2, hs, guard.startOffset());
 
     auto* firmware_info = new VariableField<>("FIRMWARE_INFO", "Firmware specific information", 60);
     firmware_info->bind(this);
     uint32_t off_3 = hs.readUint32LE();
     uint32_t len_3 = hs.readUint32LE();
-    firmware_info->setOffsetLength(off_3, len_3, hs, base_offset);
+    firmware_info->setOffsetLength(off_3, len_3, hs, guard.startOffset());
 
     auto* hardware_info = new VariableField<>("HARDWRE_INFO", "Hardware specific information", 60);
     hardware_info->bind(this);
     uint32_t off_4 = hs.readUint32LE();
     uint32_t len_4 = hs.readUint32LE();
-    hardware_info->setOffsetLength(off_4, len_4, hs, base_offset);
+    hardware_info->setOffsetLength(off_4, len_4, hs, guard.startOffset());
 
     data_class->resolve();
     device_id->resolve();
     firmware_info->resolve();
     hardware_info->resolve();
-
-    if (hs.availableBytes() != 0) {
-        HexBufferTooLongWarning ex("last " + std::to_string(hs.availableBytes()) + " bytes not parsed.");
-        registerWarningHelper(ex);
-    }
         
 }
 
 void MBIM_SUBSCRIBER_READY_INFO::parse(hexStream& hs) {
-    size_t base_offset = hs.currentOffset();
+    HexStreamParseGuard guard(hs);
 
     READY_STATE.bind(this);
     READY_STATE.setEnumFormatter(map_subscriber_ready_state);
@@ -92,12 +84,12 @@ void MBIM_SUBSCRIBER_READY_INFO::parse(hexStream& hs) {
     
     uint32_t off_1 = hs.readUint32LE();
     uint32_t len_1 = hs.readUint32LE();
-    subscriber_id->setOffsetLength(off_1, len_1, hs, base_offset);
+    subscriber_id->setOffsetLength(off_1, len_1, hs, guard.startOffset());
 
     auto* sim_iccid = new VariableField<>("SIM_ICCID", "International Circuit Card ID", 40);
     uint32_t off_2 = hs.readUint32LE();
     uint32_t len_2 = hs.readUint32LE();
-    sim_iccid->setOffsetLength(off_2, len_2, hs, base_offset);
+    sim_iccid->setOffsetLength(off_2, len_2, hs, guard.startOffset());
 
     READY_INFO.bind(this);
     READY_INFO.setEnumFormatter(map_ready_info_flags);
@@ -116,7 +108,7 @@ void MBIM_SUBSCRIBER_READY_INFO::parse(hexStream& hs) {
         uint32_t offset = hs.readUint32LE();
         uint32_t length = hs.readUint32LE();
         listItems.push_back(item_n);
-        item_n->setOffsetLength(offset, length, hs, base_offset);
+        item_n->setOffsetLength(offset, length, hs, guard.startOffset());
     }
 
     subscriber_id->resolve();
@@ -125,24 +117,18 @@ void MBIM_SUBSCRIBER_READY_INFO::parse(hexStream& hs) {
     for (auto* item: listItems) {
         item->resolve();
     }
-
-    if (hs.availableBytes() != 0) {
-        HexBufferTooLongWarning ex("last " + std::to_string(hs.availableBytes()) + " bytes not parsed.");
-        registerWarningHelper(ex);
-    }
 }
 void MBIM_SET_RADIO_STATE::parse(hexStream& hs) {
+    HexStreamParseGuard guard(hs);
+
     RADIO_SWITCH_STATE.bind(this);
     RADIO_SWITCH_STATE.setEnumFormatter(map_radio_switch_state);
     RADIO_SWITCH_STATE.set(static_cast<MBIM_RADIO_SWITCH_STATE_ENUM>(hs.readUint32LE()));
-
-    if (hs.availableBytes() != 0) {
-        HexBufferTooLongWarning ex("last " + std::to_string(hs.availableBytes()) + " bytes not parsed.");
-        registerWarningHelper(ex);
-    }
 }
 
 void MBIM_RADIO_STATE_INFO::parse(hexStream& hs) {
+    HexStreamParseGuard guard(hs);
+
     HW_RADIO_STATE.bind(this);
     HW_RADIO_STATE.setEnumFormatter(map_radio_switch_state);
     HW_RADIO_STATE.set(static_cast<MBIM_RADIO_SWITCH_STATE_ENUM>(hs.readUint32LE()));
@@ -150,11 +136,6 @@ void MBIM_RADIO_STATE_INFO::parse(hexStream& hs) {
     SW_RADIO_STATE.bind(this);
     SW_RADIO_STATE.setEnumFormatter(map_radio_switch_state);
     SW_RADIO_STATE.set(static_cast<MBIM_RADIO_SWITCH_STATE_ENUM>(hs.readUint32LE()));
-
-    if (hs.availableBytes() != 0) {
-        HexBufferTooLongWarning ex("last " + std::to_string(hs.availableBytes()) + " bytes not parsed.");
-        registerWarningHelper(ex);
-    }
 }
 
 

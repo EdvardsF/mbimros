@@ -95,7 +95,7 @@ int main() {
 
     
     // TODO throw warnign if infromation buffer length does not match the actual length
-    std::string mbim_close = "0100000034000000150000000100000000000000a289cc33bcbb8b4fb6b0133ec2aae6df03000000000000000800000001000000";
+    std::string mbim_close = "0100000034000000150000000100000000000000a289cc33bcbb8b4fb6b0133ec2aae6df03000000010000000800000001000000";
     hexStream ex(mbim_close);
 
     std::cout << mbim_close << std::endl;
