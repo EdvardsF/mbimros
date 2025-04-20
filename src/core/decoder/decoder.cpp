@@ -1,5 +1,5 @@
 #include "decoder.h"
-#include "../protocol/v1/messages.h"
+#include "../../protocol/v1/messages.h"
 
 Decoder::Decoder(std::string hex_data, std::ostream& errorOutput)
     : hs(hex_data), errorStream(errorOutput) {}

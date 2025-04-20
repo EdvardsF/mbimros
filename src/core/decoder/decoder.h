@@ -2,8 +2,8 @@
 
 #include <memory>
 #include <string>
-#include "../core/serializable.h"
-#include "../core/hex_stream.h"
+#include "../serialization/serializable.h"
+#include "../hex/hex_stream.h"
 
 class Decoder {
 public:

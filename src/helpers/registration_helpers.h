@@ -1,4 +1,4 @@
-#include "../core/information_buffer.h"
+#include "../core/serialization/information_buffer.h"
 #include <string>
 
 template<typename QueryType, typename SetType, typename HostResponseType, typename IndicationType>

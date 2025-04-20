@@ -1,10 +1,10 @@
 #pragma once
 
 #include "hex_stream.h"
-#include "exception/mbim_base_exception.h"
-#include "exception/mbim_errors.h"
-#include "exception/mbim_warnings.h"
-#include "../helpers/warning_helpers.h"
+#include "../exception/mbim_base_exception.h"
+#include "../exception/mbim_errors.h"
+#include "../exception/mbim_warnings.h"
+#include "../../helpers/warning_helpers.h"
 
 class HexStreamParseGuard {
 public:

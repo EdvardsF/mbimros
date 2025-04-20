@@ -2,10 +2,10 @@
 
 #include "field_base.h"
 #include "field.h"
-#include "hex_stream.h"
-#include "exception/mbim_base_exception.h"
-#include "exception/mbim_warnings.h"
-#include "../helpers/warning_helpers.h"
+#include "../hex/hex_stream.h"
+#include "../exception/mbim_base_exception.h"
+#include "../exception/mbim_warnings.h"
+#include "../../helpers/warning_helpers.h"
 
 
 template<typename T = std::string>

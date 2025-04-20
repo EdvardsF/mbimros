@@ -3,9 +3,9 @@
 #include <functional>
 
 #include "../core/exception/mbim_base_exception.h"
-#include "../core/serializable.h"
-#include "../core/hex_stream.h"
-#include "../core/variable_field.h"
+#include "../core/serialization/serializable.h"
+#include "../core/hex/hex_stream.h"
+#include "../core/serialization/variable_field.h"
 
 
 template<typename FieldType, typename FormatterFunc>

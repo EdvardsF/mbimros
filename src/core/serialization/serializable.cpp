@@ -3,8 +3,8 @@
 #include <algorithm>
 
 #include "serializable.h"
-#include "exception/mbim_base_exception.h"
-#include "exception/mbim_warnings.h"
+#include "../exception/mbim_base_exception.h"
+#include "../exception/mbim_warnings.h"
 
 
 void Serializable::registerField(FieldBase* field) {

@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "../core/information_buffer.h"
+#include "../core/serialization/information_buffer.h"
 
 using bufferRegistry = std::unordered_map<BufferKey, BufferFactory, buffer_key_hash>;
 

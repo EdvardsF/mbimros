@@ -1,11 +1,10 @@
 #pragma once
 
-#include "../../core/information_buffer.h"
-#include "../../core/variable_field.h"
-#include "../../core/information_buffer.h"
+#include "../../core/serialization/information_buffer.h"
+#include "../../core/serialization/variable_field.h"
 #include "../../core/exception/mbim_base_exception.h"
 #include "../../core/exception/mbim_warnings.h"
-#include "../../core/guards.h"
+#include "../../core/hex/guards.h"
 
 #include "../../helpers/binding_helpers.h"
 #include "../../helpers/registration_helpers.h"

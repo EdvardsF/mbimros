@@ -1,7 +1,7 @@
 #include "../external/catch.h"
 
 #include "../src/core/exception/mbim_errors.h"
-#include "../src/core/hex_stream.h"
+#include "../src/core/hex/hex_stream.h"
 
 TEST_CASE("hexStream basic operations", "[hexStream]") {
     std::string hexData = "01020304AABBCCDD1122";

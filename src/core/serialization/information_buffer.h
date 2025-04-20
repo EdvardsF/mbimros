@@ -8,9 +8,9 @@
 #include <tuple>
 
 #include "serializable.h"
-#include "hex_stream.h"
+#include "../hex/hex_stream.h"
 #include "field.h"
-#include "../protocol/v1/maps/maps.h"
+#include "../../protocol/v1/maps/maps.h"
 
 enum class BufferDirection {
     HostToModemSet,

@@ -7,17 +7,17 @@
 #include "enums.h"
 
 #include "../../parser/parser.h"
-#include "../../core/hex_stream.h"
-#include "../../core/field.h"
-#include "../../core/serializable.h"
-#include "../../core/information_buffer.h"
+#include "../../core/hex/hex_stream.h"
+#include "../../core/serialization/field.h"
+#include "../../core/serialization/serializable.h"
+#include "../../core/serialization/information_buffer.h"
 #include "../../core/exception/mbim_base_exception.h"
 #include "../../core/exception/mbim_errors.h"
 #include "../../core/exception/mbim_warnings.h"
 #include "../../helpers/warning_helpers.h"
 #include "../../helpers/buffer_helpers.h"
 #include "../../helpers/binding_helpers.h"
-#include "../../core/guards.h"
+#include "../../core/hex/guards.h"
 
 
 struct MBIM_MESSAGE_HEADER : public Serializable {

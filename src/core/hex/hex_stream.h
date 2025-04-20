@@ -4,7 +4,7 @@
 #include <cstdint>
 #include <stdexcept>
 
-#include "exception/mbim_errors.h"
+#include "../exception/mbim_errors.h"
 
 struct hexStream {
     std::string buffer;
