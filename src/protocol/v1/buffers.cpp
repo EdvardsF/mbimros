@@ -55,6 +55,13 @@ void MBIM_RADIO_STATE_INFO::parse(hexStream& hs) {
     bindFormatSet(SW_RADIO_STATE, this, map_radio_switch_state, hs);
 }
 
+
+
+
+
+
+
+
 void register_all_buffers() {
     const std::string basic_connect = "a289cc33bcbb8b4fb6b0133ec2aae6df";
 
