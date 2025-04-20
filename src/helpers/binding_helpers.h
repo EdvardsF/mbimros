@@ -16,16 +16,23 @@ void bindFormatSet(FieldType& field, Serializable* owner, FormatterFunc formatte
 }
 
 template<typename FieldType>
-void bindBitmaskSet(FieldType& field, Serializable* owner, std::function<std::string(uint32_t)> formatter, uint32_t value) {
+void bindBitmaskSet(FieldType& field, Serializable* owner, std::function<std::string(uint32_t)> formatter, hexStream& hs) {
     field.bind(owner);
     field.setBitmaskFormatter(std::move(formatter));
-    field.set(value);
+    field.set(static_cast<typename FieldType::value_type>(hs.readUint32LE()));
 }
 
 template<typename FieldType>
 void bindSimpleSet(FieldType& field, Serializable* owner, hexStream& hs) {
     field.bind(owner);
     field.set(hs.readUint32LE());
+}
+
+template<typename FieldType>
+void bindStringSet(FieldType& field, Serializable* owner, const std::string& (*formatter)(const std::string&), hexStream& hs) {
+    field.bind(owner);
+    field.setStringFormatter(formatter);
+    field.set(hs.readHexBytes(16));
 }
 
 template<typename T>

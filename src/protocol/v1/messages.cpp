@@ -37,10 +37,7 @@ MBIM_COMMAND_MSG::MBIM_COMMAND_MSG(hexStream& hs) : MESSAGE_HEADER(hs), FRAGMENT
     includeHeader(&MESSAGE_HEADER);
     includeFragmentHeader(&FRAGMENT_HEADER);
 
-    DEVICE_SERVICE_ID.bind(this);
-    DEVICE_SERVICE_ID.setStringFormatter(map_uuid);
-    DEVICE_SERVICE_ID.set(hs.readHexBytes(16));
-
+    bindStringSet(DEVICE_SERVICE_ID, this, map_uuid, hs);  
     bindFormatSet(CID, this, get_cid_mapper_for_uuid(DEVICE_SERVICE_ID.value), hs);
     bindFormatSet(COMMAND_TYPE, this, map_query_or_set, hs);
     bindSimpleSet(INFORMATION_BUFFER_LENGTH, this, hs);
@@ -74,11 +71,7 @@ MBIM_COMMAND_DONE::MBIM_COMMAND_DONE(hexStream& hs) : MESSAGE_HEADER(hs), FRAGME
     includeHeader(&MESSAGE_HEADER);
     includeFragmentHeader(&FRAGMENT_HEADER);
 
-    // TODO: update bindFormatSet method to handle UUID
-    DEVICE_SERVICE_ID.bind(this);
-    DEVICE_SERVICE_ID.setEnumFormatter(map_uuid);
-    DEVICE_SERVICE_ID.set(hs.readHexBytes(16));
-
+    bindStringSet(DEVICE_SERVICE_ID, this, map_uuid, hs);    
     bindFormatSet(CID, this, get_cid_mapper_for_uuid(DEVICE_SERVICE_ID.value), hs);
     bindFormatSet(STATUS, this, map_host_status, hs);
     bindSimpleSet(INFORMATION_BUFFER_LENGTH, this, hs);
@@ -93,10 +86,7 @@ MBIM_INDICATE_STATUS_MSG::MBIM_INDICATE_STATUS_MSG(hexStream& hs) : MESSAGE_HEAD
     includeHeader(&MESSAGE_HEADER);
     includeFragmentHeader(&FRAGMENT_HEADER);
 
-    DEVICE_SERVICE_ID.bind(this);
-    DEVICE_SERVICE_ID.setStringFormatter(map_uuid);
-    DEVICE_SERVICE_ID.set(hs.readHexBytes(16));
-
+    bindStringSet(DEVICE_SERVICE_ID, this, map_uuid, hs);  
     bindFormatSet(CID, this, get_cid_mapper_for_uuid(DEVICE_SERVICE_ID.value), hs);
     bindSimpleSet(INFORMATION_BUFFER_LENGTH, this, hs);
 
