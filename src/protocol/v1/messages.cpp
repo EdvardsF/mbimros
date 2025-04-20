@@ -5,35 +5,35 @@
 
 
 MBIM_MESSAGE_HEADER::MBIM_MESSAGE_HEADER(hexStream& hs) {
-    HexStreamAlignmentGuard _(hs); // Checks for 4 byte alignment
+    HexStreamAlignmentGuard _(hs);
 
-    bindFormatSet(MESSAGE_TYPE, this, map_type, hs.readUint32LE());
-    bindSimpleSet(MESSAGE_LENGTH, this, hs.readUint32LE());
-    bindSimpleSet(TRANSACTION_ID, this, hs.readUint32LE());
+    bindFormatSet(MESSAGE_TYPE, this, map_type, hs);
+    bindSimpleSet(MESSAGE_LENGTH, this, hs);
+    bindSimpleSet(TRANSACTION_ID, this, hs);
 }
 
 
 MBIM_FRAGMENT_HEADER::MBIM_FRAGMENT_HEADER(hexStream& hs) {
-    HexStreamAlignmentGuard _(hs); // Checks for 4 byte alignment
+    HexStreamAlignmentGuard _(hs);
 
-    bindSimpleSet(TOTAL_FRAGMENTS, this, hs.readUint32LE());
-    bindSimpleSet(CURRENT_FRAGMENT, this, hs.readUint32LE());
+    bindSimpleSet(TOTAL_FRAGMENTS, this, hs);
+    bindSimpleSet(CURRENT_FRAGMENT, this, hs);
 }
 
 
 MBIM_OPEN_MSG::MBIM_OPEN_MSG(hexStream& hs) : MESSAGE_HEADER(hs) {
-    HexStreamAlignmentGuard _(hs); // Checks for 4 byte alignment
+    HexStreamAlignmentGuard _(hs);
     includeHeader(&MESSAGE_HEADER);
-    bindSimpleSet(MAX_CONTROL_TRANSFER, this, hs.readUint32LE());
+    bindSimpleSet(MAX_CONTROL_TRANSFER, this, hs);
 }
 
 MBIM_CLOSE_MSG::MBIM_CLOSE_MSG(hexStream& hs) : MESSAGE_HEADER(hs) {
-    HexStreamAlignmentGuard _(hs); // Checks for 4 byte alignment
+    HexStreamAlignmentGuard _(hs);
     includeHeader(&MESSAGE_HEADER);
 }
 
 MBIM_COMMAND_MSG::MBIM_COMMAND_MSG(hexStream& hs) : MESSAGE_HEADER(hs), FRAGMENT_HEADER(hs) {
-    HexStreamAlignmentGuard _(hs); // Checks for 4 byte alignment
+    HexStreamAlignmentGuard _(hs);
     includeHeader(&MESSAGE_HEADER);
     includeFragmentHeader(&FRAGMENT_HEADER);
 
@@ -41,9 +41,9 @@ MBIM_COMMAND_MSG::MBIM_COMMAND_MSG(hexStream& hs) : MESSAGE_HEADER(hs), FRAGMENT
     DEVICE_SERVICE_ID.setStringFormatter(map_uuid);
     DEVICE_SERVICE_ID.set(hs.readHexBytes(16));
 
-    bindFormatSet(CID, this, get_cid_mapper_for_uuid(DEVICE_SERVICE_ID.value), hs.readUint32LE());
-    bindFormatSet(COMMAND_TYPE, this, map_query_or_set, hs.readUint32LE());
-    bindSimpleSet(INFORMATION_BUFFER_LENGTH, this, hs.readUint32LE());
+    bindFormatSet(CID, this, get_cid_mapper_for_uuid(DEVICE_SERVICE_ID.value), hs);
+    bindFormatSet(COMMAND_TYPE, this, map_query_or_set, hs);
+    bindSimpleSet(INFORMATION_BUFFER_LENGTH, this, hs);
 
     BufferDirection direction = COMMAND_TYPE.value == MESSAGE_QUERY_OR_SET_ENUM::QUERY ? BufferDirection::HostToModemQuery : BufferDirection::HostToModemSet;
     std::unique_ptr<informationBuffer> buffer = findBuffer(buffer_registry, DEVICE_SERVICE_ID.value, CID.value, direction);
@@ -52,36 +52,36 @@ MBIM_COMMAND_MSG::MBIM_COMMAND_MSG(hexStream& hs) : MESSAGE_HEADER(hs), FRAGMENT
 }
 
 MBIM_HOST_ERROR_MSG::MBIM_HOST_ERROR_MSG(hexStream& hs) : MESSAGE_HEADER(hs) {
-    HexStreamAlignmentGuard _(hs); // Checks for 4 byte alignment
+    HexStreamAlignmentGuard _(hs);
     includeHeader(&MESSAGE_HEADER);
-    bindFormatSet(ERROR_STATUS_CODE, this, map_host_error, hs.readUint32LE());
+    bindFormatSet(ERROR_STATUS_CODE, this, map_host_error, hs);
 }
 
 MBIM_OPEN_DONE::MBIM_OPEN_DONE(hexStream& hs) : MESSAGE_HEADER(hs) {
-    HexStreamAlignmentGuard _(hs); // Checks for 4 byte alignment
+    HexStreamAlignmentGuard _(hs);
     includeHeader(&MESSAGE_HEADER);
-    bindFormatSet(STATUS, this, map_host_status, hs.readUint32LE());
+    bindFormatSet(STATUS, this, map_host_status, hs);
 }
 
 MBIM_CLOSE_DONE::MBIM_CLOSE_DONE(hexStream& hs) : MESSAGE_HEADER(hs) {
-    HexStreamAlignmentGuard _(hs); // Checks for 4 byte alignment
+    HexStreamAlignmentGuard _(hs);
     includeHeader(&MESSAGE_HEADER);
-    bindFormatSet(STATUS, this, map_host_status, hs.readUint32LE());
+    bindFormatSet(STATUS, this, map_host_status, hs);
 }
 
 MBIM_COMMAND_DONE::MBIM_COMMAND_DONE(hexStream& hs) : MESSAGE_HEADER(hs), FRAGMENT_HEADER(hs) {
-    HexStreamAlignmentGuard _(hs); // Checks for 4 byte alignment
+    HexStreamAlignmentGuard _(hs);
     includeHeader(&MESSAGE_HEADER);
     includeFragmentHeader(&FRAGMENT_HEADER);
 
-    // update bindFormatSet method to handle UUID
+    // TODO: update bindFormatSet method to handle UUID
     DEVICE_SERVICE_ID.bind(this);
     DEVICE_SERVICE_ID.setEnumFormatter(map_uuid);
     DEVICE_SERVICE_ID.set(hs.readHexBytes(16));
 
-    bindFormatSet(CID, this, get_cid_mapper_for_uuid(DEVICE_SERVICE_ID.value), hs.readUint32LE());
-    bindFormatSet(STATUS, this, map_host_status, hs.readUint32LE());
-    bindSimpleSet(INFORMATION_BUFFER_LENGTH, this, hs.readUint32LE());
+    bindFormatSet(CID, this, get_cid_mapper_for_uuid(DEVICE_SERVICE_ID.value), hs);
+    bindFormatSet(STATUS, this, map_host_status, hs);
+    bindSimpleSet(INFORMATION_BUFFER_LENGTH, this, hs);
 
     std::unique_ptr<informationBuffer> buffer = findBuffer(buffer_registry, DEVICE_SERVICE_ID.value, CID.value, BufferDirection::ModemToHostResponse);
     buffer->parse(hs);
@@ -89,7 +89,7 @@ MBIM_COMMAND_DONE::MBIM_COMMAND_DONE(hexStream& hs) : MESSAGE_HEADER(hs), FRAGME
 }
 
 MBIM_INDICATE_STATUS_MSG::MBIM_INDICATE_STATUS_MSG(hexStream& hs) : MESSAGE_HEADER(hs), FRAGMENT_HEADER(hs) {
-    HexStreamAlignmentGuard _(hs); // Checks for 4 byte alignment
+    HexStreamAlignmentGuard _(hs);
     includeHeader(&MESSAGE_HEADER);
     includeFragmentHeader(&FRAGMENT_HEADER);
 
@@ -97,8 +97,8 @@ MBIM_INDICATE_STATUS_MSG::MBIM_INDICATE_STATUS_MSG(hexStream& hs) : MESSAGE_HEAD
     DEVICE_SERVICE_ID.setStringFormatter(map_uuid);
     DEVICE_SERVICE_ID.set(hs.readHexBytes(16));
 
-    bindFormatSet(CID, this, get_cid_mapper_for_uuid(DEVICE_SERVICE_ID.value), hs.readUint32LE());
-    bindSimpleSet(INFORMATION_BUFFER_LENGTH, this, hs.readUint32LE());
+    bindFormatSet(CID, this, get_cid_mapper_for_uuid(DEVICE_SERVICE_ID.value), hs);
+    bindSimpleSet(INFORMATION_BUFFER_LENGTH, this, hs);
 
     std::unique_ptr<informationBuffer> buffer = findBuffer(buffer_registry, DEVICE_SERVICE_ID.value, CID.value, BufferDirection::ModemToHostIndication);
     buffer->parse(hs);

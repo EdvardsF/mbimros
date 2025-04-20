@@ -9,10 +9,10 @@
 
 
 template<typename FieldType, typename FormatterFunc>
-void bindFormatSet(FieldType& field, Serializable* owner, FormatterFunc formatter, uint32_t value) {
+void bindFormatSet(FieldType& field, Serializable* owner, FormatterFunc formatter, hexStream& hs) {
     field.bind(owner);
     field.setEnumFormatter(std::move(formatter));
-    field.set(static_cast<typename FieldType::value_type>(value));
+    field.set(static_cast<typename FieldType::value_type>(hs.readUint32LE()));
 }
 
 template<typename FieldType>
@@ -23,9 +23,9 @@ void bindBitmaskSet(FieldType& field, Serializable* owner, std::function<std::st
 }
 
 template<typename FieldType>
-void bindSimpleSet(FieldType& field, Serializable* owner, uint32_t value) {
+void bindSimpleSet(FieldType& field, Serializable* owner, hexStream& hs) {
     field.bind(owner);
-    field.set(value);
+    field.set(hs.readUint32LE());
 }
 
 template<typename T>
