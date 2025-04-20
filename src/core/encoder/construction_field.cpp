@@ -52,9 +52,14 @@ CompiledBuffer compileFields() {
 
     size_t staticInfoSize = 0;
     for (auto* fld : ConstructionField::allFields) {
-        if (fld->type == FieldType::Numeric) staticInfoSize += 4;
-        else if (fld->type == FieldType::SingleOLPair) staticInfoSize += 8;
-        else if (fld->type == FieldType::ListOfOLPairs) staticInfoSize += 4 + 8 * fld->refList.count();
+        if (fld->type == FieldType::Numeric) {
+            staticInfoSize += 4;
+        } else if (fld->type == FieldType::SingleOLPair) {
+            staticInfoSize += 8;
+        } else if (fld->type == FieldType::ListOfOLPairs) {
+            staticInfoSize += 4;
+            staticInfoSize += 8 * fld->refList.count();
+        }
     }
 
     size_t currentDataOffset = staticInfoSize;
