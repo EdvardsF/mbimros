@@ -1,28 +1,20 @@
 #include <iostream>
 #include <string>
 
-#include "core/hex_stream.h"
-#include "protocol/v1/messages.h"
-#include "parser/parser.h"
-#include "core/information_buffer.h"
-#include "core/exception/mbim_base_exception.h"
-#include "core/exception/mbim_errors.h"
-#include "core/exception/mbim_warnings.h"
-
-
-extern void register_all_buffers();
-
-
+#include "core/decoder.h"
 
 int main() {
-    std::string fileContents = readFile("mbim_log.txt");    
-    std::vector<MatchInfo> parsedLines = parseMbimLines(fileContents);
-    std::vector<MatchInfo> parsedBlocks = parseMbimBlocks(parsedLines);
-    std::string exampleMbim = parsedBlocks[0].matchText;
+    Decoder decoder("0300008034000000150000000100000000000000a289cc33bcbb8b4fb6b0133ec2aae6df020000000000000008000000000000003400000020000000540000002800000001000000030000007c0000000800000084000000080000008c00000008000000330031003000310035003000310032003300340035003600370038003900380039003000310034003100300033003200310031003100310038003100350031003000370032003000310032003300000034003500360000003700380039000000");
+    decoder.decodeRaw();
+    std::cout << decoder.to_string() << "\n";
+    // std::string fileContents = readFile("mbim_log.txt");    
+    // std::vector<MatchInfo> parsedLines = parseMbimLines(fileContents);
+    // std::vector<MatchInfo> parsedBlocks = parseMbimBlocks(parsedLines);
+    // std::string exampleMbim = parsedBlocks[0].matchText;
 
-    register_all_buffers();
+    // register_all_buffers();
 
-    std::string mbim_open = "02000080000000000100000000000000";
+    // std::string mbim_open = "02000080000000000100000000000000";
 
     // Base query: 0100000034000000150000000100000000000000a289cc33bcbb8b4fb6b0133ec2aae6df020000000000000008000000
     // Base set: 0100000034000000150000000100000000000000a289cc33bcbb8b4fb6b0133ec2aae6df020000000100000008000000
@@ -96,18 +88,18 @@ int main() {
     // CID 3
     // 0100000034000000150000000100000000000000a289cc33bcbb8b4fb6b0133ec2aae6df03000000010000000800000001000000
     
-    // TODO throw warnign if infromation buffer length does not match the actual length
-    std::string mbim_close = "0300008034000000150000000100000000000000a289cc33bcbb8b4fb6b0133ec2aae6df020000000000000008000000000000003400000020000000540000002800000001000000030000007c0000000800000084000000080000008c00000008000000330031003000310035003000310032003300340035003600370038003900380039003000310034003100300033003200310031003100310038003100350031003000370032003000310032003300000034003500360000003700380039000000";
-    hexStream ex(mbim_close);
+    // // TODO throw warnign if infromation buffer length does not match the actual length
+    // std::string mbim_close = "0300008034000000150000000100000000000000a289cc33bcbb8b4fb6b0133ec2aae6df020000000000000008000000000000003400000020000000540000002800000001000000030000007c0000000800000084000000080000008c00000008000000330031003000310035003000310032003300340035003600370038003900380039003000310034003100300033003200310031003100310038003100350031003000370032003000310032003300000034003500360000003700380039000000";
+    // hexStream ex(mbim_close);
 
-    std::cout << mbim_close << std::endl;
+    // std::cout << mbim_close << std::endl;
 
-    try {
-        MBIM_COMMAND_DONE mbim_close_msg(ex);
-        std::cout << mbim_close_msg.to_string() << std::endl;
-    } catch (MBIMBaseException& e) {
-        std::cout << e;
-    }
+    // try {
+    //     MBIM_COMMAND_DONE mbim_close_msg(ex);
+    //     std::cout << mbim_close_msg.to_string() << std::endl;
+    // } catch (MBIMBaseException& e) {
+    //     std::cout << e;
+    // }
 
     // std::cout << exampleMbim << std::endl;
     //std::cout << header.to_string() << std::endl;

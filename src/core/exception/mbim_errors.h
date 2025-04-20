@@ -64,3 +64,12 @@ struct OpeationNotApplicableException : public MBIMBaseException {
         return "OpeationNotApplicableException";
     }
 };
+
+struct UnsupportedMessageTypeException : public MBIMBaseException {
+    explicit UnsupportedMessageTypeException(const std::string& details)
+        : MBIMBaseException("Given MessageType is not supported: " + details) {}
+
+    std::string type() const override {
+        return "UnsupportedMessageTypeException";
+    }
+};
