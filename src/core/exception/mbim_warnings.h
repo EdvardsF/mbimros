@@ -47,3 +47,13 @@ struct HexBufferTooLongWarning : public MBIMBaseWarning {
         return "HexBufferTooLongWarning";
     }
 };
+
+
+struct InformationBufferMismatchWarning : public MBIMBaseWarning {
+    explicit InformationBufferMismatchWarning(const std::string& details)
+        : MBIMBaseWarning("Information buffer length field does not match the actual length: " + details) {}
+
+    std::string type() const override {
+        return "InformationBufferMismatchWarning";
+    }
+};
