@@ -5,7 +5,7 @@
 #include "../../core/information_buffer.h"
 #include "../../core/exception/mbim_base_exception.h"
 #include "../../core/exception/mbim_warnings.h"
-#include "../../core/hex_stream_guard.h"
+#include "../../core/guards.h"
 
 #include "../../helpers/binding_helpers.h"
 #include "../../helpers/registration_helpers.h"

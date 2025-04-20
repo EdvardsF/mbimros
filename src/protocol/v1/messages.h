@@ -16,6 +16,8 @@
 #include "../../core/exception/mbim_warnings.h"
 #include "../../helpers/warning_helpers.h"
 #include "../../helpers/buffer_helpers.h"
+#include "../../helpers/binding_helpers.h"
+#include "../../core/guards.h"
 
 
 struct MBIM_MESSAGE_HEADER : public Serializable {

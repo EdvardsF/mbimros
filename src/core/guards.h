@@ -27,3 +27,14 @@ private:
     hexStream& hs_;
     size_t start_offset_;
 };
+
+class HexStreamAlignmentGuard {
+public:
+    explicit HexStreamAlignmentGuard(hexStream& hs) {
+        if (!hs.isAlignedAt4Bytes()) {
+            throw InvalidByteAlignment(
+                "bytes must be a multiple of 4, got: " + std::to_string(hs.availableBytes()) + "."
+            );
+        }
+    }
+};

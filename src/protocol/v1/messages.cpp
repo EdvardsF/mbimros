@@ -5,10 +5,7 @@
 
 
 MBIM_MESSAGE_HEADER::MBIM_MESSAGE_HEADER(hexStream& hs) {
-    // TODO - move to more generalized place to prevent copy paste
-    if (!hs.isAlignedAt4Bytes()) {
-        throw InvalidByteAlignment("bytes must be a multiple of 4, got: " + std::to_string(hs.availableBytes()) + ".");
-    }
+    HexStreamAlignmentGuard _(hs); // Checks for 4 byte alignment
     MESSAGE_TYPE.bind(this);
     MESSAGE_TYPE.setEnumFormatter(map_type);
     MESSAGE_TYPE.set(static_cast<MESSAGE_TYPE_ENUM>(hs.readUint32LE()));
@@ -22,10 +19,7 @@ MBIM_MESSAGE_HEADER::MBIM_MESSAGE_HEADER(hexStream& hs) {
 
 
 MBIM_FRAGMENT_HEADER::MBIM_FRAGMENT_HEADER(hexStream& hs) {
-    // TODO - move to more generalized place to prevent copy paste
-    if (!hs.isAlignedAt4Bytes()) {
-        throw InvalidByteAlignment("bytes must be a multiple of 4, got: " + std::to_string(hs.availableBytes()) + ".");
-    }
+    HexStreamAlignmentGuard _(hs); // Checks for 4 byte alignment
     TOTAL_FRAGMENTS.bind(this);
     TOTAL_FRAGMENTS.set(hs.readUint32LE());
 
@@ -35,28 +29,19 @@ MBIM_FRAGMENT_HEADER::MBIM_FRAGMENT_HEADER(hexStream& hs) {
 
 
 MBIM_OPEN_MSG::MBIM_OPEN_MSG(hexStream& hs) : MESSAGE_HEADER(hs) {
-    // TODO - move to more generalized place to prevent copy paste
-    if (!hs.isAlignedAt4Bytes()) {
-        throw InvalidByteAlignment("bytes must be a multiple of 4, got: " + std::to_string(hs.availableBytes()) + ".");
-    }
+    HexStreamAlignmentGuard _(hs); // Checks for 4 byte alignment
     includeHeader(&MESSAGE_HEADER);
     MAX_CONTROL_TRANSFER.bind(this);
     MAX_CONTROL_TRANSFER.set(hs.readUint32LE());
 }
 
 MBIM_CLOSE_MSG::MBIM_CLOSE_MSG(hexStream& hs) : MESSAGE_HEADER(hs) {
-    // TODO - move to more generalized place to prevent copy paste
-    if (!hs.isAlignedAt4Bytes()) {
-        throw InvalidByteAlignment("bytes must be a multiple of 4, got: " + std::to_string(hs.availableBytes()) + ".");
-    }
+    HexStreamAlignmentGuard _(hs); // Checks for 4 byte alignment
     includeHeader(&MESSAGE_HEADER);
 }
 
 MBIM_COMMAND_MSG::MBIM_COMMAND_MSG(hexStream& hs) : MESSAGE_HEADER(hs), FRAGMENT_HEADER(hs) {
-    // TODO - move to more generalized place to prevent copy paste
-    if (!hs.isAlignedAt4Bytes()) {
-        throw InvalidByteAlignment("bytes must be a multiple of 4, got: " + std::to_string(hs.availableBytes()) + ".");
-    }
+    HexStreamAlignmentGuard _(hs); // Checks for 4 byte alignment
     includeHeader(&MESSAGE_HEADER);
     includeFragmentHeader(&FRAGMENT_HEADER);
 
@@ -82,10 +67,7 @@ MBIM_COMMAND_MSG::MBIM_COMMAND_MSG(hexStream& hs) : MESSAGE_HEADER(hs), FRAGMENT
 }
 
 MBIM_HOST_ERROR_MSG::MBIM_HOST_ERROR_MSG(hexStream& hs) : MESSAGE_HEADER(hs) {
-    // TODO - move to more generalized place to prevent copy paste
-    if (!hs.isAlignedAt4Bytes()) {
-        throw InvalidByteAlignment("bytes must be a multiple of 4, got: " + std::to_string(hs.availableBytes()) + ".");
-    }
+    HexStreamAlignmentGuard _(hs); // Checks for 4 byte alignment
     includeHeader(&MESSAGE_HEADER);
     ERROR_STATUS_CODE.bind(this);
     ERROR_STATUS_CODE.setEnumFormatter(map_host_error);
@@ -93,10 +75,7 @@ MBIM_HOST_ERROR_MSG::MBIM_HOST_ERROR_MSG(hexStream& hs) : MESSAGE_HEADER(hs) {
 }
 
 MBIM_OPEN_DONE::MBIM_OPEN_DONE(hexStream& hs) : MESSAGE_HEADER(hs) {
-    // TODO - move to more generalized place to prevent copy paste
-    if (!hs.isAlignedAt4Bytes()) {
-        throw InvalidByteAlignment("bytes must be a multiple of 4, got: " + std::to_string(hs.availableBytes()) + ".");
-    }
+    HexStreamAlignmentGuard _(hs); // Checks for 4 byte alignment
     includeHeader(&MESSAGE_HEADER);
     STATUS.bind(this);
     STATUS.setEnumFormatter(map_host_status);
@@ -104,10 +83,7 @@ MBIM_OPEN_DONE::MBIM_OPEN_DONE(hexStream& hs) : MESSAGE_HEADER(hs) {
 }
 
 MBIM_CLOSE_DONE::MBIM_CLOSE_DONE(hexStream& hs) : MESSAGE_HEADER(hs) {
-    // TODO - move to more generalized place to prevent copy paste
-    if (!hs.isAlignedAt4Bytes()) {
-        throw InvalidByteAlignment("bytes must be a multiple of 4, got: " + std::to_string(hs.availableBytes()) + ".");
-    }
+    HexStreamAlignmentGuard _(hs); // Checks for 4 byte alignment
     includeHeader(&MESSAGE_HEADER);
     STATUS.bind(this);
     STATUS.setEnumFormatter(map_host_status);
@@ -115,10 +91,7 @@ MBIM_CLOSE_DONE::MBIM_CLOSE_DONE(hexStream& hs) : MESSAGE_HEADER(hs) {
 }
 
 MBIM_COMMAND_DONE::MBIM_COMMAND_DONE(hexStream& hs) : MESSAGE_HEADER(hs), FRAGMENT_HEADER(hs) {
-    // TODO - move to more generalized place to prevent copy paste
-    if (!hs.isAlignedAt4Bytes()) {
-        throw InvalidByteAlignment("bytes must be a multiple of 4, got: " + std::to_string(hs.availableBytes()) + ".");
-    }
+    HexStreamAlignmentGuard _(hs); // Checks for 4 byte alignment
     includeHeader(&MESSAGE_HEADER);
     includeFragmentHeader(&FRAGMENT_HEADER);
 
@@ -143,10 +116,7 @@ MBIM_COMMAND_DONE::MBIM_COMMAND_DONE(hexStream& hs) : MESSAGE_HEADER(hs), FRAGME
 }
 
 MBIM_INDICATE_STATUS_MSG::MBIM_INDICATE_STATUS_MSG(hexStream& hs) : MESSAGE_HEADER(hs), FRAGMENT_HEADER(hs) {
-    // TODO - move to more generalized place to prevent copy paste
-    if (!hs.isAlignedAt4Bytes()) {
-        throw InvalidByteAlignment("bytes must be a multiple of 4, got: " + std::to_string(hs.availableBytes()) + ".");
-    }
+    HexStreamAlignmentGuard _(hs); // Checks for 4 byte alignment
     includeHeader(&MESSAGE_HEADER);
     includeFragmentHeader(&FRAGMENT_HEADER);
 
