@@ -101,3 +101,49 @@ TEST_CASE("Offsets are calculated relative to InformationBuffer start", "[Offset
         REQUIRE(offset2 > offset1);
     }
 }
+
+TEST_CASE("constructMessageHeader generates correct header", "[Encoder][MessageHeader]") {
+    SECTION("Typical values") {
+        std::string result = constructMessageHeader(
+            MESSAGE_TYPE_ENUM::MBIM_COMMAND_MSG, // Type: 3
+            128,                                // Length
+            0xAABBCCDD                           // Transaction ID
+        );
+
+        // Should be:
+        // 03 00 00 00 (type)
+        // 80 00 00 00 (length)
+        // DD CC BB AA (transaction id)
+        REQUIRE(result == "0300000080000000DDCCBBAA");
+    }
+
+    SECTION("Zero transaction id") {
+        std::string result = constructMessageHeader(
+            MESSAGE_TYPE_ENUM::MBIM_OPEN_MSG, // Type: 1
+            64,
+            0
+        );
+
+        REQUIRE(result == "010000004000000000000000");
+    }
+}
+
+TEST_CASE("constructFragmentHeader generates correct fragment", "[Encoder][FragmentHeader]") {
+    SECTION("Single fragment") {
+        std::string result = constructFragmentHeader(1, 0);
+
+        // Should be:
+        // 01 00 00 00 (total)
+        // 00 00 00 00 (current)
+        REQUIRE(result == "0100000000000000");
+    }
+
+    SECTION("Multi fragment") {
+        std::string result = constructFragmentHeader(2, 1);
+
+        // Should be:
+        // 02 00 00 00 (total)
+        // 01 00 00 00 (current)
+        REQUIRE(result == "0200000001000000");
+    }
+}
