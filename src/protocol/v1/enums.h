@@ -2,6 +2,91 @@
 
 #include <cstdint>
 
+namespace MBIM_CMD {
+
+struct UUID_BASIC_CONNECT {
+    static constexpr const char* UUID = "a289cc33bcbb8b4fb6b0133ec2aae6df";
+    enum CID {
+        MBIM_CID_DEVICE_CAPS                  = 1,
+        MBIM_CID_SUBSCRIBER_READY_STATUS      = 2,
+        MBIM_CID_RADIO_STATE                  = 3,
+        MBIM_CID_PIN                          = 4,
+        MBIM_CID_PIN_LIST                     = 5,
+        MBIM_CID_HOME_PROVIDER                = 6,
+        MBIM_CID_PREFERRED_PROVIDERS          = 7,
+        MBIM_CID_VISIBLE_PROVIDERS            = 8,
+        MBIM_CID_REGISTER_STATE               = 9,
+        MBIM_CID_PACKET_SERVICE               = 10,
+        MBIM_CID_SIGNAL_STATE                 = 11,
+        MBIM_CID_CONNECT                      = 12,
+        MBIM_CID_PROVISIONED_CONTEXTS         = 13,
+        MBIM_CID_SERVICE_ACTIVATION           = 14,
+        MBIM_CID_IP_CONFIGURATION             = 15,
+        MBIM_CID_DEVICE_SERVICES              = 16,
+        MBIM_CID_DEVICE_SERVICE_SUBSCRIBE_LIST = 19,
+        MBIM_CID_PACKET_STATISTICS            = 20,
+        MBIM_CID_NETWORK_IDLE_HINT            = 21,
+        MBIM_CID_EMERGENCY_MODE               = 22,
+        MBIM_CID_IP_PACKET_FILTERS            = 23,
+        MBIM_CID_MULTICARRIER_PROVIDERS       = 24
+    };
+};
+
+struct UUID_SMS {
+    static constexpr const char* UUID = "533fbeeb14fe44679f9033a223e56c3f";
+    enum CID {
+        MBIM_CID_SMS_CONFIGURATION       = 1,
+        MBIM_CID_SMS_READ                = 2,
+        MBIM_CID_SMS_SEND                = 3,
+        MBIM_CID_SMS_DELETE              = 4,
+        MBIM_CID_SMS_MESSAGE_STORE_STATUS = 5
+    };
+};
+
+struct UUID_USSD {
+    static constexpr const char* UUID = "e550a0c85e82479e82f710abf4c3351f";
+    enum CID {
+        MBIM_CID_USSD = 1
+    };
+};
+
+struct UUID_PHONEBOOK {
+    static constexpr const char* UUID = "4bf384761e6a41dbb1d8bed289c25bdb";
+    enum CID {
+        MBIM_CID_PHONEBOOK_CONFIGURATION = 1,
+        MBIM_CID_PHONEBOOK_READ          = 2,
+        MBIM_CID_PHONEBOOK_DELETE        = 3,
+        MBIM_CID_PHONEBOOK_WRITE         = 4
+    };
+};
+
+struct UUID_STK {
+    static constexpr const char* UUID = "d8f20131fcb54e178602d6ed3816164c";
+    enum CID {
+        MBIM_CID_STK_PAC               = 1,
+        MBIM_CID_STK_TERMINAL_RESPONSE = 2,
+        MBIM_CID_STK_ENVELOPE          = 3
+    };
+};
+
+struct UUID_AUTH {
+    static constexpr const char* UUID = "1d2b5ff70aa148b2aa5250f15767174e";
+    enum CID {
+        MBIM_CID_AKA_AUTH  = 1,
+        MBIM_CID_AKAP_AUTH = 2,
+        MBIM_CID_SIM_AUTH  = 3
+    };
+};
+
+struct UUID_DSS {
+    static constexpr const char* UUID = "c08a26dd7718438284826e0d583c4d0e";
+    enum CID {
+        MBIM_CID_DSS_CONNECT = 1
+    };
+};
+
+}
+
 enum class MESSAGE_TYPE_ENUM : uint32_t {
     MBIM_OPEN_MSG = 1,
     MBIM_CLOSE_MSG = 2,

@@ -86,8 +86,8 @@ TEST_CASE("Decoder parses MBIM_COMMAND_MSG correctly", "[Decoder][MBIM_COMMAND_M
     std::string hex = Encoder::encode(
         MESSAGE_TYPE_ENUM::MBIM_COMMAND_MSG,
         Encoder::EMPTY_ARG,
-        "a289cc33bcbb8b4fb6b0133ec2aae6df",
-        3,
+        MBIM_CMD::UUID_BASIC_CONNECT::UUID,
+        MBIM_CMD::UUID_BASIC_CONNECT::MBIM_CID_RADIO_STATE,
         MESSAGE_QUERY_OR_SET_ENUM::SET,
         {
             ConstructionField(MBIM_RADIO_SWITCH_STATE_ENUM::MBIM_RADIO_OFF)
@@ -98,10 +98,10 @@ TEST_CASE("Decoder parses MBIM_COMMAND_MSG correctly", "[Decoder][MBIM_COMMAND_M
         hex,
         {
             {"DEVICE_SERVICE_ID", [](MBIM_COMMAND_MSG& msg) {
-                REQUIRE(msg.DEVICE_SERVICE_ID.value == "a289cc33bcbb8b4fb6b0133ec2aae6df");
+                REQUIRE(msg.DEVICE_SERVICE_ID.value == MBIM_CMD::UUID_BASIC_CONNECT::UUID);
             }},
             {"CID", [](MBIM_COMMAND_MSG& msg) {
-                REQUIRE(msg.CID.value == 3);
+                REQUIRE(msg.CID.value == MBIM_CMD::UUID_BASIC_CONNECT::MBIM_CID_RADIO_STATE);
             }},
             {"COMMAND_TYPE", [](MBIM_COMMAND_MSG& msg) {
                 REQUIRE(msg.COMMAND_TYPE.value == MESSAGE_QUERY_OR_SET_ENUM::SET);
@@ -123,8 +123,8 @@ TEST_CASE("Decoder parses MBIM_COMMAND_DONE correctly", "[Decoder][MBIM_COMMAND_
     std::string hex = Encoder::encode(
         MESSAGE_TYPE_ENUM::MBIM_COMMAND_DONE,
         Encoder::EMPTY_ARG,
-        "a289cc33bcbb8b4fb6b0133ec2aae6df",
-        3,
+        MBIM_CMD::UUID_BASIC_CONNECT::UUID,
+        MBIM_CMD::UUID_BASIC_CONNECT::MBIM_CID_RADIO_STATE,
         MBIM_STATUS_TO_HOST_ENUM::MBIM_STATUS_BAD_SIM,
         {
             ConstructionField(MBIM_RADIO_SWITCH_STATE_ENUM::MBIM_RADIO_ON),
@@ -136,10 +136,10 @@ TEST_CASE("Decoder parses MBIM_COMMAND_DONE correctly", "[Decoder][MBIM_COMMAND_
         hex,
         {
             {"DEVICE_SERVICE_ID", [](MBIM_COMMAND_DONE& msg) {
-                REQUIRE(msg.DEVICE_SERVICE_ID.value == "a289cc33bcbb8b4fb6b0133ec2aae6df");
+                REQUIRE(msg.DEVICE_SERVICE_ID.value == MBIM_CMD::UUID_BASIC_CONNECT::UUID);
             }},
             {"CID", [](MBIM_COMMAND_DONE& msg) {
-                REQUIRE(msg.CID.value == 3);
+                REQUIRE(msg.CID.value == MBIM_CMD::UUID_BASIC_CONNECT::MBIM_CID_RADIO_STATE);
             }},
             {"STATUS", [](MBIM_COMMAND_DONE& msg) {
                 REQUIRE(msg.STATUS.value == MBIM_STATUS_TO_HOST_ENUM::MBIM_STATUS_BAD_SIM);
@@ -181,8 +181,8 @@ TEST_CASE("Decoder parses MBIM_INDICATE_STATUS_MSG correctly", "[Decoder][MBIM_I
     std::string hex = Encoder::encode(
         MESSAGE_TYPE_ENUM::MBIM_INDICATE_STATUS_MSG,
         Encoder::EMPTY_ARG,
-        "a289cc33bcbb8b4fb6b0133ec2aae6df",
-        3,
+        MBIM_CMD::UUID_BASIC_CONNECT::UUID,
+        MBIM_CMD::UUID_BASIC_CONNECT::MBIM_CID_RADIO_STATE,
         Encoder::EMPTY_ARG,
         {
             ConstructionField(MBIM_RADIO_SWITCH_STATE_ENUM::MBIM_RADIO_ON),
@@ -194,10 +194,10 @@ TEST_CASE("Decoder parses MBIM_INDICATE_STATUS_MSG correctly", "[Decoder][MBIM_I
         hex,
         {
             {"DEVICE_SERVICE_ID", [](MBIM_INDICATE_STATUS_MSG& msg) {
-                REQUIRE(msg.DEVICE_SERVICE_ID.value == "a289cc33bcbb8b4fb6b0133ec2aae6df");
+                REQUIRE(msg.DEVICE_SERVICE_ID.value == MBIM_CMD::UUID_BASIC_CONNECT::UUID);
             }},
             {"CID", [](MBIM_INDICATE_STATUS_MSG& msg) {
-                REQUIRE(msg.CID.value == 3);
+                REQUIRE(msg.CID.value == MBIM_CMD::UUID_BASIC_CONNECT::MBIM_CID_RADIO_STATE);
             }},
             {"INFORMATION_BUFFER_LENGTH", [](MBIM_INDICATE_STATUS_MSG& msg) {
                 REQUIRE(msg.INFORMATION_BUFFER_LENGTH.value == 8);
