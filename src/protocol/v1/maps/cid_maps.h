@@ -4,28 +4,28 @@
 
 inline std::string map_basic_connect_cid(uint32_t cid) {
     static const std::unordered_map<uint32_t, std::string> cid_map = {
-        { 1,  "MBIM_CID_DEVICE_CAPS" },
-        { 2,  "MBIM_CID_SUBSCRIBER_READY_STATUS" },
-        { 3,  "MBIM_CID_RADIO_STATE" },
-        { 4,  "MBIM_CID_PIN" },
-        { 5,  "MBIM_CID_PIN_LIST" },
-        { 6,  "MBIM_CID_HOME_PROVIDER" },
-        { 7,  "MBIM_CID_PREFERRED_PROVIDERS" },
-        { 8,  "MBIM_CID_VISIBLE_PROVIDERS" },
-        { 9,  "MBIM_CID_REGISTER_STATE" },
-        { 10, "MBIM_CID_PACKET_SERVICE" },
-        { 11, "MBIM_CID_SIGNAL_STATE" },
-        { 12, "MBIM_CID_CONNECT" },
-        { 13, "MBIM_CID_PROVISIONED_CONTEXTS" },
-        { 14, "MBIM_CID_SERVICE_ACTIVATION" },
-        { 15, "MBIM_CID_IP_CONFIGURATION" },
-        { 16, "MBIM_CID_DEVICE_SERVICES" },
-        { 19, "MBIM_CID_DEVICE_SERVICE_SUBSCRIBE_LIST" },
-        { 20, "MBIM_CID_PACKET_STATISTICS" },
-        { 21, "MBIM_CID_NETWORK_IDLE_HINT" },
-        { 22, "MBIM_CID_EMERGENCY_MODE" },
-        { 23, "MBIM_CID_IP_PACKET_FILTERS" },
-        { 24, "MBIM_CID_MULTICARRIER_PROVIDERS" }
+        { 1,  "MBIM_CID_DEVICE_CAPS - Device capability information" },
+        { 2,  "MBIM_CID_SUBSCRIBER_READY_STATUS - SIM and device readiness" },
+        { 3,  "MBIM_CID_RADIO_STATE - Radio on/off state" },
+        { 4,  "MBIM_CID_PIN - PIN operations" },
+        { 5,  "MBIM_CID_PIN_LIST - Supported PIN types" },
+        { 6,  "MBIM_CID_HOME_PROVIDER - Home network info" },
+        { 7,  "MBIM_CID_PREFERRED_PROVIDERS - Preferred network list" },
+        { 8,  "MBIM_CID_VISIBLE_PROVIDERS - Scan visible networks" },
+        { 9,  "MBIM_CID_REGISTER_STATE - Network registration status" },
+        { 10, "MBIM_CID_PACKET_SERVICE - Packet data service state" },
+        { 11, "MBIM_CID_SIGNAL_STATE - Signal strength and quality" },
+        { 12, "MBIM_CID_CONNECT - PDP context connect/disconnect" },
+        { 13, "MBIM_CID_PROVISIONED_CONTEXTS - List of defined contexts" },
+        { 14, "MBIM_CID_SERVICE_ACTIVATION - Subscription activation" },
+        { 15, "MBIM_CID_IP_CONFIGURATION - IP settings (IPv4/6)" },
+        { 16, "MBIM_CID_DEVICE_SERVICES - Supported device services" },
+        { 19, "MBIM_CID_DEVICE_SERVICE_SUBSCRIBE_LIST - Event subscriptions" },
+        { 20, "MBIM_CID_PACKET_STATISTICS - Data usage stats" },
+        { 21, "MBIM_CID_NETWORK_IDLE_HINT - Power save hint" },
+        { 22, "MBIM_CID_EMERGENCY_MODE - Emergency mode status" },
+        { 23, "MBIM_CID_IP_PACKET_FILTERS - Packet filter rules" },
+        { 24, "MBIM_CID_MULTICARRIER_PROVIDERS - Available carrier list" }
     };
 
     auto it = cid_map.find(cid);
@@ -36,11 +36,11 @@ inline std::string map_basic_connect_cid(uint32_t cid) {
 
 inline std::string map_sms_cid(uint32_t cid) {
     static const std::unordered_map<uint32_t, std::string> cid_map = {
-        { 1, "MBIM_CID_SMS_CONFIGURATION" },
-        { 2, "MBIM_CID_SMS_READ" },
-        { 3, "MBIM_CID_SMS_SEND" },
-        { 4, "MBIM_CID_SMS_DELETE" },
-        { 5, "MBIM_CID_SMS_MESSAGE_STORE_STATUS" }
+        { 1, "MBIM_CID_SMS_CONFIGURATION - SMS format/settings" },
+        { 2, "MBIM_CID_SMS_READ - Read SMS messages" },
+        { 3, "MBIM_CID_SMS_SEND - Send SMS message" },
+        { 4, "MBIM_CID_SMS_DELETE - Delete SMS message" },
+        { 5, "MBIM_CID_SMS_MESSAGE_STORE_STATUS - Storage usage info" }
     };
 
     auto it = cid_map.find(cid);
@@ -51,7 +51,7 @@ inline std::string map_sms_cid(uint32_t cid) {
 
 inline std::string map_ussd_cid(uint32_t cid) {
     static const std::unordered_map<uint32_t, std::string> cid_map = {
-        { 1, "MBIM_CID_USSD" }
+        { 1, "MBIM_CID_USSD - USSD session handling" }
     };
 
     auto it = cid_map.find(cid);
@@ -62,10 +62,10 @@ inline std::string map_ussd_cid(uint32_t cid) {
 
 inline std::string map_phonebook_cid(uint32_t cid) {
     static const std::unordered_map<uint32_t, std::string> cid_map = {
-        { 1, "MBIM_CID_PHONEBOOK_CONFIGURATION" },
-        { 2, "MBIM_CID_PHONEBOOK_READ" },
-        { 3, "MBIM_CID_PHONEBOOK_DELETE" },
-        { 4, "MBIM_CID_PHONEBOOK_WRITE" }
+        { 1, "MBIM_CID_PHONEBOOK_CONFIGURATION - Phonebook storage info" },
+        { 2, "MBIM_CID_PHONEBOOK_READ - Read phonebook entries" },
+        { 3, "MBIM_CID_PHONEBOOK_DELETE - Delete phonebook entries" },
+        { 4, "MBIM_CID_PHONEBOOK_WRITE - Write phonebook entries" }
     };
 
     auto it = cid_map.find(cid);
@@ -76,9 +76,9 @@ inline std::string map_phonebook_cid(uint32_t cid) {
 
 inline std::string map_stk_cid(uint32_t cid) {
     static const std::unordered_map<uint32_t, std::string> cid_map = {
-        { 1, "MBIM_CID_STK_PAC" },
-        { 2, "MBIM_CID_STK_TERMINAL_RESPONSE" },
-        { 3, "MBIM_CID_STK_ENVELOPE" }
+        { 1, "MBIM_CID_STK_PAC - Proactive command from SIM" },
+        { 2, "MBIM_CID_STK_TERMINAL_RESPONSE - Terminal response to SIM" },
+        { 3, "MBIM_CID_STK_ENVELOPE - Event report to SIM" }
     };
 
     auto it = cid_map.find(cid);
@@ -89,9 +89,9 @@ inline std::string map_stk_cid(uint32_t cid) {
 
 inline std::string map_auth_cid(uint32_t cid) {
     static const std::unordered_map<uint32_t, std::string> cid_map = {
-        { 1, "MBIM_CID_AKA_AUTH" },
-        { 2, "MBIM_CID_AKAP_AUTH" },
-        { 3, "MBIM_CID_SIM_AUTH" }
+        { 1, "MBIM_CID_AKA_AUTH - 3G AKA authentication" },
+        { 2, "MBIM_CID_AKAP_AUTH - 3G AKA' authentication" },
+        { 3, "MBIM_CID_SIM_AUTH - SIM-based authentication" }
     };
 
     auto it = cid_map.find(cid);
@@ -102,7 +102,7 @@ inline std::string map_auth_cid(uint32_t cid) {
 
 inline std::string map_dss_cid(uint32_t cid) {
     static const std::unordered_map<uint32_t, std::string> cid_map = {
-        { 1, "MBIM_CID_DSS_CONNECT" }
+        { 1, "MBIM_CID_DSS_CONNECT - Enable/disable out-of-band data" }
     };
 
     auto it = cid_map.find(cid);
@@ -110,6 +110,7 @@ inline std::string map_dss_cid(uint32_t cid) {
         return it->second;
     return "Unknown DSS CID";
 }
+
 
 inline std::string (*get_cid_mapper_for_uuid(const std::string& uuid))(uint32_t) {
     static const std::unordered_map<std::string, std::string(*)(uint32_t)> mapper_map = {
