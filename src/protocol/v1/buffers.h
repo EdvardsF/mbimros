@@ -58,3 +58,19 @@ struct MBIM_RADIO_STATE_INFO : public informationBuffer {
     void parse(hexStream& hs) override;
 };
 
+struct MBIM_SET_PIN : public informationBuffer {
+    Field<PIN_TYPE_ENUM> MBIM_PIN_TYPE      { "MBIM_PIN_TYPE", "" };
+    Field<PIN_OPERATION_ENUM> MBIM_PIN_OPERATION      { "MBIM_PIN_OPERATION", "" };
+
+    void parse(hexStream& hs) override;
+};
+
+struct MBIM_PIN_INFO : public informationBuffer {
+    Field<PIN_TYPE_ENUM> MBIM_PIN_TYPE      { "MBIM_PIN_TYPE", "" };
+    Field<PIN_STATE_ENUM> MBIM_PIN_STATE      { "MBIM_PIN_STATE", "" };
+    Field<uint32_t> REMAINING_ATTEMPTS         { "REMAINING_ATTEMPTS", "Number of telephone numbers following this element" };
+
+    void parse(hexStream& hs) override;
+};
+
+

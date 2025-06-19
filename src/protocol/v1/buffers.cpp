@@ -55,12 +55,34 @@ void MBIM_RADIO_STATE_INFO::parse(hexStream& hs) {
     bindFormatSet(SW_RADIO_STATE, this, map_radio_switch_state, hs);
 }
 
+void MBIM_SET_PIN::parse(hexStream& hs) {
+    HexStreamParseGuard guard(hs);
+
+    bindFormatSet(MBIM_PIN_TYPE, this, map_pin_type, hs);
+    bindFormatSet(MBIM_PIN_OPERATION, this, map_pin_operation, hs);
+    readOLPairAndBind<std::string>("MBIM_PIN", "", hs, this, guard.startOffset(), 32);
+    readOLPairAndBind<std::string>("MBIM_NEW_PIN", "", hs, this, guard.startOffset(), 32);
+}
+
+void MBIM_PIN_INFO::parse(hexStream& hs) {
+    HexStreamParseGuard guard(hs);
+
+    bindFormatSet(MBIM_PIN_TYPE, this, map_pin_type, hs);
+    bindFormatSet(MBIM_PIN_STATE, this, map_pin_state, hs);
+    bindSimpleSet(REMAINING_ATTEMPTS, this, hs);
+}
+
 
 
 
 void register_all_buffers() {
 
     using namespace MBIM_CMD;
+
+    // QueryType
+    // SetType
+    // HostResponseType
+    // IndicationType
 
     registerUuidCid<
         EMPTY_BUFFER, 
@@ -82,5 +104,12 @@ void register_all_buffers() {
         MBIM_RADIO_STATE_INFO,
         MBIM_RADIO_STATE_INFO
     >(UUID_BASIC_CONNECT::UUID, UUID_BASIC_CONNECT::MBIM_CID_RADIO_STATE);
+
+    registerUuidCid<
+        EMPTY_BUFFER, 
+        MBIM_SET_PIN, 
+        MBIM_PIN_INFO,
+        NOT_APPLICABLE_BUFFER
+    >(UUID_BASIC_CONNECT::UUID, UUID_BASIC_CONNECT::MBIM_CID_PIN);
 }
 
