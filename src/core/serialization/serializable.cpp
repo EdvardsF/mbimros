@@ -99,3 +99,11 @@ void Serializable::includeFragmentHeader(const Serializable* header) {
 void Serializable::includeInformationBuffer(std::unique_ptr<Serializable> buffer) {
     embedded_buffer = std::move(buffer);
 }
+
+Serializable* Serializable::getEmbeddedBuffer() {
+    return embedded_buffer.get();
+}
+
+const Serializable* Serializable::getEmbeddedBuffer() const {
+    return embedded_buffer.get();
+}

@@ -45,8 +45,9 @@ TEST_CASE("MbimEncoder encodes basic message", "[MbimEncoder]") {
 
     std::string uuid = "a289cc33bcbb8b4fb6b0133ec2aae6df";
 
-    std::string hex = MbimEncoder::encode(
+    std::string hex = Encoder::encode(
         MESSAGE_TYPE_ENUM::MBIM_COMMAND_MSG,
+        Encoder::EMPTY_ARG,
         uuid,
         2,
         0,

@@ -7,14 +7,13 @@
 
 class Decoder {
 public:
-    explicit Decoder(std::string hex_data, std::ostream& errorOutput = std::cerr);
-
+    explicit Decoder(std::string hex_data);
     void decodeRaw();
 
     std::string to_string() const;
+    
+    std::unique_ptr<Serializable> decodedMessage;
 
 private:
     hexStream hs;
-    std::ostream& errorStream;
-    std::unique_ptr<Serializable> decodedMessage;
 };

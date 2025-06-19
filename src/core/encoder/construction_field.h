@@ -44,6 +44,13 @@ struct ConstructionField {
     explicit ConstructionField(const std::string& value);
     explicit ConstructionField(const std::vector<std::string>& values);
 
+    template <typename EnumType, typename = std::enable_if_t<std::is_enum_v<EnumType>>>
+    explicit ConstructionField(EnumType enumValue)
+        : type(FieldType::Numeric), numericValue(static_cast<uint32_t>(enumValue))
+    {
+        allFields.push_back(this);
+    }
+
     static void clear();
 };
 

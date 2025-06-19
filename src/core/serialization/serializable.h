@@ -30,6 +30,9 @@ public:
 
     void includeInformationBuffer(std::unique_ptr<Serializable> buffer);
 
+    Serializable* getEmbeddedBuffer();
+    const Serializable* getEmbeddedBuffer() const;
+
 protected:
     std::vector<FieldBase*> fields;
     std::vector<std::pair<std::string, std::string>> printableFields;

@@ -58,10 +58,6 @@ void MBIM_RADIO_STATE_INFO::parse(hexStream& hs) {
 
 
 
-
-
-
-
 void register_all_buffers() {
     const std::string basic_connect = "a289cc33bcbb8b4fb6b0133ec2aae6df";
 
@@ -81,20 +77,12 @@ void register_all_buffers() {
         MBIM_SUBSCRIBER_READY_INFO
     >(basic_connect, 2);
 
-    // BASIC_CONNECT + MBIM_CID_RADIO_STATE (Query/Set)
+    // BASIC_CONNECT + MBIM_CID_RADIO_STATE 
     registerUuidCid<
         EMPTY_BUFFER, 
-        NOT_APPLICABLE_BUFFER, 
         MBIM_SET_RADIO_STATE, 
-        NOT_APPLICABLE_BUFFER
-    >(basic_connect, 3);
-
-    // BASIC_CONNECT + MBIM_CID_RADIO_STATE (State Info)
-    registerUuidCid<
-        MBIM_SET_RADIO_STATE, 
-        EMPTY_BUFFER, 
-        MBIM_RADIO_STATE_INFO, 
+        MBIM_RADIO_STATE_INFO,
         MBIM_RADIO_STATE_INFO
-    >(basic_connect, 4);
+    >(basic_connect, 3);
 }
 
