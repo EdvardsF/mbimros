@@ -60,8 +60,8 @@ void MBIM_SET_PIN::parse(hexStream& hs) {
 
     bindFormatSet(MBIM_PIN_TYPE, this, map_pin_type, hs);
     bindFormatSet(MBIM_PIN_OPERATION, this, map_pin_operation, hs);
-    readOLPairAndBind<std::string>("MBIM_PIN", "", hs, this, guard.startOffset(), 32);
-    readOLPairAndBind<std::string>("MBIM_NEW_PIN", "", hs, this, guard.startOffset(), 32);
+    readOLPairAndBind<std::string>("MBIM_PIN", "Current PIN", hs, this, guard.startOffset(), 32);
+    readOLPairAndBind<std::string>("MBIM_NEW_PIN", "New PIN", hs, this, guard.startOffset(), 32);
 }
 
 void MBIM_PIN_INFO::parse(hexStream& hs) {

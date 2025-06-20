@@ -59,16 +59,24 @@ struct MBIM_RADIO_STATE_INFO : public informationBuffer {
 };
 
 struct MBIM_SET_PIN : public informationBuffer {
-    Field<PIN_TYPE_ENUM> MBIM_PIN_TYPE      { "MBIM_PIN_TYPE", "" };
-    Field<PIN_OPERATION_ENUM> MBIM_PIN_OPERATION      { "MBIM_PIN_OPERATION", "" };
+    Field<PIN_TYPE_ENUM> MBIM_PIN_TYPE                { "MBIM_PIN_TYPE", "Type of PIN (e.g., PIN1, PIN2, device PIN, etc.)" };
+    Field<PIN_OPERATION_ENUM> MBIM_PIN_OPERATION      { "MBIM_PIN_OPERATION", "Type of operation done to the PIN" };
 
     void parse(hexStream& hs) override;
 };
 
 struct MBIM_PIN_INFO : public informationBuffer {
-    Field<PIN_TYPE_ENUM> MBIM_PIN_TYPE      { "MBIM_PIN_TYPE", "" };
-    Field<PIN_STATE_ENUM> MBIM_PIN_STATE      { "MBIM_PIN_STATE", "" };
-    Field<uint32_t> REMAINING_ATTEMPTS         { "REMAINING_ATTEMPTS", "Number of telephone numbers following this element" };
+    Field<PIN_TYPE_ENUM> MBIM_PIN_TYPE        { "MBIM_PIN_TYPE", "Type of PIN (e.g., PIN1, PIN2, device PIN, etc.)" };
+    Field<PIN_STATE_ENUM> MBIM_PIN_STATE      { "MBIM_PIN_STATE", "Whether the specified PIN is currently locked or unlocked" };
+    Field<uint32_t> REMAINING_ATTEMPTS        { "REMAINING_ATTEMPTS", "Number of remaining attempts before the PIN is blocked" };
+
+    void parse(hexStream& hs) override;
+};
+
+struct MBIM_PIN_LIST_INFO : public informationBuffer {
+    Field<PIN_TYPE_ENUM> MBIM_PIN_TYPE        { "MBIM_PIN_TYPE", "Type of PIN (e.g., PIN1, PIN2, device PIN, etc.)" };
+    Field<PIN_STATE_ENUM> MBIM_PIN_STATE      { "MBIM_PIN_STATE", "Whether the specified PIN is currently locked or unlocked" };
+    Field<uint32_t> REMAINING_ATTEMPTS        { "REMAINING_ATTEMPTS", "Number of remaining attempts before the PIN is blocked" };
 
     void parse(hexStream& hs) override;
 };
