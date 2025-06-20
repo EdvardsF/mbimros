@@ -42,3 +42,6 @@ test_mbimros
 # Windows junk
 Thumbs.db
 desktop.ini
+
+# Tmp testing files
+mbim_log.txt
