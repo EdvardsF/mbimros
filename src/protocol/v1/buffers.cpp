@@ -86,6 +86,37 @@ void MBIM_PROVIDER::parse(hexStream& hs) {
     provderName->bind(this);
 }
 
+void MBIM_SET_REGISTRATION_STATE::parse(hexStream& hs) {
+    HexStreamParseGuard guard(hs);
+
+    VariableField<>* provderId = readOLPair<std::string>("PROVIDER_ID", "MCC+MNC/SID", hs, guard.startOffset(), 12);
+    bindFormatSet(REGISTER_ACTION, this, map_register_action, hs);
+    bindBitmaskSet(DATA_CLASS, this, map_data_class, hs);
+
+    provderId->bind(this);
+}
+
+void MBIM_REGISTRATION_STATE_INFO::parse(hexStream& hs) {
+    HexStreamParseGuard guard(hs);
+
+    bindFormatSet(NW_ERROR, this, map_3gpp_nw_error, hs);
+    bindFormatSet(REGISTER_STATE, this, map_register_state, hs);
+    bindFormatSet(REGISTER_MODE, this, map_register_mode, hs);
+    bindBitmaskSet(AVAILABLE_DATA_CLLASSES, this, map_data_class, hs);
+    bindBitmaskSet(CURRENT_CELLULAR_CLASS, this, map_cellular_class, hs);
+    VariableField<>* provderId = readOLPair<std::string>("PROVIDER_ID", "MCC+MNC/SID", hs, guard.startOffset(), 12);
+    VariableField<>* provderName = readOLPair<std::string>("PROVIDER_NAME", "Provider's string format name", hs, guard.startOffset(), 40);
+    VariableField<>* roamingText = readOLPair<std::string>("ROAMING_TEXT", "Additional information to the user when the registration state is either MBIMRegisterStatePartner or MBIMRegisterStateRoaming", hs, guard.startOffset(), 126);
+    bindBitmaskSet(REGISTRATION_FLAG, this, map_registration_flags, hs);
+
+    provderId->bind(this);
+    provderName->bind(this);
+    roamingText->bind(this);
+}
+
+
+
+
 
 
 void register_all_buffers() {
@@ -136,5 +167,12 @@ void register_all_buffers() {
         MBIM_PROVIDER,
         NOT_APPLICABLE_BUFFER
     >(UUID_BASIC_CONNECT::UUID, UUID_BASIC_CONNECT::MBIM_CID_HOME_PROVIDER);
+
+    registerUuidCid<
+        EMPTY_BUFFER, 
+        MBIM_SET_REGISTRATION_STATE, 
+        MBIM_REGISTRATION_STATE_INFO,
+        MBIM_REGISTRATION_STATE_INFO
+    >(UUID_BASIC_CONNECT::UUID, UUID_BASIC_CONNECT::MBIM_CID_REGISTER_STATE);
 }
 

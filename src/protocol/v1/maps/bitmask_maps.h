@@ -141,3 +141,26 @@ inline std::string map_provider_state(uint32_t value) {
     }
     return oss.str();
 }
+
+inline std::string map_registration_flags(uint32_t value) {
+    std::vector<std::string> flags;
+
+    if (value & static_cast<uint32_t>(MBIM_REGISTRATION_FLAGS_ENUM::MBIM_REGISTRATION_MANUAL_SELECTION_NOT_AVAILABLE)) {
+        flags.push_back("[MBIM_REGISTRATION_MANUAL_SELECTION_NOT_AVAILABLE]-Manual network selection not supported (may vary per cell)");
+    }
+    if (value & static_cast<uint32_t>(MBIM_REGISTRATION_FLAGS_ENUM::MBIM_REGISTRATION_PACKET_SERVICE_AUTOMATIC_ATTACH)) {
+        flags.push_back("[MBIM_REGISTRATION_PACKET_SERVICE_AUTOMATIC_ATTACH]-Will auto-attach to network post registration without host involvement");
+    }
+    if (value == static_cast<uint32_t>(MBIM_REGISTRATION_FLAGS_ENUM::MBIM_REGISTRATION_NONE)) {
+        flags.push_back("[MBIM_REGISTRATION_NONE]-No bits are set");
+    }
+    if (flags.empty())
+        return "UNKNOWN or unsupported registration flags";
+
+    std::ostringstream oss;
+    for (const auto& flag : flags)
+        oss << flag << "\n";
+
+    return oss.str();
+}
+

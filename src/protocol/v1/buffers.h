@@ -91,3 +91,23 @@ struct MBIM_PROVIDER : public informationBuffer {
     void parse(hexStream& hs) override;
 };
 
+// TODO: MBIM_CID_PREFERRED_PROVIDERS, MBIM_CID_VISIBLE_PROVIDERS - requires nesting
+
+struct MBIM_SET_REGISTRATION_STATE : public informationBuffer {
+    Field<REGISTER_ACTION_ENUM> REGISTER_ACTION       { "REGISTER_ACTION", "Registration action that the device is requested to perform" };
+    Field<uint32_t> DATA_CLASS                        { "DATA_CLASS", "Bitmap of radio technologies supported by the modem" };
+
+    void parse(hexStream& hs) override;
+};
+
+struct MBIM_REGISTRATION_STATE_INFO : public informationBuffer {
+    Field<MBIM_3GPP_NW_ERROR_ENUM> NW_ERROR      { "NW_ERROR", "Detailed 3GPP network error code indicating why registration or service failed" };
+    Field<REGISTER_STATE_ENUM> REGISTER_STATE    { "REGISTER_STATE", "Registration state (e.g., home, roaming, denied)" };
+    Field<REGISTER_MODE_ENUM> REGISTER_MODE      { "REGISTER_MODE", "Registration mode" };
+    Field<uint32_t> AVAILABLE_DATA_CLLASSES      { "AVAILABLE_DATA_CLLASSES", "Bitmask of supported data bearer technologies (e.g., LTE, UMTS, EVDO)" };
+    Field<uint32_t> CURRENT_CELLULAR_CLASS       { "CURRENT_CELLULAR_CLASS", "Current radio class" };
+    Field<uint32_t> REGISTRATION_FLAG            { "REGISTRATION_FLAG", "Registration flags" };
+
+    void parse(hexStream& hs) override;
+};
+
