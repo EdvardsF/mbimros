@@ -19,9 +19,9 @@ int main() {
     //     ConstructionField(std::vector<std::string>{"123", "456", "789"}) // List of OLs
     // };
 
-    // std::string hexMessage = MbimEncoder::encode(
+    // std::string hexMessage = Encoder::encode(
     //     MESSAGE_TYPE_ENUM::MBIM_COMMAND_DONE,
-    //     EMPTY_ARG,
+    //     Encoder::EMPTY_ARG,
     //     "a289cc33bcbb8b4fb6b0133ec2aae6df",  // UUID
     //     2,                                   // CID
     //     0,                                   // succeeded
@@ -31,15 +31,20 @@ int main() {
     // std::cout << "\n\nHEX: " << hexMessage << " END\n";
 
     std::vector<ConstructionField> bufferFields = {
-
+        ConstructionField("id"),
+        ConstructionField(16),
+        ConstructionField("name"),
+        ConstructionField(1),
+        ConstructionField(2),
+        ConstructionField(3),
     };
 
     std::string hexMessage = Encoder::encode(
         MESSAGE_TYPE_ENUM::MBIM_COMMAND_MSG,
         Encoder::EMPTY_ARG,
         "a289cc33bcbb8b4fb6b0133ec2aae6df",  // UUID
-        4,                                   // CID
-        0,                                   // succeeded
+        MBIM_CMD::UUID_BASIC_CONNECT::MBIM_CID_HOME_PROVIDER,
+        1,                                   // quey/set
         bufferFields
     );
 

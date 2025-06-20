@@ -112,3 +112,32 @@ inline std::string map_ctrl_caps(uint32_t value) {
     }
     return oss.str();
 }
+
+
+inline std::string map_provider_state(uint32_t value) {
+    std::vector<std::string> flags;
+
+    if (value & static_cast<uint32_t>(MBIM_PROVIDER_STATE_ENUM::MBIM_PROVIDER_STATE_UNKNOWN))
+        flags.push_back("[MBIM_PROVIDER_STATE_UNKNOWN]-Network provider state is unknown");
+    if (value & static_cast<uint32_t>(MBIM_PROVIDER_STATE_ENUM::MBIM_PROVIDER_STATE_HOME))
+        flags.push_back("[MBIM_PROVIDER_STATE_HOME]-Network provider is a home operator");
+    if (value & static_cast<uint32_t>(MBIM_PROVIDER_STATE_ENUM::MBIM_PROVIDER_STATE_FORBIDDEN))
+        flags.push_back("[MBIM_PROVIDER_STATE_FORBIDDEN]-Network provider is on the blocked list");
+    if (value & static_cast<uint32_t>(MBIM_PROVIDER_STATE_ENUM::MBIM_PROVIDER_STATE_PREFERRED))
+        flags.push_back("[MBIM_PROVIDER_STATE_PREFERRED]-Network provider is on the preferred list");
+    if (value & static_cast<uint32_t>(MBIM_PROVIDER_STATE_ENUM::MBIM_PROVIDER_STATE_VISIBLE))
+        flags.push_back("[MBIM_PROVIDER_STATE_VISIBLE]-Network provider is visible");
+    if (value & static_cast<uint32_t>(MBIM_PROVIDER_STATE_ENUM::MBIM_PROVIDER_STATE_REGISTERED))
+        flags.push_back("[MBIM_PROVIDER_STATE_REGISTERED]-Network provider is currently registered");
+    if (value & static_cast<uint32_t>(MBIM_PROVIDER_STATE_ENUM::MBIM_PROVIDER_STATE_PREFERRED_MULTICARRIER))
+        flags.push_back("[MBIM_PROVIDER_STATE_PREFERRED_MULTICARRIER]-Preferred multicarrier network provider");
+
+    if (flags.empty())
+        return "NONE";
+
+    std::ostringstream oss;
+    for (const auto& flag : flags) {
+        oss << flag << "\n";
+    }
+    return oss.str();
+}

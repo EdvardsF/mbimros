@@ -72,6 +72,19 @@ void MBIM_PIN_INFO::parse(hexStream& hs) {
     bindSimpleSet(REMAINING_ATTEMPTS, this, hs);
 }
 
+void MBIM_PROVIDER::parse(hexStream& hs) {
+    HexStreamParseGuard guard(hs);
+
+    VariableField<>* provderId = readOLPair<std::string>("PROVIDER_ID", "MCC+MNC/SID", hs, guard.startOffset(), 12);
+    bindFormatSet(MBIM_PROVIDER_STATE, this, map_provider_state, hs);
+    VariableField<>* provderName = readOLPair<std::string>("PROVIDER_NAME", "Provider's string format name", hs, guard.startOffset(), 40);
+    bindFormatSet(MBIM_CELLULAR_CLASS, this, map_cellular_class, hs);
+    bindSimpleSet(RSSI, this, hs);
+    bindSimpleSet(ERROR_RATE, this, hs);
+
+    provderId->bind(this);
+    provderName->bind(this);
+}
 
 
 
@@ -79,10 +92,15 @@ void register_all_buffers() {
 
     using namespace MBIM_CMD;
 
-    // QueryType
-    // SetType
-    // HostResponseType
-    // IndicationType
+    // Register Argument order:
+    // ------------------------
+    // QueryType              |
+    // SetType                |
+    // HostResponseType       |
+    // IndicationType         |
+    // ------------------------
+
+    // ---------------------------UUID_BASIC_CONNECT---------------------------
 
     registerUuidCid<
         EMPTY_BUFFER, 
@@ -111,5 +129,12 @@ void register_all_buffers() {
         MBIM_PIN_INFO,
         NOT_APPLICABLE_BUFFER
     >(UUID_BASIC_CONNECT::UUID, UUID_BASIC_CONNECT::MBIM_CID_PIN);
+
+    registerUuidCid<
+        EMPTY_BUFFER, 
+        MBIM_PROVIDER, 
+        MBIM_PROVIDER,
+        NOT_APPLICABLE_BUFFER
+    >(UUID_BASIC_CONNECT::UUID, UUID_BASIC_CONNECT::MBIM_CID_HOME_PROVIDER);
 }
 

@@ -73,6 +73,7 @@ struct MBIM_PIN_INFO : public informationBuffer {
     void parse(hexStream& hs) override;
 };
 
+// TODO: UNFINISHED - REQUIRES NESTING
 struct MBIM_PIN_LIST_INFO : public informationBuffer {
     Field<PIN_TYPE_ENUM> MBIM_PIN_TYPE        { "MBIM_PIN_TYPE", "Type of PIN (e.g., PIN1, PIN2, device PIN, etc.)" };
     Field<PIN_STATE_ENUM> MBIM_PIN_STATE      { "MBIM_PIN_STATE", "Whether the specified PIN is currently locked or unlocked" };
@@ -81,4 +82,12 @@ struct MBIM_PIN_LIST_INFO : public informationBuffer {
     void parse(hexStream& hs) override;
 };
 
+struct MBIM_PROVIDER : public informationBuffer {
+    Field<uint32_t> MBIM_PROVIDER_STATE                        { "MBIM_PROVIDER_STATE", "Whether the network provider is currently the home provider, a preferred provider, whether it’s visible, etc" };
+    Field<uint32_t> MBIM_CELLULAR_CLASS                        { "MBIM_CELLULAR_CLASS", "Bitmap of relevant cellular technologies" };
+    Field<uint32_t> RSSI                                       { "RSSI", "Strength of the wireless signal" };
+    Field<uint32_t> ERROR_RATE                                 { "ERROR_RATE", "A coded value that represents a percentage range of error rates" };
+
+    void parse(hexStream& hs) override;
+};
 
