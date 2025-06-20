@@ -76,9 +76,9 @@ void MBIM_PROVIDER::parse(hexStream& hs) {
     HexStreamParseGuard guard(hs);
 
     VariableField<>* provderId = readOLPair<std::string>("PROVIDER_ID", "MCC+MNC/SID", hs, guard.startOffset(), 12);
-    bindFormatSet(MBIM_PROVIDER_STATE, this, map_provider_state, hs);
+    bindBitmaskSet(MBIM_PROVIDER_STATE, this, map_provider_state, hs);
     VariableField<>* provderName = readOLPair<std::string>("PROVIDER_NAME", "Provider's string format name", hs, guard.startOffset(), 40);
-    bindFormatSet(MBIM_CELLULAR_CLASS, this, map_cellular_class, hs);
+    bindBitmaskSet(MBIM_CELLULAR_CLASS, this, map_cellular_class, hs);
     bindSimpleSet(RSSI, this, hs);
     bindSimpleSet(ERROR_RATE, this, hs);
 

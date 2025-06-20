@@ -83,7 +83,7 @@ struct MBIM_PIN_LIST_INFO : public informationBuffer {
 };
 
 struct MBIM_PROVIDER : public informationBuffer {
-    Field<uint32_t> MBIM_PROVIDER_STATE                        { "MBIM_PROVIDER_STATE", "Whether the network provider is currently the home provider, a preferred provider, whether it’s visible, etc" };
+    Field<uint32_t> MBIM_PROVIDER_STATE                        { "MBIM_PROVIDER_STATE", "Bitmap of whether the network provider is currently the home provider, a preferred provider, whether it’s visible, etc" };
     Field<uint32_t> MBIM_CELLULAR_CLASS                        { "MBIM_CELLULAR_CLASS", "Bitmap of relevant cellular technologies" };
     Field<uint32_t> RSSI                                       { "RSSI", "Strength of the wireless signal" };
     Field<uint32_t> ERROR_RATE                                 { "ERROR_RATE", "A coded value that represents a percentage range of error rates" };
