@@ -114,6 +114,21 @@ void MBIM_REGISTRATION_STATE_INFO::parse(hexStream& hs) {
     roamingText->bind(this);
 }
 
+void MBIM_SET_PACKET_SERVICE::parse(hexStream& hs) {
+    HexStreamParseGuard guard(hs);
+
+    bindFormatSet(PACKET_SERVICE_ACTION, this, map_packet_service_action, hs);
+}
+
+void MBIM_PACKET_SERVICE_INFO::parse(hexStream& hs) {
+    HexStreamParseGuard guard(hs);
+
+    bindFormatSet(NW_ERROR, this, map_3gpp_nw_error, hs);
+    bindFormatSet(PACKET_SERVICE_STATE, this, map_packet_service_state, hs);
+    bindBitmaskSet(HIGHEST_AVAILABLE_DATA_CLASS, this, map_data_class, hs);
+    bindSimpleSet64(UPLINK_SPEED, this, hs);
+    bindSimpleSet64(DOWNLINK_SPEED, this, hs);
+}
 
 
 
@@ -174,5 +189,12 @@ void register_all_buffers() {
         MBIM_REGISTRATION_STATE_INFO,
         MBIM_REGISTRATION_STATE_INFO
     >(UUID_BASIC_CONNECT::UUID, UUID_BASIC_CONNECT::MBIM_CID_REGISTER_STATE);
+
+    registerUuidCid<
+        EMPTY_BUFFER, 
+        MBIM_SET_PACKET_SERVICE, 
+        MBIM_PACKET_SERVICE_INFO,
+        MBIM_PACKET_SERVICE_INFO
+    >(UUID_BASIC_CONNECT::UUID, UUID_BASIC_CONNECT::MBIM_CID_PACKET_SERVICE);
 }
 

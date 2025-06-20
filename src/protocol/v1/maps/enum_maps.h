@@ -482,30 +482,30 @@ inline std::string map_emergency_mode(EMERGENCY_MODE_ENUM mode) {
 inline std::string map_3gpp_nw_error(MBIM_3GPP_NW_ERROR_ENUM code) {
     switch (code) {
         case MBIM_3GPP_NW_ERROR_ENUM::IMSI_UNKNOWN_IN_HLR:
-            return "Either the SIM or the device is not activated, or the subscription has expired, which caused a network deactivation.";
+            return "Either the SIM or the device is not activated, or the subscription has expired, which caused a network deactivation";
         case MBIM_3GPP_NW_ERROR_ENUM::IMSI_UNKNOWN_IN_VLR:
-            return "Roaming feature is not subscribed to.";
+            return "Roaming feature is not subscribed to";
         case MBIM_3GPP_NW_ERROR_ENUM::ILLEGAL_ME:
-            return "MS blocked by network due to stolen report.";
+            return "MS blocked by network due to stolen report";
         case MBIM_3GPP_NW_ERROR_ENUM::GPRS_SERVICES_NOT_ALLOWED:
-            return "User does not have a GPRS subscription. Only voice connection subscription is allowed.";
+            return "User does not have a GPRS subscription Only voice connection subscription is allowed";
         case MBIM_3GPP_NW_ERROR_ENUM::GPRS_AND_NON_GPRS_SERVICES_NOT_ALLOWED:
-            return "GPRS and non-GPRS services are not allowed.";
+            return "GPRS and non-GPRS services are not allowed";
         case MBIM_3GPP_NW_ERROR_ENUM::PLMN_NOT_ALLOWED:
-            return "Service is blocked by the network due to an expired subscription or another cause.";
+            return "Service is blocked by the network due to an expired subscription or another cause";
         case MBIM_3GPP_NW_ERROR_ENUM::LOCATION_AREA_NOT_ALLOWED:
-            return "User subscription does not allow access in the present location area.";
+            return "User subscription does not allow access in the present location area";
         case MBIM_3GPP_NW_ERROR_ENUM::ROAMING_NOT_ALLOWED_IN_LOCATION_AREA:
-            return "Subscription permits roaming, but roaming is not allowed in the present location area.";
+            return "Subscription permits roaming but roaming is not allowed in the present location area";
         case MBIM_3GPP_NW_ERROR_ENUM::GPRS_SERVICES_NOT_ALLOWED_IN_PLMN:
-            return "Selected network provider does not provide GPRS service to the MS.";
+            return "Selected network provider does not provide GPRS service to the MS";
         case MBIM_3GPP_NW_ERROR_ENUM::NO_SUITABLE_CELLS_IN_LOCATION_AREA:
-            return "No subscription for the service.";
+            return "No subscription for the service";
         case MBIM_3GPP_NW_ERROR_ENUM::NETWORK_FAILURE:
-            return "Registration failed.";
+            return "Registration failed";
         case MBIM_3GPP_NW_ERROR_ENUM::CONGESTION:
-            return "Registration failed due to network congestion.";
+            return "Registration failed due to network congestion";
         default:
-            return "Unknown 3GPP TS 24.008 network error.";
+            return "Unknown 3GPP TS 24.008 network error";
     }
 }

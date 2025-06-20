@@ -29,6 +29,15 @@ void bindSimpleSet(FieldType& field, Serializable* owner, hexStream& hs) {
 }
 
 template<typename FieldType>
+void bindSimpleSet64(FieldType& field, Serializable* owner, hexStream& hs) {
+    field.bind(owner);
+    uint32_t low = hs.readUint32LE();
+    uint32_t high = hs.readUint32LE();
+    uint64_t full = (static_cast<uint64_t>(high) << 32) | low;
+    field.set(full);
+}
+
+template<typename FieldType>
 void bindStringSet(FieldType& field, Serializable* owner, const std::string& (*formatter)(const std::string&), hexStream& hs) {
     field.bind(owner);
     field.setStringFormatter(formatter);

@@ -111,3 +111,19 @@ struct MBIM_REGISTRATION_STATE_INFO : public informationBuffer {
     void parse(hexStream& hs) override;
 };
 
+struct MBIM_SET_PACKET_SERVICE : public informationBuffer {
+    Field<PACKET_SERVICE_ACTION_ENUM> PACKET_SERVICE_ACTION    { "PACKET_SERVICE_ACTION", "" };
+
+    void parse(hexStream& hs) override;
+};
+
+struct MBIM_PACKET_SERVICE_INFO : public informationBuffer {
+    Field<MBIM_3GPP_NW_ERROR_ENUM> NW_ERROR      { "NW_ERROR", "Detailed 3GPP network error code indicating why registration or service failed" };
+    Field<PACKET_SERVICE_STATE_ENUM> PACKET_SERVICE_STATE    { "PACKET_SERVICE_STATE", "" };
+    Field<uint32_t> HIGHEST_AVAILABLE_DATA_CLASS    { "HIGHEST_AVAILABLE_DATA_CLASS", "" };
+    Field<uint32_t> UPLINK_SPEED      { "UPLINK_SPEED", "" };
+    Field<uint64_t> DOWNLINK_SPEED      { "DOWNLINK_SPEED", "" };
+
+    void parse(hexStream& hs) override;
+};
+
