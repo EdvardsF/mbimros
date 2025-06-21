@@ -1,5 +1,7 @@
 #include "construction_field.h"
 
+#include <iostream>
+
 std::vector<ConstructionField*> ConstructionField::allFields;
 
 OLPair::OLPair() = default;
@@ -22,6 +24,22 @@ size_t RefList::count() const {
     return pairs.size();
 }
 
+StringField::StringField() = default;
+
+StringField::StringField(const std::string& val, const StringType& stringType) {
+    value = val;
+
+    if (stringType == StringType::BigEndian) {
+        value = stringToUtf16BeAligned(value);
+    } else if (stringType == StringType::LittleEndian) {
+        value = stringToUtf16LeAligned(value);
+    } else if (stringType == StringType::Literal) {
+        // no encoding
+    } else {
+        throw std::runtime_error("Unknown string type for field: " + value);
+    }
+}
+
 ConstructionField::ConstructionField() = default;
 
 ConstructionField::ConstructionField(uint32_t value)
@@ -32,6 +50,12 @@ ConstructionField::ConstructionField(uint32_t value)
 
 ConstructionField::ConstructionField(const std::string& value)
     : type(FieldType::SingleOLPair), olPair(value)
+{
+    allFields.push_back(this);
+}
+
+ConstructionField::ConstructionField(const std::string& value, const StringType& strType)
+    : type(FieldType::String), string(value, strType)
 {
     allFields.push_back(this);
 }
@@ -59,6 +83,8 @@ CompiledBuffer compileFields() {
         } else if (fld->type == FieldType::ListOfOLPairs) {
             staticInfoSize += 4;
             staticInfoSize += 8 * fld->refList.count();
+        } else if (fld->type == FieldType::String) {
+            staticInfoSize += getHexStringByteLength(fld->string.value);
         }
     }
 
@@ -90,6 +116,14 @@ CompiledBuffer compileFields() {
             for (const auto& pair : fld->refList.pairs) {
                 infoStream << toHexLE(static_cast<uint32_t>(pair.offset));
                 infoStream << toHexLE(static_cast<uint32_t>(pair.length));
+            }
+        } else if (fld->type == FieldType::String) {
+            std::cout << fld->string.value << "\n\n\n";
+            infoStream << fld->string.value;
+            size_t len = fld->string.value.length() / 2;
+            if (len % 4 != 0) {
+                size_t pad = 4 - (len % 4);
+                for (size_t i = 0; i < pad; ++i) infoStream << "00";
             }
         }
     }

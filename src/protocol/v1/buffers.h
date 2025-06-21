@@ -145,3 +145,27 @@ struct MBIM_SIGNAL_STATE_INFO : public informationBuffer {
     void parse(hexStream& hs) override;
 };
 
+struct MBIM_SET_CONNECT : public informationBuffer {
+    Field<uint32_t> SESSION_ID    { "SESSION_ID", "" };
+    Field<ACTIVATION_COMMAND_ENUM> ACTIVATION_COMMAND    { "ACTIVATION_COMMAND", "" };
+    Field<COMPRESSION_ENUM> COMPRESSION    { "COMPRESSION", "" };
+    Field<AUTH_PROTOCOL_ENUM> AUTH_PROTOCOL    { "AUTH_PROTOCOL", "" };
+    Field<CONTEXT_IP_TYPE_ENUM> IP_TYPE    { "IP_TYPE", "" };
+    Field<std::string> CONTEXT_TYPE              { "CONTEXT_TYPE", "desc"};
+
+    void parse(hexStream& hs) override;
+};
+
+struct MBIM_CONNECT_INFO : public informationBuffer {
+    Field<uint32_t> SESSION_ID    { "SESSION_ID", "" };
+    Field<ACTIVATION_STATE_ENUM> ACTIVATION_STATE    { "ACTIVATION_STATE", "" };
+    Field<VOICE_CALL_STATE_ENUM> VOICE_CALL_STATE    { "VOICE_CALL_STATE", "" };
+    Field<CONTEXT_IP_TYPE_ENUM> IP_TYPE    { "IP_TYPE", "" };
+    Field<std::string> CONTEXT_TYPE              { "CONTEXT_TYPE", "desc"};
+    Field<MBIM_3GPP_NW_ERROR_ENUM> NW_ERROR      { "NW_ERROR", "Detailed 3GPP network error code indicating why registration or service failed" };
+
+    void parse(hexStream& hs) override;
+};
+
+
+

@@ -148,10 +148,34 @@ void MBIM_SIGNAL_STATE_INFO::parse(hexStream& hs) {
     bindSimpleSet(ERROR_RATE_THRESHOLD, this, hs);
 }
 
+void MBIM_SET_CONNECT::parse(hexStream& hs) {
+    HexStreamParseGuard guard(hs);
 
+    bindSimpleSet(SESSION_ID, this, hs);
+    bindFormatSet(ACTIVATION_COMMAND, this, map_activation_command, hs);
+    VariableField<>* accessString = readOLPair<std::string>("ACCESS_STRING", "", hs, guard.startOffset(), 200);
+    VariableField<>* userName = readOLPair<std::string>("USER_NAME", "", hs, guard.startOffset(), 510);
+    VariableField<>* password = readOLPair<std::string>("PASSWORD", "", hs, guard.startOffset(), 510);
+    bindFormatSet(COMPRESSION, this, map_compression, hs);
+    bindFormatSet(AUTH_PROTOCOL, this, map_auth_protocol, hs);
+    bindFormatSet(IP_TYPE, this, map_context_ip_type, hs);
+    bindStringSet(CONTEXT_TYPE, this, map_context_uuid, hs); 
 
+    accessString->bind(this);
+    userName->bind(this);
+    password->bind(this);
+}
 
+void MBIM_CONNECT_INFO::parse(hexStream& hs) {
+    HexStreamParseGuard guard(hs);
 
+    bindSimpleSet(SESSION_ID, this, hs);
+    bindFormatSet(ACTIVATION_STATE, this, map_activation_state, hs);
+    bindFormatSet(VOICE_CALL_STATE, this, map_voice_call_state, hs);
+    bindFormatSet(IP_TYPE, this, map_context_ip_type, hs);
+    bindStringSet(CONTEXT_TYPE, this, map_context_uuid, hs);
+    bindFormatSet(NW_ERROR, this, map_3gpp_nw_error, hs);
+}
 
 
 
@@ -219,6 +243,12 @@ void register_all_buffers() {
         MBIM_SIGNAL_STATE_INFO
     >(UUID_BASIC_CONNECT::UUID, UUID_BASIC_CONNECT::MBIM_CID_SIGNAL_STATE);
 
+    registerUuidCid<
+        MBIM_CONNECT_INFO, 
+        MBIM_SET_CONNECT, 
+        MBIM_CONNECT_INFO,
+        MBIM_CONNECT_INFO
+    >(UUID_BASIC_CONNECT::UUID, UUID_BASIC_CONNECT::MBIM_CID_CONNECT);
 
 }
 

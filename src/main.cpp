@@ -28,21 +28,24 @@ int main() {
     //     bufferFields
     // );
 
-
     std::vector<ConstructionField> bufferFields = {
         ConstructionField(1),
         ConstructionField(2),
+        ConstructionField("apn"),
+        ConstructionField("user"),
+        ConstructionField("pass"),
         ConstructionField(3),
         ConstructionField(4),
-        ConstructionField(5),
+        ConstructionField(1),
+        ConstructionField("b43f758ca5604b46b35ec5e89641fb54", StringType::Literal)
     };
 
     std::string hexMessage = Encoder::encode(
-        MESSAGE_TYPE_ENUM::MBIM_COMMAND_DONE,
+        MESSAGE_TYPE_ENUM::MBIM_COMMAND_MSG,
         Encoder::EMPTY_ARG,
         "a289cc33bcbb8b4fb6b0133ec2aae6df",  // UUID
-        MBIM_CMD::UUID_BASIC_CONNECT::MBIM_CID_SIGNAL_STATE,
-        0,                                   // quey/set/status
+        MBIM_CMD::UUID_BASIC_CONNECT::MBIM_CID_CONNECT,
+        1,                                   // quey/set/status
         bufferFields
     );
 

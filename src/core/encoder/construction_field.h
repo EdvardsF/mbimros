@@ -7,11 +7,17 @@
 
 #include "../../helpers/hex_helpers.h"
 
+enum class StringType {
+    BigEndian,
+    LittleEndian,
+    Literal
+};
 
 enum class FieldType {
     Numeric,
     SingleOLPair,
-    ListOfOLPairs
+    ListOfOLPairs,
+    String
 };
 
 struct OLPair {
@@ -31,11 +37,19 @@ struct RefList {
     size_t count() const;
 };
 
+struct StringField {
+    std::string value;
+
+    StringField();
+    explicit StringField(const std::string& val, const StringType& stringType);
+};
+
 struct ConstructionField {
     FieldType type;
     uint32_t numericValue = 0;
     OLPair olPair;
     RefList refList;
+    StringField string;
 
     static std::vector<ConstructionField*> allFields;
 
@@ -43,6 +57,7 @@ struct ConstructionField {
     explicit ConstructionField(uint32_t value);
     explicit ConstructionField(const std::string& value);
     explicit ConstructionField(const std::vector<std::string>& values);
+    explicit ConstructionField(const std::string& value, const StringType& strType);
 
     template <typename EnumType, typename = std::enable_if_t<std::is_enum_v<EnumType>>>
     explicit ConstructionField(EnumType enumValue)
