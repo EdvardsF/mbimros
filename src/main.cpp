@@ -28,23 +28,20 @@ int main() {
     //     bufferFields
     // );
 
-    // std::cout << "\n\nHEX: " << hexMessage << " END\n";
 
     std::vector<ConstructionField> bufferFields = {
         ConstructionField(1),
         ConstructionField(2),
         ConstructionField(3),
-        ConstructionField(99),
-        ConstructionField(0),
-        ConstructionField(77),
-        ConstructionField(77)
+        ConstructionField(4),
+        ConstructionField(5),
     };
 
     std::string hexMessage = Encoder::encode(
         MESSAGE_TYPE_ENUM::MBIM_COMMAND_DONE,
         Encoder::EMPTY_ARG,
         "a289cc33bcbb8b4fb6b0133ec2aae6df",  // UUID
-        MBIM_CMD::UUID_BASIC_CONNECT::MBIM_CID_PACKET_SERVICE,
+        MBIM_CMD::UUID_BASIC_CONNECT::MBIM_CID_SIGNAL_STATE,
         0,                                   // quey/set/status
         bufferFields
     );

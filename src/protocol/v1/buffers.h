@@ -127,3 +127,21 @@ struct MBIM_PACKET_SERVICE_INFO : public informationBuffer {
     void parse(hexStream& hs) override;
 };
 
+struct MBIM_SET_SIGNAL_STATE : public informationBuffer {
+    Field<uint32_t> SIGNAL_STRENGTH_INTERVAL    { "SIGNAL_STRENGTH_INTERVAL", "" };
+    Field<uint32_t> RSSI_THRESHOLD    { "RSSI_THRESHOLD", "" };
+    Field<uint32_t> ERROR_RATE_THRESHOLD    { "ERROR_RATE_THRESHOLD", "" };
+
+    void parse(hexStream& hs) override;
+};
+
+struct MBIM_SIGNAL_STATE_INFO : public informationBuffer {
+    Field<uint32_t> RSSI    { "RSSI", "" };
+    Field<uint32_t> ERROR_RATE    { "ERROR_RATE", "" };
+    Field<uint32_t> SIGNAL_STRENGTH_INTERVAL    { "SIGNAL_STRENGTH_INTERVAL", "" };
+    Field<uint32_t> RSSI_THRESHOLD    { "RSSI_THRESHOLD", "" };
+    Field<uint32_t> ERROR_RATE_THRESHOLD    { "ERROR_RATE_THRESHOLD", "" };
+
+    void parse(hexStream& hs) override;
+};
+

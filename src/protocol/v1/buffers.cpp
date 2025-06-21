@@ -130,6 +130,28 @@ void MBIM_PACKET_SERVICE_INFO::parse(hexStream& hs) {
     bindSimpleSet64(DOWNLINK_SPEED, this, hs);
 }
 
+void MBIM_SET_SIGNAL_STATE::parse(hexStream& hs) {
+    HexStreamParseGuard guard(hs);
+
+    bindSimpleSet(SIGNAL_STRENGTH_INTERVAL, this, hs);
+    bindSimpleSet(RSSI_THRESHOLD, this, hs);
+    bindSimpleSet(ERROR_RATE_THRESHOLD, this, hs);
+}
+
+void MBIM_SIGNAL_STATE_INFO::parse(hexStream& hs) {
+    HexStreamParseGuard guard(hs);
+
+    bindSimpleSet(RSSI, this, hs);
+    bindSimpleSet(ERROR_RATE, this, hs);
+    bindSimpleSet(SIGNAL_STRENGTH_INTERVAL, this, hs);
+    bindSimpleSet(RSSI_THRESHOLD, this, hs);
+    bindSimpleSet(ERROR_RATE_THRESHOLD, this, hs);
+}
+
+
+
+
+
 
 
 
@@ -192,9 +214,11 @@ void register_all_buffers() {
 
     registerUuidCid<
         EMPTY_BUFFER, 
-        MBIM_SET_PACKET_SERVICE, 
-        MBIM_PACKET_SERVICE_INFO,
-        MBIM_PACKET_SERVICE_INFO
-    >(UUID_BASIC_CONNECT::UUID, UUID_BASIC_CONNECT::MBIM_CID_PACKET_SERVICE);
+        MBIM_SET_SIGNAL_STATE, 
+        MBIM_SIGNAL_STATE_INFO,
+        MBIM_SIGNAL_STATE_INFO
+    >(UUID_BASIC_CONNECT::UUID, UUID_BASIC_CONNECT::MBIM_CID_SIGNAL_STATE);
+
+
 }
 
