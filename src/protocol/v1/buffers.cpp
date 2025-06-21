@@ -153,9 +153,9 @@ void MBIM_SET_CONNECT::parse(hexStream& hs) {
 
     bindSimpleSet(SESSION_ID, this, hs);
     bindFormatSet(ACTIVATION_COMMAND, this, map_activation_command, hs);
-    VariableField<>* accessString = readOLPair<std::string>("ACCESS_STRING", "", hs, guard.startOffset(), 200);
-    VariableField<>* userName = readOLPair<std::string>("USER_NAME", "", hs, guard.startOffset(), 510);
-    VariableField<>* password = readOLPair<std::string>("PASSWORD", "", hs, guard.startOffset(), 510);
+    VariableField<>* accessString = readOLPair<std::string>("ACCESS_STRING", "APN/DSS", hs, guard.startOffset(), 200);
+    VariableField<>* userName = readOLPair<std::string>("USER_NAME", "Authentication user name", hs, guard.startOffset(), 510);
+    VariableField<>* password = readOLPair<std::string>("PASSWORD", "Authentication password", hs, guard.startOffset(), 510);
     bindFormatSet(COMPRESSION, this, map_compression, hs);
     bindFormatSet(AUTH_PROTOCOL, this, map_auth_protocol, hs);
     bindFormatSet(IP_TYPE, this, map_context_ip_type, hs);
