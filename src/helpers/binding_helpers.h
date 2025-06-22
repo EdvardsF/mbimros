@@ -29,6 +29,12 @@ void bindSimpleSet(FieldType& field, Serializable* owner, hexStream& hs) {
 }
 
 template<typename FieldType>
+void bindSimpleSetReadAll(FieldType& field, Serializable* owner, hexStream& hs) {
+    field.bind(owner);
+    field.set(hs.readRemaining());
+}
+
+template<typename FieldType>
 void bindSimpleSet64(FieldType& field, Serializable* owner, hexStream& hs) {
     field.bind(owner);
     uint32_t low = hs.readUint32LE();

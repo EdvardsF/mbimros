@@ -177,6 +177,19 @@ void MBIM_CONNECT_INFO::parse(hexStream& hs) {
     bindFormatSet(NW_ERROR, this, map_3gpp_nw_error, hs);
 }
 
+void MBIM_SET_SERVICE_ACTIVATION::parse(hexStream& hs) {
+    HexStreamParseGuard guard(hs);
+
+    bindSimpleSetReadAll(VENDOR_SPECIFIC_DATA, this, hs);
+}
+
+void MBIM_SERVICE_ACTIVATION_INFO::parse(hexStream& hs) {
+    HexStreamParseGuard guard(hs);
+
+    bindFormatSet(NW_ERROR, this, map_3gpp_nw_error, hs);
+    bindSimpleSetReadAll(VENDOR_SPECIFIC_DATA, this, hs);
+}
+
 
 
 
@@ -249,6 +262,13 @@ void register_all_buffers() {
         MBIM_CONNECT_INFO,
         MBIM_CONNECT_INFO
     >(UUID_BASIC_CONNECT::UUID, UUID_BASIC_CONNECT::MBIM_CID_CONNECT);
+
+    registerUuidCid<
+        NOT_APPLICABLE_BUFFER, 
+        MBIM_SET_SERVICE_ACTIVATION, 
+        MBIM_SERVICE_ACTIVATION_INFO,
+        NOT_APPLICABLE_BUFFER
+    >(UUID_BASIC_CONNECT::UUID, UUID_BASIC_CONNECT::MBIM_CID_SERVICE_ACTIVATION);
 
 }
 
