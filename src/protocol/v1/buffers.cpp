@@ -190,6 +190,23 @@ void MBIM_SERVICE_ACTIVATION_INFO::parse(hexStream& hs) {
     bindSimpleSetReadAll(VENDOR_SPECIFIC_DATA, this, hs);
 }
 
+void MBIM_SET_SMS_CONFIGURATION::parse(hexStream& hs) {
+    HexStreamParseGuard guard(hs);
+    bindFormatSet(SMS_FORMAT, this, map_sms_format, hs);
+    readOLPairAndBind<std::string>("SC_ADDRESS", "[<International Country Code>]<SMS Service Center Number>", hs, this, guard.startOffset(), 40);
+}
+
+void MBIM_SMS_CONFIGURATION_INFO::parse(hexStream& hs) {
+    HexStreamParseGuard guard(hs);
+
+    bindFormatSet(SMS_STORAGE_STATE, this, map_sms_storage_state, hs);
+    bindFormatSet(SMS_FORMAT, this, map_sms_format, hs);
+    bindSimpleSet(MAX_MESSAGES, this, hs);
+    bindSimpleSet(CDMA_SHORT_MESSAGE_SIZE, this, hs);
+   
+    readOLPairAndBind<std::string>("SC_ADDRESS", "[<International Country Code>]<SMS Service Center Number>", hs, this, guard.startOffset(), 40);
+}
+
 
 
 
@@ -269,6 +286,16 @@ void register_all_buffers() {
         MBIM_SERVICE_ACTIVATION_INFO,
         NOT_APPLICABLE_BUFFER
     >(UUID_BASIC_CONNECT::UUID, UUID_BASIC_CONNECT::MBIM_CID_SERVICE_ACTIVATION);
+
+
+    // ---------------------------UUID_SMS---------------------------
+
+    registerUuidCid<
+        EMPTY_BUFFER, 
+        MBIM_SET_SMS_CONFIGURATION, 
+        MBIM_SMS_CONFIGURATION_INFO,
+        MBIM_SMS_CONFIGURATION_INFO
+    >(UUID_SMS::UUID, UUID_SMS::MBIM_CID_SMS_CONFIGURATION);
 
 }
 

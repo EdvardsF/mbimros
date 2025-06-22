@@ -28,20 +28,21 @@ int main() {
     //     bufferFields
     // );
 
+
     std::vector<ConstructionField> bufferFields = {
         ConstructionField(1),
-        ConstructionField("asd", StringType::BigEndian),
-                ConstructionField("asd", StringType::BigEndian),
-
-        ConstructionField("asd", StringType::BigEndian),
+        ConstructionField(1),
+        ConstructionField(1),
+        ConstructionField(1),
+        ConstructionField("ADDRESS")
 
     };
 
     std::string hexMessage = Encoder::encode(
-        MESSAGE_TYPE_ENUM::MBIM_COMMAND_MSG,
+        MESSAGE_TYPE_ENUM::MBIM_COMMAND_DONE,
         Encoder::EMPTY_ARG,
-        "a289cc33bcbb8b4fb6b0133ec2aae6df",  // UUID
-        MBIM_CMD::UUID_BASIC_CONNECT::MBIM_CID_SERVICE_ACTIVATION,
+        MBIM_CMD::UUID_SMS::UUID,  // UUID
+        MBIM_CMD::UUID_SMS::MBIM_CID_SMS_CONFIGURATION,
         1,                                   // quey/set/status
         bufferFields
     );
@@ -52,3 +53,5 @@ int main() {
     decoder.decodeRaw();
     std::cout << decoder.to_string() << "\n";
 }
+
+

@@ -171,6 +171,9 @@ struct MBIM_CONNECT_INFO : public informationBuffer {
     void parse(hexStream& hs) override;
 };
 
+// TODO: MBIM_CID_PROVISIONED_CONTEXTS requires nesting
+
+
 struct MBIM_SET_SERVICE_ACTIVATION : public informationBuffer {
     Field <std::string> VENDOR_SPECIFIC_DATA           { "VENDOR_SPECIFIC_DATA",     "Placeholder for sending the carrier-specific data to activate the service." };
 
@@ -184,6 +187,21 @@ struct MBIM_SERVICE_ACTIVATION_INFO : public informationBuffer {
     void parse(hexStream& hs) override;
 };
 
+struct MBIM_SET_SMS_CONFIGURATION : public informationBuffer {
+    Field <SMS_FORMAT_ENUM> SMS_FORMAT           { "SMS_FORMAT",     "PDU/CDMA" };
 
-// TODO: MBIM_CID_PROVISIONED_CONTEXTS requires nesting
+    void parse(hexStream& hs) override;
+};
+
+struct MBIM_SMS_CONFIGURATION_INFO : public informationBuffer {
+    Field <SMS_STORAGE_STATE_ENUM>   SMS_STORAGE_STATE           { "SMS_STORAGE_STATE",        "The current state of the SMS storage" };
+    Field <SMS_FORMAT_ENUM>          SMS_FORMAT                  { "SMS_FORMAT",               "PDU/CDMA" };
+    Field <uint32_t>                 MAX_MESSAGES                { "MAX_MESSAGES",             "The maximum number of messages that can be stored on the device" };
+    Field <uint32_t>                 CDMA_SHORT_MESSAGE_SIZE     { "CDMA_SHORT_MESSAGE_SIZE",  "The maximum SMS character length that is supported by the device, if the device is CDMA-based" };
+
+    void parse(hexStream& hs) override;
+};
+
+
+
 
