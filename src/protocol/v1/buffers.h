@@ -213,6 +213,11 @@ struct MBIM_SET_SMS_DELETE : public informationBuffer {
     void parse(hexStream& hs) override;
 };
 
+struct MBIM_SMS_STATUS_INFO : public informationBuffer {
+    Field <MBIM_SMS_STATUS_FLAG_ENUM>   FLAG               { "FLAG",           "SMS status report flag" };
+    Field <uint32_t>                    MESSAGE_INDEX      { "MESSAGE_INDEX",  "Index of device's message store (valid only if Flag is set toMBIMSmsFlagIndex)" };
 
+    void parse(hexStream& hs) override;
+};
 
 

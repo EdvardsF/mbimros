@@ -36,11 +36,11 @@ int main() {
     };
 
     std::string hexMessage = Encoder::encode(
-        MESSAGE_TYPE_ENUM::MBIM_COMMAND_MSG,
+        MESSAGE_TYPE_ENUM::MBIM_COMMAND_DONE,
         Encoder::EMPTY_ARG,
         MBIM_CMD::UUID_SMS::UUID,  // UUID
-        MBIM_CMD::UUID_SMS::MBIM_CID_SMS_DELETE,
-        1,                                   // quey/set/status
+        MBIM_CMD::UUID_SMS::MBIM_CID_SMS_MESSAGE_STORE_STATUS,
+        3,                                   // quey/set/status
         bufferFields
     );
 

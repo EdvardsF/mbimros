@@ -423,3 +423,11 @@ enum class MBIM_SMS_FLAG_ENUM : uint32_t {
     MBIMSmsFlagSent  = 4,
     MBIMSmsFlagDraft = 5
 };
+
+enum class MBIM_SMS_STATUS_FLAG_ENUM : uint32_t {
+    MBIM_SMS_FLAG_NONE               = 0x00,
+    MBIM_SMS_FLAG_MESSAGE_STORE_FULL = 0x01,
+    MBIM_SMS_FLAG_NEW_MESSAGE        = 0x02
+};
+
+

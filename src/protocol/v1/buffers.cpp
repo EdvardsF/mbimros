@@ -215,6 +215,14 @@ void MBIM_SET_SMS_DELETE::parse(hexStream& hs) {
     bindSimpleSet(MESSAGE_INDEX, this, hs);
 }
 
+void MBIM_SMS_STATUS_INFO::parse(hexStream& hs) {
+    HexStreamParseGuard guard(hs);
+
+    bindFormatSet(FLAG, this, map_sms_status_flag, hs);
+    bindSimpleSet(MESSAGE_INDEX, this, hs);
+}
+
+
 
 
 
@@ -311,5 +319,12 @@ void register_all_buffers() {
         EMPTY_BUFFER,
         NOT_APPLICABLE_BUFFER
     >(UUID_SMS::UUID, UUID_SMS::MBIM_CID_SMS_DELETE);
+
+    registerUuidCid<
+        EMPTY_BUFFER, 
+        NOT_APPLICABLE_BUFFER, 
+        MBIM_SMS_STATUS_INFO,
+        MBIM_SMS_STATUS_INFO
+    >(UUID_SMS::UUID, UUID_SMS::MBIM_CID_SMS_MESSAGE_STORE_STATUS);
 }
 

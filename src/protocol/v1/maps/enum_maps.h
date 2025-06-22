@@ -528,3 +528,16 @@ inline std::string map_sms_flag(MBIM_SMS_FLAG_ENUM flag) {
             return "Unknown SMS flag";
     }
 }
+
+inline std::string map_sms_status_flag(MBIM_SMS_STATUS_FLAG_ENUM flag) {
+    switch (flag) {
+        case MBIM_SMS_STATUS_FLAG_ENUM::MBIM_SMS_FLAG_NONE:
+            return "No status to report";
+        case MBIM_SMS_STATUS_FLAG_ENUM::MBIM_SMS_FLAG_MESSAGE_STORE_FULL:
+            return "Message store is full";
+        case MBIM_SMS_STATUS_FLAG_ENUM::MBIM_SMS_FLAG_NEW_MESSAGE:
+            return "New non-Class 0 (flash/alert) message has arrived";
+        default:
+            return "Unknown SMS status flag";
+    }
+}
