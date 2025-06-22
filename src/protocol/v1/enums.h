@@ -414,3 +414,12 @@ enum class MBIM_3GPP_NW_ERROR_ENUM : uint32_t {
     NETWORK_FAILURE                      = 17,
     CONGESTION                           = 22
 };
+
+enum class MBIM_SMS_FLAG_ENUM : uint32_t {
+    MBIMSmsFlagAll   = 0,
+    MBIMSmsFlagIndex = 1,
+    MBIMSmsFlagNew   = 2,
+    MBIMSmsFlagOld   = 3,
+    MBIMSmsFlagSent  = 4,
+    MBIMSmsFlagDraft = 5
+};

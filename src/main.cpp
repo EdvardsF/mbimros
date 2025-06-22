@@ -31,18 +31,15 @@ int main() {
 
     std::vector<ConstructionField> bufferFields = {
         ConstructionField(1),
-        ConstructionField(1),
-        ConstructionField(1),
-        ConstructionField(1),
-        ConstructionField("ADDRESS")
+        ConstructionField(3)
 
     };
 
     std::string hexMessage = Encoder::encode(
-        MESSAGE_TYPE_ENUM::MBIM_COMMAND_DONE,
+        MESSAGE_TYPE_ENUM::MBIM_COMMAND_MSG,
         Encoder::EMPTY_ARG,
         MBIM_CMD::UUID_SMS::UUID,  // UUID
-        MBIM_CMD::UUID_SMS::MBIM_CID_SMS_CONFIGURATION,
+        MBIM_CMD::UUID_SMS::MBIM_CID_SMS_DELETE,
         1,                                   // quey/set/status
         bufferFields
     );

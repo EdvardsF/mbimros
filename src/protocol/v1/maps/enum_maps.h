@@ -509,3 +509,22 @@ inline std::string map_3gpp_nw_error(MBIM_3GPP_NW_ERROR_ENUM code) {
             return "Unknown 3GPP TS 24.008 network error";
     }
 }
+
+inline std::string map_sms_flag(MBIM_SMS_FLAG_ENUM flag) {
+    switch (flag) {
+        case MBIM_SMS_FLAG_ENUM::MBIMSmsFlagAll:
+            return "All messages";
+        case MBIM_SMS_FLAG_ENUM::MBIMSmsFlagIndex:
+            return "Message at specific index";
+        case MBIM_SMS_FLAG_ENUM::MBIMSmsFlagNew:
+            return "New (unread) messages";
+        case MBIM_SMS_FLAG_ENUM::MBIMSmsFlagOld:
+            return "Old (read) messages";
+        case MBIM_SMS_FLAG_ENUM::MBIMSmsFlagSent:
+            return "Sent messages";
+        case MBIM_SMS_FLAG_ENUM::MBIMSmsFlagDraft:
+            return "Draft messages";
+        default:
+            return "Unknown SMS flag";
+    }
+}

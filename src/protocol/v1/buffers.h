@@ -203,5 +203,16 @@ struct MBIM_SMS_CONFIGURATION_INFO : public informationBuffer {
 };
 
 
+// TODO: MBIM_CID_SMS_READ, MBIM_CID_SMS_SEND requires nesting
+
+
+struct MBIM_SET_SMS_DELETE : public informationBuffer {
+    Field <MBIM_SMS_FLAG_ENUM>   SMS_FLAG           { "SMS_FLAG",       "FLag for the SMS" };
+    Field <uint32_t>             MESSAGE_INDEX      { "MESSAGE_INDEX",  "Index of device's message store (valid only if Flag is set toMBIMSmsFlagIndex)" };
+
+    void parse(hexStream& hs) override;
+};
+
+
 
 
